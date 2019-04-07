@@ -1,0 +1,19 @@
+{
+  "name": "halo",
+  "version": "1.0.0",
+  "description": "Halo 可能是最好的 Java 博客系统。",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev .",
+    "build": "vuepress build ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halo-dev/halo.git"
+  },
+  "author": "Ryan Wang",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "vuepress": "^0.14.8"
+  }
+}
