@@ -14,7 +14,7 @@ module.exports = {
     },
   },
   markdown: {
-    lineNumbers: true
+    lineNumbers: false
   },
   themeConfig: {
     repo: 'halo-dev/halo',
