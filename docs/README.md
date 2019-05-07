@@ -2,7 +2,7 @@
 home: true
 tagline: ✍️ 可能是最好的 Java 博客系统
 actionText: 快速上手 →
-actionLink: /install
+actionLink: /install-with-centos
 features:
   - title: title1
     details: details1
