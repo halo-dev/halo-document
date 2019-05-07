@@ -1,5 +1,11 @@
 # 下载安装
 
+## 下载配置模板
+
+```bash
+curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
+```
+
 ## 环境要求
 
 - JDK1.8以上。
