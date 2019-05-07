@@ -20,7 +20,7 @@ module.exports = {
     repo: 'halo-dev/halo',
     nav: [
       { text: '首 页', link: '/' },
-      { text: '文 档', link: '/install' },
+      { text: '文 档', link: '/install-with-centos' },
       { text: '社 区', link: 'https://bbs.halo.run' },
     ],
     sidebar: [
@@ -28,7 +28,9 @@ module.exports = {
         title: '安装指南',
         collapsable: false,
         children: [
-          '/install',
+          '/install-with-centos',
+          '/install-with-ubuntu',
+          '/install-with-docker',
         ],
       },
       {
