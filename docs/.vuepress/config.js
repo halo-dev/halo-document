@@ -29,8 +29,8 @@ module.exports = {
         collapsable: false,
         children: [
           '/install-with-centos',
-          '/install-with-ubuntu',
           '/install-with-docker',
+          '/install-with-docker-compose',
         ],
       },
       {
