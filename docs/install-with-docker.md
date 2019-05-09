@@ -1,1 +1,263 @@
 # 使用 Docker 部署 Halo
+
+使用 Docker 部署 Halo 的指南，假设你已经安装好了 Docker 并了解 Docker 的基本使用。本篇教程以 CentOS 7.x 为例，其他系统大同小异。
+
+## 环境要求
+
+为了在使用过程中不出现意外的事故，给出下列推荐的配置
+
+- 1G RAM 的服务器
+- Nginx/Caddy
+
+在开始之前，最好先到域名服务商解析域名，设置 A 记录并指向服务器的 IP 地址，并确保已经正确解析，你可以在本地使用 Ping 命令检查域名是否已经正确解析到了服务器的 IP 地址。以方便在安装过程中为域名配置 SSL 证书。
+
+## 服务器配置
+
+### 更新软件包
+
+请确保服务器的软件包已经是最新的。
+
+```bash
+sudo yum update -y
+```
+
+### 配置 Docker 运行环境
+这里只做演示，个别系统的安装方式可能会不一样，仅供参考。
+
+#### 卸载Docker
+```bash
+$ sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+```
+
+#### 安装必要依赖
+```bash
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+```
+
+#### 添加软件源信息
+```bash
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+```
+
+#### 更新 yum 缓存
+```bash
+sudo yum makecache fast
+```
+
+#### 安装Docker
+```bash
+sudo yum -y install docker-ce
+```
+
+#### 启动 Docker 后台服务
+```bash
+sudo systemctl start docker
+```
+
+#### 镜像加速
+
+```bash
+新建 daemon.json 文件
+vim /etc/docker/daemon.json
+```
+
+将下面的配置复制进去即可
+
+```json
+{
+  "registry-mirrors": ["http://hub-mirror.c.163.com"]
+}
+```
+
+## 安装 Halo
+
+### 下载配置文件
+
+考虑到部分用户的需要，可能需要自定义比如端口等设置项，我们提供了公共的配置文件，并且该配置文件是完全独立于安装包的。当然，你也可以使用安装包内的默认配置文件，但是安装包内的配置文件是不可修改的。请注意：配置文件的路径为 `~/.halo/application.yaml`。
+
+```bash
+# 下载配置文件到 ~/.halo 目录
+curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
+```
+
+### 修改配置文件
+
+完成上一步操作，我们就可以自己配置 Halo 的运行端口，以及数据库相关的配置了。
+
+```bash
+# 使用 Vim 工具修改配置文件
+vim ~/.halo/application.yaml
+```
+
+打开之后我们可以看到
+
+```yaml
+server:
+  port: 8090
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+
+    # H2 Database 配置，如果你需要使用 MySQL，请注释掉该配置并取消注释 MySQL 的配置。
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:~/halo/db/halo
+    username: admin
+    password: 123456
+
+    # MySQL 配置，如果你需要使用 H2Database，请注释掉该配置并取消注释上方 H2Database 的配置。
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+  #    url: jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+  #    username: root
+  #    password: 123456
+
+  # H2 Database 的控制台相关配置，如果你使用的是 MySQL ，请注释掉下方内容。
+  h2:
+    console:
+      settings:
+        web-allow-others: false
+      path: /h2-console
+      enabled: false
+```
+
+1. 如果需要自定义端口，修改 `server` 节点下的 `port` 即可。
+2. 默认使用的是 `H2 Database` 数据库，这是一种嵌入式的数据库，使用起来非常方便。需要注意的是，默认的用户名和密码为 `admin` 和 `123456`，这个是自定义的，最好将其修改，并妥善保存。
+3. 如果需要使用 `MySQL` 数据库，需要将 `H2 Database` 的所有相关配置都注释掉，并取消 `MySQL` 的相关配置。另外，`MySQL` 的默认数据库名为 `halodb`，请自行配置 `MySQL` 并创建数据库，以及修改配置文件中的用户名和密码。
+4. `h2` 节点为 `H2 Database` 的控制台配置，默认是关闭的，如需使用请将 `h2.console.settings.web-allow-others` 和 `h2.console.enabled` 设置为 `true`。控制台地址即为 `域名/h2-console`。注意：非紧急情况，不建议开启该配置。
+
+### 拉取最新 Halo 镜像
+
+```bash
+docker pull ruibaby/halo
+```
+
+### 创建容器并运行
+
+```bash
+docker run -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo ruibaby/halo
+```
+
+### 更新 Halo 版本
+
+```bash
+# 停止容器
+docker stop halo
+
+# 拉取最新的 Halo 镜像
+docker pull ruibaby/halo
+
+# 创建容器
+docker run -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo ruibaby/halo
+```
+
+完成以上操作即可访问 Halo 啦。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请接着往下看。
+
+### 配置域名访问
+
+#### 使用 Nginx 进行反向代理
+
+#### 或者使用 Caddy 进行反向代理
+
+Caddy 是一款使用 Go 语言开发的 Web 服务器
+
+##### 安装 Caddy
+
+```bash
+# 安装 Caddy 软件包
+yum install caddy -y
+```
+
+##### 配置反向代理
+
+```bash
+# 下载 Halo 官方的 Caddy 配置模板
+curl -o /etc/caddy/conf.d/Caddyfile --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/Caddyfile
+```
+
+下载完成之后，我们还需要对其进行修改。
+
+```bash
+# 使用 vim 编辑 Caddyfile
+vim /etc/caddy/conf.d/Caddyfile
+```
+
+打开之后我们可以看到
+
+```bash
+https://www.simple.com {
+ gzip
+ tls xxxx@xxx.xx
+ proxy / http://ip:port
+}
+```
+
+1. 请把 `https://www.simple.com` 改为自己的域名。
+2. `tls` 后面的 `xxxx@xxx.xx` 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。
+3. `http://ip:port` 请修改为你服务器的 `ip` 以及 `Halo` 的运行端口。
+
+修改完成之后启动 `Caddy` 服务即可。
+
+```bash
+# 开启自启 Caddy 服务
+systemctl enable caddy
+
+# 启动 Caddy
+service caddy start
+
+# 停止运行 Caddy
+service caddy stop
+
+# 重启 Caddy
+service caddy restart
+```
+
+##### 进阶设置
+
+多网址重定向到主网址，比如访问 `simple.com` 跳转到 `www.simple.com` 应该怎么做呢？
+
+```bash
+# 使用 vim 编辑 Caddyfile
+vim /etc/caddy/conf.d/Caddyfile
+```
+
+打开之后我们在原有的基础上添加以下配置
+
+```bash
+http://simple.com {
+ redir https://www.simple.com{url}
+}
+```
+
+将 `http://simple.com` 和 `https://www.simple.com{url}` 修改为自己需要的网址就行了，比如我要求访问 `ryanc.cc` 跳转到 `www.ryanc.cc`，完整的配置如下：
+
+```bash
+http://ryanc.cc {
+ redir https://www.ryanc.cc{url}
+}
+https://www.ryanc.cc {
+ gzip
+ tls i@ryanc.cc
+ proxy / http://139.199.84.219:8090
+}
+```
+
+最后我们重启 Caddy 即可。
+
+到这里，整个反向代理的配置也就完成了，也就代表 Halo 的部署已经完成了。现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
+
+## 总结
+
+下面我们开始 《食用 Halo》 的技术总结。
+
+1. 开始之前，最好在心里默念 3 遍 Linus 万岁。
+2. 部署前最好先完成域名对ip的解析，方便后面 SSL 证书的申请。
+3. 推荐使用 H2 Database。
+4. Nginx 和 Caddy 只能选择一个，不能全都要。
