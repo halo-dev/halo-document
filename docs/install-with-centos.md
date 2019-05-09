@@ -188,6 +188,82 @@ systemctl status halo 或者 service halo status
 
 #### 使用 Nginx 进行反向代理
 
+##### 安装 Nginx
+
+```bash
+# 添加 Nginx 源
+sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+
+# 安装 Nginx
+sudo yum install -y nginx
+
+# 启动 Nginx
+sudo systemctl start nginx.service
+
+# 设置开机自启 Nginx
+sudo systemctl enable nginx.service
+```
+
+##### 配置反向代理
+
+```bash
+# 下载 Halo 官方的 Nginx 配置模板
+curl -o /etc/nginx/sites-available/halo.conf --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/nginx.conf
+```
+
+下载完成之后，我们还需要对其进行修改
+
+```bash
+# 使用 vim 编辑 Caddyfile
+vim /etc/nginx/sites-available/halo.conf
+```
+
+打开之后我们可以看到
+
+```bash
+server {
+    listen 80;
+
+    server_name example.com;
+
+    location / {
+        proxy_pass http://localhost:8090/;
+    }
+}
+```
+
+1. 请把 `example.com` 改为自己的域名。
+2. `http://localhost:8090` 请修改为你服务器的 `ip` 以及 `Halo` 的运行端口。
+
+修改完成之后
+
+```bash
+# 创建软连接激活配置
+sudo ln -s /etc/nginx/sites-available/halo.conf /etc/nginx/sites-enabled/
+
+# 检查配置是否有误
+sudo nginx -t
+
+# 重载 Nginx 配置
+sudo nginx -s reload
+```
+
+##### 配置 SSL 证书
+在这里我只演示如果自动申请证书，如果你自己准备了证书，请查阅相关教程。
+
+```bash
+# 安装 certbot
+yum install certbot -y
+
+# 执行配置，中途会询问你的邮箱，如实填写即可
+certbot --nginx
+
+# 自动续约
+certbot renew --dry-run
+```
+
+到这里，关于 Nginx 的配置也就完成了，现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
+
 #### 或者使用 Caddy 进行反向代理
 
 Caddy 是一款使用 Go 语言开发的 Web 服务器
@@ -275,7 +351,7 @@ https://www.ryanc.cc {
 
 最后我们重启 Caddy 即可。
 
-到这里，整个反向代理的配置也就完成了，也就代表 Halo 的部署已经完成了。现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
+到这里，关于 Caddy 反向代理的配置也就完成了，现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
 
 ## 总结
 
