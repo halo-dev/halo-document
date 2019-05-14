@@ -28,6 +28,7 @@ module.exports = {
         title: '安装指南',
         collapsable: false,
         children: [
+          'migrate-from-0.4.4',
           '/install-with-centos',
           '/install-with-docker',
           '/install-with-docker-compose',
