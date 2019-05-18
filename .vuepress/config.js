@@ -13,14 +13,12 @@ module.exports = {
       github: 'https://github.com/halo-dev/halo',
     },
   },
-  markdown: {
-    lineNumbers: false
-  },
   themeConfig: {
     repo: 'halo-dev/halo',
     nav: [
       { text: '首 页', link: '/' },
-      { text: '文 档', link: '/install-with-centos' },
+      { text: '文 档', link: '/docs/' },
+      { text: '主题仓库', link: '/theme/' },
       { text: '社 区', link: 'https://bbs.halo.run' },
     ],
     sidebar: [
@@ -28,45 +26,38 @@ module.exports = {
         title: '安装指南',
         collapsable: false,
         children: [
-          'migrate-from-0.4.4',
-          '/install-with-centos',
-          '/install-with-docker',
-          '/install-with-docker-compose',
-        ],
-      },
-      {
-        title: '界面预览',
-        collapsable: false,
-        children: [
-          '/preview'
+          '/docs/migrate-from-0.4.4',
+          '/docs/install-with-centos',
+          '/docs/install-with-docker',
+          '/docs/install-with-docker-compose',
         ],
       },
       {
         title: '使用指南',
         collapsable: false,
         children: [
-          '/guidance'
+          '/docs/guidance'
         ],
       },
       {
         title: '主题制作',
         collapsable: false,
         children: [
-          '/theme'
+          '/docs/theme'
         ],
       },
       {
-        title: '常见问题',
+        title: 'FAQ',
         collapsable: false,
         children: [
-          '/faq',
+          '/docs/faq',
         ],
       },
       {
         title: '捐赠',
         collapsable: false,
         children: [
-          '/donate',
+          '/docs/donate',
         ],
       },
     ],
