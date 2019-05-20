@@ -18,15 +18,25 @@
 请确保服务器的软件包已经是最新的。
 
 ```bash
-sudo yum update -y
+$ sudo yum update -y
 ```
 
 ### 配置 Docker 运行环境
+
+> 如果你已经安装过 `Docker`，请略过此步骤。
+
+这里推荐使用 Docker 官方文档进行安装 `docker`
+
+<https://docs.docker.com/install/linux/docker-ce/centos/>
+
+当然，同时我们也提供一个本土化的安装方法。
+
 这里只做演示，个别系统的安装方式可能会不一样，仅供参考。
 
-#### 卸载Docker
+#### 卸载 Docker
+
 ```bash
-$ sudo yum remove docker \
+$ $ sudo yum remove docker \
                   docker-client \
                   docker-client-latest \
                   docker-common \
@@ -39,35 +49,50 @@ $ sudo yum remove docker \
 ```
 
 #### 安装必要依赖
+
 ```bash
-sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 ```
 
 #### 添加软件源信息
+
 ```bash
-sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 ```
 
 #### 更新 yum 缓存
+
 ```bash
-sudo yum makecache fast
+$ sudo yum makecache fast
 ```
 
-#### 安装Docker
+#### 安装 Docker
+
 ```bash
-sudo yum -y install docker-ce
+$ sudo yum install docker-ce docker-ce-cli containerd.io
 ```
 
 #### 启动 Docker 后台服务
+
 ```bash
-sudo systemctl start docker
+$ sudo systemctl start docker
 ```
+
+#### 允许当前用户直接运行 `docker` 命令
+
+需要将当前用户加入 `docker` 用户组。这样每次运行 `docker` 命令的时候，就不需要加 `sudo`。
+
+```bash
+$ sudo usermod -aG docker your_name
+```
+
+> 注意：设置成功之后需要重新登录才会生效。
 
 #### 镜像加速
 
 ```bash
-新建 daemon.json 文件
-vim /etc/docker/daemon.json
+# 新建 daemon.json 文件
+$ sudo vim /etc/docker/daemon.json
 ```
 
 将下面的配置复制进去即可
@@ -86,7 +111,7 @@ vim /etc/docker/daemon.json
 
 ```bash
 # 下载配置文件到 ~/.halo 目录
-curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
+$ curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
 ```
 
 ### 修改配置文件
@@ -95,7 +120,7 @@ curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com
 
 ```bash
 # 使用 Vim 工具修改配置文件
-vim ~/.halo/application.yaml
+$ vim ~/.halo/application.yaml
 ```
 
 打开之后我们可以看到
@@ -136,26 +161,26 @@ spring:
 ### 拉取最新 Halo 镜像
 
 ```bash
-docker pull ruibaby/halo
+$ sudo docker pull ruibaby/halo
 ```
 
 ### 创建容器并运行
 
 ```bash
-docker run -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo ruibaby/halo
+$ sudo docker run -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo ruibaby/halo
 ```
 
 ### 更新 Halo 版本
 
 ```bash
 # 停止容器
-docker stop halo
+$ sudo docker stop halo
 
 # 拉取最新的 Halo 镜像
-docker pull ruibaby/halo
+$ sudo docker pull ruibaby/halo
 
 # 创建容器
-docker run -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo ruibaby/halo
+$ sudo docker run -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo ruibaby/halo
 ```
 
 完成以上操作即可访问 Halo 啦。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请接着往下看。
@@ -172,7 +197,7 @@ Caddy 是一款使用 Go 语言开发的 Web 服务器
 
 ```bash
 # 安装 Caddy 软件包
-yum install caddy -y
+$ sudo yum install caddy -y
 ```
 
 ##### 配置反向代理
@@ -186,7 +211,7 @@ curl -o /etc/nginx/sites-available/halo.conf --create-dirs https://raw.githubuse
 
 ```bash
 # 使用 vim 编辑 Caddyfile
-vim /etc/nginx/sites-available/halo.conf
+$ sudo vim /etc/nginx/sites-available/halo.conf
 ```
 
 打开之后我们可以看到
@@ -210,27 +235,28 @@ server {
 
 ```bash
 # 创建软连接激活配置
-sudo ln -s /etc/nginx/sites-available/halo.conf /etc/nginx/sites-enabled/
+$ sudo ln -s /etc/nginx/sites-available/halo.conf /etc/nginx/sites-enabled/
 
 # 检查配置是否有误
-sudo nginx -t
+$ sudo nginx -t
 
 # 重载 Nginx 配置
-sudo nginx -s reload
+$ sudo nginx -s reload
 ```
 
 ##### 配置 SSL 证书
+
 在这里我只演示如果自动申请证书，如果你自己准备了证书，请查阅相关教程。
 
 ```bash
 # 安装 certbot
-yum install certbot -y
+$ sudo yum install certbot -y
 
 # 执行配置，中途会询问你的邮箱，如实填写即可
-certbot --nginx
+$ certbot --nginx
 
 # 自动续约
-certbot renew --dry-run
+$ certbot renew --dry-run
 ```
 
 到这里，关于 Nginx 的配置也就完成了，现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
@@ -243,7 +269,7 @@ Caddy 是一款使用 Go 语言开发的 Web 服务器
 
 ```bash
 # 安装 Caddy 软件包
-yum install caddy -y
+$ sudo yum install caddy -y
 ```
 
 ##### 配置反向代理
@@ -257,16 +283,16 @@ curl -o /etc/caddy/conf.d/Caddyfile --create-dirs https://raw.githubusercontent.
 
 ```bash
 # 使用 vim 编辑 Caddyfile
-vim /etc/caddy/conf.d/Caddyfile
+$ sudo vim /etc/caddy/conf.d/Caddyfile
 ```
 
 打开之后我们可以看到
 
-```bash
+```nginx
 https://www.simple.com {
- gzip
- tls xxxx@xxx.xx
- proxy / http://ip:port
+  gzip
+  tls xxxx@xxx.xx
+  proxy / http://ip:port
 }
 ```
 
@@ -278,16 +304,16 @@ https://www.simple.com {
 
 ```bash
 # 开启自启 Caddy 服务
-systemctl enable caddy
+$ sudo systemctl enable caddy
 
 # 启动 Caddy
-service caddy start
+$ sudo systemctl start canddy
 
 # 停止运行 Caddy
-service caddy stop
+$ sudo systemctl stop caddy
 
 # 重启 Caddy
-service caddy restart
+$ sudo systemctl restart caddy
 ```
 
 ##### 进阶设置
@@ -296,27 +322,27 @@ service caddy restart
 
 ```bash
 # 使用 vim 编辑 Caddyfile
-vim /etc/caddy/conf.d/Caddyfile
+$ sudo vim /etc/caddy/conf.d/Caddyfile
 ```
 
 打开之后我们在原有的基础上添加以下配置
 
-```bash
+```nginx
 http://simple.com {
- redir https://www.simple.com{url}
+  redir https://www.simple.com{url}
 }
 ```
 
 将 `http://simple.com` 和 `https://www.simple.com{url}` 修改为自己需要的网址就行了，比如我要求访问 `ryanc.cc` 跳转到 `www.ryanc.cc`，完整的配置如下：
 
-```bash
+```nginx
 http://ryanc.cc {
- redir https://www.ryanc.cc{url}
+  redir https://www.ryanc.cc{url}
 }
 https://www.ryanc.cc {
- gzip
- tls i@ryanc.cc
- proxy / http://139.199.84.219:8090
+  gzip
+  tls i@ryanc.cc
+  proxy / http://139.199.84.219:8090
 }
 ```
 
@@ -329,6 +355,6 @@ https://www.ryanc.cc {
 下面我们开始 《食用 Halo》 的技术总结。
 
 1. 开始之前，最好在心里默念 3 遍 Linus 万岁。
-2. 部署前最好先完成域名对ip的解析，方便后面 SSL 证书的申请。
+2. 部署前最好先完成域名对 ip 的解析，方便后面 SSL 证书的申请。
 3. 推荐使用 H2 Database。
 4. Nginx 和 Caddy 只能选择一个，不能全都要。

@@ -20,11 +20,11 @@
 
 > 这可能是由于 Nginx 的上传大小限制所导致的。可以在 Nginx 的配置文件下的 server 节点加入 `client_max_body_size 10M;` 即可解决，如果 10M 还不够，请自行断定，详细配置参考如下：
 
-```bash
+```nginx
 server {
     listen       80;
     server_name  localhost;
-    client_max_body_size 10M;   
+    client_max_body_size 10M;
 }
 ```
 

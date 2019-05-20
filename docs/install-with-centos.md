@@ -23,7 +23,11 @@
 sudo yum update -y
 ```
 
-### 配置 Java 运行环境
+### 安装 Java 运行环境
+
+> 若已经存在 Java 运行环境的可略过这一步。
+
+// TODO 重构 Java 运行环境的安装
 
 ```bash
 # 下载 JDK 软件包
@@ -249,6 +253,7 @@ sudo nginx -s reload
 ```
 
 ##### 配置 SSL 证书
+
 在这里我只演示如果自动申请证书，如果你自己准备了证书，请查阅相关教程。
 
 ```bash
@@ -330,22 +335,23 @@ vim /etc/caddy/conf.d/Caddyfile
 
 打开之后我们在原有的基础上添加以下配置
 
-```bash
+```nginx
 http://simple.com {
- redir https://www.simple.com{url}
+  redir https://www.simple.com{url}
 }
 ```
 
 将 `http://simple.com` 和 `https://www.simple.com{url}` 修改为自己需要的网址就行了，比如我要求访问 `ryanc.cc` 跳转到 `www.ryanc.cc`，完整的配置如下：
 
-```bash
+```nginx
 http://ryanc.cc {
- redir https://www.ryanc.cc{url}
+  redir https://www.ryanc.cc{url}
 }
+
 https://www.ryanc.cc {
- gzip
- tls i@ryanc.cc
- proxy / http://139.199.84.219:8090
+  gzip
+  tls i@ryanc.cc
+  proxy / http://139.199.84.219:8090
 }
 ```
 
@@ -358,6 +364,6 @@ https://www.ryanc.cc {
 下面我们开始 《食用 Halo》 的技术总结。
 
 1. 开始之前，最好在心里默念 3 遍 Linus 万岁。
-2. 部署前最好先完成域名对ip的解析，方便后面 SSL 证书的申请。
+2. 部署前最好先完成域名对 IP 的解析，方便后面 SSL 证书的申请。
 3. 推荐使用 H2 Database。
 4. Nginx 和 Caddy 只能选择一个，不能全都要。
