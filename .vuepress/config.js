@@ -29,6 +29,7 @@ module.exports = {
           '/docs/migrate-from-0.4.4',
           '/docs/install-with-centos',
           '/docs/install-with-docker',
+          '/docs/reverse-proxy',
           '/docs/install-with-docker-compose',
         ],
       },

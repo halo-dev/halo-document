@@ -33,21 +33,6 @@ $ sudo yum update -y
 
 这里只做演示，个别系统的安装方式可能会不一样，仅供参考。
 
-#### 卸载 Docker
-
-```bash
-$ $ sudo yum remove docker \
-                  docker-client \
-                  docker-client-latest \
-                  docker-common \
-                  docker-latest \
-                  docker-latest-logrotate \
-                  docker-logrotate \
-                  docker-selinux \
-                  docker-engine-selinux \
-                  docker-engine
-```
-
 #### 安装必要依赖
 
 ```bash
@@ -102,6 +87,8 @@ $ sudo vim /etc/docker/daemon.json
   "registry-mirrors": ["http://hub-mirror.c.163.com"]
 }
 ```
+
+> 注意：修改完配置文件之后需要执行 `service docker restart` 才可生效。
 
 ## 安装 Halo
 
@@ -161,13 +148,13 @@ spring:
 ### 拉取最新 Halo 镜像
 
 ```bash
-$ sudo docker pull ruibaby/halo
+$ sudo docker pull ruibaby/halo:latest-dev
 ```
 
 ### 创建容器并运行
 
 ```bash
-$ sudo docker run -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo ruibaby/halo
+$ docker run --rm -it -d --name halo-dev -p 8090:8090  -v ~/.halo:/root/.halo ruibaby/halo:latest-dev
 ```
 
 ### 更新 Halo 版本
@@ -177,184 +164,10 @@ $ sudo docker run -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo ruibaby/hal
 $ sudo docker stop halo
 
 # 拉取最新的 Halo 镜像
-$ sudo docker pull ruibaby/halo
+$ sudo docker pull ruibaby/halo:latest-dev
 
 # 创建容器
-$ sudo docker run -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo ruibaby/halo
+$ docker run --rm -it -d --name halo-dev -p 8090:8090  -v ~/.halo:/root/.halo ruibaby/halo:latest-dev
 ```
 
-完成以上操作即可访问 Halo 啦。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请接着往下看。
-
-### 配置域名访问
-
-#### 使用 Nginx 进行反向代理
-
-#### 或者使用 Caddy 进行反向代理
-
-Caddy 是一款使用 Go 语言开发的 Web 服务器
-
-##### 安装 Caddy
-
-```bash
-# 安装 Caddy 软件包
-$ sudo yum install caddy -y
-```
-
-##### 配置反向代理
-
-```bash
-# 下载 Halo 官方的 Nginx 配置模板
-curl -o /etc/nginx/sites-available/halo.conf --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/nginx.conf
-```
-
-下载完成之后，我们还需要对其进行修改
-
-```bash
-# 使用 vim 编辑 Caddyfile
-$ sudo vim /etc/nginx/sites-available/halo.conf
-```
-
-打开之后我们可以看到
-
-```bash
-server {
-    listen 80;
-
-    server_name example.com;
-
-    location / {
-        proxy_pass http://localhost:8090/;
-    }
-}
-```
-
-1. 请把 `example.com` 改为自己的域名。
-2. `http://localhost:8090` 请修改为你服务器的 `ip` 以及 `Halo` 的运行端口。
-
-修改完成之后
-
-```bash
-# 创建软连接激活配置
-$ sudo ln -s /etc/nginx/sites-available/halo.conf /etc/nginx/sites-enabled/
-
-# 检查配置是否有误
-$ sudo nginx -t
-
-# 重载 Nginx 配置
-$ sudo nginx -s reload
-```
-
-##### 配置 SSL 证书
-
-在这里我只演示如果自动申请证书，如果你自己准备了证书，请查阅相关教程。
-
-```bash
-# 安装 certbot
-$ sudo yum install certbot -y
-
-# 执行配置，中途会询问你的邮箱，如实填写即可
-$ certbot --nginx
-
-# 自动续约
-$ certbot renew --dry-run
-```
-
-到这里，关于 Nginx 的配置也就完成了，现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
-
-#### 或者使用 Caddy 进行反向代理
-
-Caddy 是一款使用 Go 语言开发的 Web 服务器
-
-##### 安装 Caddy
-
-```bash
-# 安装 Caddy 软件包
-$ sudo yum install caddy -y
-```
-
-##### 配置反向代理
-
-```bash
-# 下载 Halo 官方的 Caddy 配置模板
-curl -o /etc/caddy/conf.d/Caddyfile --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/Caddyfile
-```
-
-下载完成之后，我们还需要对其进行修改。
-
-```bash
-# 使用 vim 编辑 Caddyfile
-$ sudo vim /etc/caddy/conf.d/Caddyfile
-```
-
-打开之后我们可以看到
-
-```nginx
-https://www.simple.com {
-  gzip
-  tls xxxx@xxx.xx
-  proxy / http://ip:port
-}
-```
-
-1. 请把 `https://www.simple.com` 改为自己的域名。
-2. `tls` 后面的 `xxxx@xxx.xx` 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。
-3. `http://ip:port` 请修改为你服务器的 `ip` 以及 `Halo` 的运行端口。
-
-修改完成之后启动 `Caddy` 服务即可。
-
-```bash
-# 开启自启 Caddy 服务
-$ sudo systemctl enable caddy
-
-# 启动 Caddy
-$ sudo systemctl start canddy
-
-# 停止运行 Caddy
-$ sudo systemctl stop caddy
-
-# 重启 Caddy
-$ sudo systemctl restart caddy
-```
-
-##### 进阶设置
-
-多网址重定向到主网址，比如访问 `simple.com` 跳转到 `www.simple.com` 应该怎么做呢？
-
-```bash
-# 使用 vim 编辑 Caddyfile
-$ sudo vim /etc/caddy/conf.d/Caddyfile
-```
-
-打开之后我们在原有的基础上添加以下配置
-
-```nginx
-http://simple.com {
-  redir https://www.simple.com{url}
-}
-```
-
-将 `http://simple.com` 和 `https://www.simple.com{url}` 修改为自己需要的网址就行了，比如我要求访问 `ryanc.cc` 跳转到 `www.ryanc.cc`，完整的配置如下：
-
-```nginx
-http://ryanc.cc {
-  redir https://www.ryanc.cc{url}
-}
-https://www.ryanc.cc {
-  gzip
-  tls i@ryanc.cc
-  proxy / http://139.199.84.219:8090
-}
-```
-
-最后我们重启 Caddy 即可。
-
-到这里，关于 Caddy 反向代理的配置也就完成了，现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
-
-## 总结
-
-下面我们开始 《食用 Halo》 的技术总结。
-
-1. 开始之前，最好在心里默念 3 遍 Linus 万岁。
-2. 部署前最好先完成域名对 ip 的解析，方便后面 SSL 证书的申请。
-3. 推荐使用 H2 Database。
-4. Nginx 和 Caddy 只能选择一个，不能全都要。
+完成以上操作即可通过 `ip:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看[配置域名访问](/docs/reverse-proxy.html)。
