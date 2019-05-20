@@ -170,4 +170,4 @@ $ sudo docker pull ruibaby/halo:latest-dev
 $ docker run --rm -it -d --name halo-dev -p 8090:8090  -v ~/.halo:/root/.halo ruibaby/halo:latest-dev
 ```
 
-完成以上操作即可通过 `ip:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看[配置域名访问](/docs/reverse-proxy.html)。
+完成以上操作即可通过 `ip:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看 [配置域名访问](/docs/reverse-proxy.html)。
