@@ -33,20 +33,20 @@ module.exports = {
           '/docs/install-with-docker-compose',
         ],
       },
-      {
-        title: '使用指南',
-        collapsable: false,
-        children: [
-          '/docs/guidance'
-        ],
-      },
-      {
-        title: '主题制作',
-        collapsable: false,
-        children: [
-          '/docs/theme'
-        ],
-      },
+      // {
+      //   title: '使用指南',
+      //   collapsable: false,
+      //   children: [
+      //     '/docs/guidance'
+      //   ],
+      // },
+      // {
+      //   title: '主题制作',
+      //   collapsable: false,
+      //   children: [
+      //     '/docs/theme'
+      //   ],
+      // },
       {
         title: 'FAQ',
         collapsable: false,
