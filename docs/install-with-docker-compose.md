@@ -91,7 +91,7 @@ yum install -y wget && wget -O docker-compose.yaml https://git.io/fpS8N
 
 ### 修改 Docker Compose 文件
 
-假设你现在已经下载好了 docker-compose.yaml 文件，那么在部署之前需要做的就是简单修改以下这个文件。因为我们需要绑定域名以申请SSL证书，所以你需要在 docker-compose.yaml 文件中修改以下配置：
+假设你现在已经下载好了 docker-compose.yaml 文件，那么在部署之前需要做的就是简单修改以下这个文件。因为我们需要绑定域名以申请 SSL 证书，所以你需要在 docker-compose.yaml 文件中修改以下配置：
 
 ```docker
   halo:
@@ -130,6 +130,7 @@ yum install -y wget && wget -O docker-compose.yaml https://git.io/fpS8N
 如上配置，我们需要修改 `VIRTUAL_HOST` , `LETSENCRYPT_HOST` 为自己的域名，**注意注意注意！**，在部署之前最好先将外网 IP 解析到域名，因为申请 SSL 证书需要域名可以正常访问。另外，`LETSENCRYPT_EMAIL` 这个节点是证书申请者的邮箱，当证书要过期的时候，会提醒你续签。
 
 ### 下载配置文件模板
+
 因为要涉及到 Nginx 反向代理，所以我们需要使用模板生成一个 Nginx 的配置文件，以配置好需要代理的地址以及后面 SSL 证书的配置。这个模板人家已经写好了，所以我们直接下载下来即可，下载下来我们就不需要管了。
 
 ```bash
@@ -139,6 +140,7 @@ curl https://raw.githubusercontent.com/jwilder/nginx-proxy/master/nginx.tmpl > /
 ```
 
 ### 运行
+
 如果你顺利进行了上面所述步骤，那么已经离成功不远了，现在我们只需要执行一条命令即可完成 Halo 的部署。
 
 ```bash
@@ -159,6 +161,7 @@ docker-compose up -d --build
 ```
 
 ### 常用命令
+
 ```bash
 # 停止容器运行
 docker-compose stop
@@ -171,6 +174,7 @@ docker-compose restart
 ```
 
 ### 注意事项
-1. 最好提前解析好IP，绑定域名。
-2. 运行完成之后可能得等几分钟，HTTPS才会配置好，如果不能访问属正常现象，等待几分钟就可以看到 Halo 安装的界面了。
+
+1. 最好提前解析好 IP，绑定域名。
+2. 运行完成之后可能得等几分钟，HTTPS 才会配置好，如果不能访问属正常现象，等待几分钟就可以看到 Halo 安装的界面了。
 3. Docker 镜像使用的是 H2 数据库，所以不需要你自己安装，服务启动就可以自动创建了。

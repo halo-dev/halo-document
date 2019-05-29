@@ -101,7 +101,7 @@ spring:
 
 Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配置，它放在任何目录都是可行的。需要注意的是，Halo 的整个额外文件全部存放在 `~/.halo` 目录下，包括 `application.yaml（用户配置文件）`，`template/themes（主题目录）`，`upload（附件上传目录）`，`halo.db.mv（数据库文件）`。一定要保证 `~/.halo` 的存在，你博客的所有资料可都存在里面。所以你完全不需要担心安装包的安危，它仅仅是个服务而已。
 
-```
+```bash
 # 下载 Halo 安装包
 curl -o halo-latest.jar --create-dirs https://github.com/halo-dev/halo/releases/download/v1.0.0-beta.6/halo-1.0.0-beta.6.jar
 
@@ -119,7 +119,7 @@ ps -ef | grep halo
 kill -9 pid
 
 # 下载最新的 Halo 安装包
-curl -o halo-latest.jar --create-dirs https://github.com/halo-dev/halo/releases/download/v1.0.0-beta.6/halo-1.0.0-beta.6.jar
+wget https://github.com/halo-dev/halo/releases/download/v1.0.0-beta.6/halo-1.0.0-beta.6.jar -O halo-latest.jar
 
 # 运行 Halo
 nohup java -jar halo-latest.jar &
