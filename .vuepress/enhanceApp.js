@@ -1,13 +1,11 @@
-import locale from 'element-ui/lib/locale/lang/en';
+import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-export default ({ Vue, isServer }) => {
-  /**
-   * Only import element-ui under client side.
-   */
-  if (!isServer) {
-    import('element-ui').then(elementUI => {
-      Vue.use(elementUI.default, { locale })
-    })
-  }
+export default ({
+  Vue,
+  options,
+  router,
+  siteData
+}) => {
+  Vue.use(ElementUI)
 }
