@@ -22,14 +22,14 @@ sudo systemctl enable nginx.service
 
 ```bash
 # 下载 Halo 官方的 Nginx 配置模板
-curl -o /etc/nginx/sites-available/halo.conf --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/nginx.conf
+curl -o /etc/nginx/conf.d/halo.conf --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/nginx.conf
 ```
 
 下载完成之后，我们还需要对其进行修改
 
 ```bash
 # 使用 vim 编辑 halo.conf
-vim /etc/nginx/sites-available/halo.conf
+vim /etc/nginx/conf.d/halo.conf
 ```
 
 打开之后我们可以看到
@@ -52,8 +52,6 @@ server {
 修改完成之后
 
 ```bash
-# 创建软连接激活配置
-sudo ln -s /etc/nginx/sites-available/halo.conf /etc/nginx/sites-enabled/
 
 # 检查配置是否有误
 sudo nginx -t
@@ -81,7 +79,7 @@ certbot renew --dry-run
 
 ## 或者使用 Caddy 进行反向代理
 
-Caddy 是一款使用 Go 语言开发的 Web 服务器
+Caddy 是一款使用 Go 语言开发的 Web 服务器。其配置更为简洁，并可以自动申请及配置 SSL 证书，推荐。 
 
 ### 安装 Caddy
 
@@ -94,14 +92,14 @@ yum install caddy -y
 
 ```bash
 # 下载 Halo 官方的 Caddy 配置模板
-curl -o /etc/caddy/conf.d/Caddyfile --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/Caddyfile
+curl -o /etc/caddy/conf.d/Caddyfile.conf --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/Caddyfile
 ```
 
 下载完成之后，我们还需要对其进行修改。
 
 ```bash
 # 使用 vim 编辑 Caddyfile
-vim /etc/caddy/conf.d/Caddyfile
+vim /etc/caddy/conf.d/Caddyfile.conf
 ```
 
 打开之后我们可以看到
@@ -110,13 +108,15 @@ vim /etc/caddy/conf.d/Caddyfile
 https://www.simple.com {
  gzip
  tls xxxx@xxx.xx
- proxy / http://ip:port
+ proxy / localhost:port {
+  transparent
+ }
 }
 ```
 
 1. 请把 `https://www.simple.com` 改为自己的域名。
 2. `tls` 后面的 `xxxx@xxx.xx` 改为自己的邮箱地址，这是用于自动申请 SSL 证书用的。需要注意的是，不需要你自己配置 SSL 证书，而且会自动帮你续签。
-3. `http://ip:port` 请修改为你服务器的 `ip` 以及 `Halo` 的运行端口。
+3. `localhost:port` 请将 `port` 修改为 Halo 的运行端口，默认为 8090。
 
 修改完成之后启动 `Caddy` 服务即可。
 
@@ -140,18 +140,18 @@ service caddy restart
 
 ```bash
 # 使用 vim 编辑 Caddyfile
-vim /etc/caddy/conf.d/Caddyfile
+vim /etc/caddy/conf.d/Caddyfile.conf
 ```
 
 打开之后我们在原有的基础上添加以下配置
 
 ```nginx
-http://simple.com {
+https://simple.com {
   redir https://www.simple.com{url}
 }
 ```
 
-将 `http://simple.com` 和 `https://www.simple.com{url}` 修改为自己需要的网址就行了，比如我要求访问 `ryanc.cc` 跳转到 `www.ryanc.cc`，完整的配置如下：
+将 `https://simple.com` 和 `https://www.simple.com{url}` 修改为自己需要的网址就行了，比如我要求访问 `ryanc.cc` 跳转到 `www.ryanc.cc`，完整的配置如下：
 
 ```nginx
 http://ryanc.cc {
@@ -161,7 +161,9 @@ http://ryanc.cc {
 https://www.ryanc.cc {
   gzip
   tls i@ryanc.cc
-  proxy / http://139.199.84.219:8090
+  proxy / localhost:8090 {
+    transparent
+  }
 }
 ```
 

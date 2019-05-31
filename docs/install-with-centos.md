@@ -27,14 +27,9 @@ sudo yum update -y
 
 > 若已经存在 Java 运行环境的可略过这一步。
 
-// TODO 重构 Java 运行环境的安装
-
 ```bash
-# 下载 JDK 软件包
-wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn/java/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jdk-8u211-linux-x64.rpm
-
-# 安装 JDK 软件包
-sudo yum localinstall -y jdk-8u131-linux-x64.rpm
+# 安装 OpenJDK 软件包
+yum install java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-devel.x86_64 java-1.8.0-openjdk-headless.x86_64
 
 # 检测是否安装成功
 java -version
@@ -102,8 +97,8 @@ spring:
 Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配置，它放在任何目录都是可行的。需要注意的是，Halo 的整个额外文件全部存放在 `~/.halo` 目录下，包括 `application.yaml（用户配置文件）`，`template/themes（主题目录）`，`upload（附件上传目录）`，`halo.db.mv（数据库文件）`。一定要保证 `~/.halo` 的存在，你博客的所有资料可都存在里面。所以你完全不需要担心安装包的安危，它仅仅是个服务而已。
 
 ```bash
-# 下载 Halo 安装包
-curl -o halo-latest.jar --create-dirs https://github.com/halo-dev/halo/releases/download/v1.0.0-beta.6/halo-1.0.0-beta.6.jar
+# 下载最新的 Halo 安装包
+wget https://github.com/halo-dev/halo/releases/download/v1.0.0-beta.8/halo-1.0.0-beta.8.jar -O halo-latest.jar
 
 # 启动 Halo
 nohup java -jar halo-latest.jar &
@@ -119,7 +114,7 @@ ps -ef | grep halo
 kill -9 pid
 
 # 下载最新的 Halo 安装包
-wget https://github.com/halo-dev/halo/releases/download/v1.0.0-beta.6/halo-1.0.0-beta.6.jar -O halo-latest.jar
+wget https://github.com/halo-dev/halo/releases/download/v1.0.0-beta.8/halo-1.0.0-beta.8.jar -O halo-latest.jar
 
 # 运行 Halo
 nohup java -jar halo-latest.jar &
@@ -147,13 +142,14 @@ vim /etc/systemd/system/halo.service
 
 ```bash
 [Unit]
-Description=halo
-After=network.target
-Wants=network.target
+Description=Halo Service
+Documentation=https://halo.run
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=java -server -jar jar-path
+ExecStart=/usr/bin/java -server -jar jar-path
 ExecStop=/bin/kill -s QUIT $MAINPID
 Restart=always
 StandOutput=syslog
