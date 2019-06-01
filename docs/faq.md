@@ -32,7 +32,7 @@ server {
 }
 ```
 
-> 如果想要禁用 `client_max_body_size`，请设置将值设置为 `0`。
+> 如果想要禁用 `client_max_body_size`，请将值设置为 `0`。
 
 ## Q6. 为什么有些页面访问 404？
 
