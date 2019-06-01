@@ -1,6 +1,6 @@
 # 使用 CentOS 部署 Halo
 
-在 CentOS 7.x 上安装，配置并运行 Halo 的指南。
+在 `CentOS 7.x` 上安装，配置并运行 `Halo` 的指南。
 
 ## 环境要求
 
@@ -8,7 +8,7 @@
 
 - CentOS 7.x
 - 1G RAM 的服务器
-- Oracle JDK 1.8/Open JDK 1.8
+- Oracle JRE 1.8 / Open JRE 1.8
 - Nginx/Caddy
 
 在开始之前，最好先到域名服务商解析域名，设置 A 记录并指向服务器的 IP 地址，并确保已经正确解析，你可以在本地使用 Ping 命令检查域名是否已经正确解析到了服务器的 IP 地址。以方便在安装过程中为域名配置 SSL 证书。
@@ -50,7 +50,7 @@ curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com
 
 ### 修改配置文件
 
-完成上一步操作，我们就可以自己配置 Halo 的运行端口，以及数据库相关的配置了。
+完成上一步操作，我们就可以自己配置 `Halo` 的运行端口，以及数据库相关的配置了。
 
 ```bash
 # 使用 Vim 工具修改配置文件
@@ -140,7 +140,7 @@ vim /etc/systemd/system/halo.service
 
 打开之后我们可以看到
 
-```bash
+```conf
 [Unit]
 Description=Halo Service
 Documentation=https://halo.run
@@ -182,4 +182,4 @@ systemctl stop halo 或者 service halo stop
 systemctl status halo 或者 service halo status
 ```
 
-完成以上操作即可通过 `ip:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看 [配置域名访问](/docs/reverse-proxy.html)。
+完成以上操作即可通过 `IP:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看[配置域名访问](/docs/reverse-proxy.html)。
