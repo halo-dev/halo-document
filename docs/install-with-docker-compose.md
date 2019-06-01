@@ -104,7 +104,7 @@ yum install -y wget && wget -O docker-compose.yaml https://git.io/fpS8N
 ```yml
 halo:
   restart: always
-  image: ruibaby/halo:latest-dev
+  image: ruibaby/halo
   container_name: halo
   ports:
     - 8090:8090
@@ -122,7 +122,7 @@ halo:
 ```yml
 halo:
   restart: always
-  image: ruibaby/halo:latest-dev
+  image: ruibaby/halo
   container_name: halo
   ports:
     - 8090:8090

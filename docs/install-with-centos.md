@@ -98,7 +98,7 @@ Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配�
 
 ```bash
 # 下载最新的 Halo 安装包
-wget https://github.com/halo-dev/halo/releases/download/v1.0.0-beta.8/halo-1.0.0-beta.8.jar -O halo-latest.jar
+wget https://github.com/halo-dev/halo/releases/download/v1.0.0/halo-1.0.0.jar -O halo-latest.jar
 
 # 启动 Halo
 nohup java -jar halo-latest.jar &
@@ -114,7 +114,7 @@ ps -ef | grep halo
 kill -9 pid
 
 # 下载最新的 Halo 安装包
-wget https://github.com/halo-dev/halo/releases/download/v1.0.0-beta.8/halo-1.0.0-beta.8.jar -O halo-latest.jar
+wget https://github.com/halo-dev/halo/releases/download/v1.0.0/halo-1.0.0.jar -O halo-latest.jar
 
 # 运行 Halo
 nohup java -jar halo-latest.jar &
