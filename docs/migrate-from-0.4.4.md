@@ -2,7 +2,7 @@
 
 ## 更新版本
 
-在开始迁移之前，你必须先升级到 0.4.4 版本。
+在开始迁移之前，你必须先升级到 0.4.4 版本，0.4.4 下载地址：[https://github.com/halo-dev/halo/releases/tag/v0.4.4](https://github.com/halo-dev/halo/releases/tag/v0.4.4)。
 
 ### 下载最新版本
 
