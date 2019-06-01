@@ -34,7 +34,7 @@ vim /etc/nginx/conf.d/halo.conf
 
 打开之后我们可以看到
 
-```bash
+```nginx
 server {
     listen 80;
 
@@ -52,7 +52,6 @@ server {
 修改完成之后
 
 ```bash
-
 # 检查配置是否有误
 sudo nginx -t
 
@@ -79,7 +78,7 @@ certbot renew --dry-run
 
 ## 或者使用 Caddy 进行反向代理
 
-Caddy 是一款使用 Go 语言开发的 Web 服务器。其配置更为简洁，并可以自动申请及配置 SSL 证书，推荐。 
+`Caddy` 是一款使用 `Go` 语言开发的 `Web` 服务器。其配置更为简洁，并可以自动申请及配置 SSL 证书（推荐）。
 
 ### 安装 Caddy
 
@@ -104,7 +103,7 @@ vim /etc/caddy/conf.d/Caddyfile.conf
 
 打开之后我们可以看到
 
-```bash
+```nginx
 https://www.simple.com {
  gzip
  tls xxxx@xxx.xx
@@ -167,6 +166,6 @@ https://www.ryanc.cc {
 }
 ```
 
-最后我们重启 Caddy 即可。
+最后我们重启 `Caddy` 即可。
 
-到这里，关于 Caddy 反向代理的配置也就完成了，现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
+到这里，关于 `Caddy` 反向代理的配置也就完成了，现在你可以访问一下自己的域名，并进行 `Halo` 的初始化了。
