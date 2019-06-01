@@ -1,6 +1,6 @@
 # 使用 Docker 部署 Halo
 
-使用 Docker 部署 Halo 的指南，假设你已经安装好了 Docker 并了解 Docker 的基本使用。本篇教程以 CentOS 7.x 为例，其他系统大同小异。
+使用 [`Docker`](https://docs.docker.com/) 部署 `Halo` 的指南，假设你已经安装好了 [`Docker`](https://docs.docker.com/) 并了解它的基本使用。本篇教程以 `CentOS 7.x` 为例，其他系统大同小异。
 
 ## 环境要求
 
@@ -18,49 +18,49 @@
 请确保服务器的软件包已经是最新的。
 
 ```bash
-$ sudo yum update -y
+sudo yum update -y
 ```
 
 ### 配置 Docker 运行环境
 
-> 如果你已经安装过 `Docker`，请略过此步骤。
+> 如果你已经安装过 [`Docker`](https://docs.docker.com/)，请略过此步骤。
 
-这里推荐使用 Docker 官方文档进行安装 `docker`
+这里推荐使用官方文档进行安装 [`Docker`](https://docs.docker.com/)。
 
-<https://docs.docker.com/install/linux/docker-ce/centos/>
+> <https://docs.docker.com/install/linux/docker-ce/centos/>
 
-当然，同时我们也提供一个本土化的安装方法。
+同时我们也提供一个本土化的安装方法。
 
 这里只做演示，个别系统的安装方式可能会不一样，仅供参考。
 
 #### 安装必要依赖
 
 ```bash
-$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 ```
 
 #### 添加软件源信息
 
 ```bash
-$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 ```
 
 #### 更新 yum 缓存
 
 ```bash
-$ sudo yum makecache fast
+sudo yum makecache fast
 ```
 
 #### 安装 Docker
 
 ```bash
-$ sudo yum install docker-ce docker-ce-cli containerd.io
+sudo yum install docker-ce docker-ce-cli containerd.io
 ```
 
 #### 启动 Docker 后台服务
 
 ```bash
-$ sudo systemctl start docker
+sudo systemctl start docker
 ```
 
 #### 允许当前用户直接运行 `docker` 命令
@@ -68,7 +68,7 @@ $ sudo systemctl start docker
 需要将当前用户加入 `docker` 用户组。这样每次运行 `docker` 命令的时候，就不需要加 `sudo`。
 
 ```bash
-$ sudo usermod -aG docker your_name
+sudo usermod -aG docker your_name
 ```
 
 > 注意：设置成功之后需要重新登录才会生效。
@@ -77,10 +77,10 @@ $ sudo usermod -aG docker your_name
 
 ```bash
 # 新建 daemon.json 文件
-$ sudo vim /etc/docker/daemon.json
+sudo vim /etc/docker/daemon.json
 ```
 
-将下面的配置复制进去即可
+将下面的配置复制进去即可：
 
 ```json
 {
@@ -92,13 +92,13 @@ $ sudo vim /etc/docker/daemon.json
 
 ## 安装 Halo
 
-### 下载配置文件
+### 自定义配置文件
 
 考虑到部分用户的需要，可能需要自定义比如端口等设置项，我们提供了公共的配置文件，并且该配置文件是完全独立于安装包的。当然，你也可以使用安装包内的默认配置文件，但是安装包内的配置文件是不可修改的。请注意：配置文件的路径为 `~/.halo/application.yaml`。
 
 ```bash
 # 下载配置文件到 ~/.halo 目录
-$ curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
+curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
 ```
 
 ### 修改配置文件
@@ -107,37 +107,45 @@ $ curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.c
 
 ```bash
 # 使用 Vim 工具修改配置文件
-$ vim ~/.halo/application.yaml
+vim ~/.halo/application.yaml
 ```
 
-打开之后我们可以看到
+打开之后我们可以看到：
 
-```yaml
+- H2 配置如下：
+
+```yml
 server:
   port: 8090
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
 
-    # H2 Database 配置，如果你需要使用 MySQL，请注释掉该配置并取消注释 MySQL 的配置。
+    # H2 Database 配置
     driver-class-name: org.h2.Driver
     url: jdbc:h2:file:~/halo/db/halo
     username: admin
-    password: 123456
-
-    # MySQL 配置，如果你需要使用 H2Database，请注释掉该配置并取消注释上方 H2Database 的配置。
-  #    driver-class-name: com.mysql.cj.jdbc.Driver
-  #    url: jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
-  #    username: root
-  #    password: 123456
-
-  # H2 Database 的控制台相关配置，如果你使用的是 MySQL ，请注释掉下方内容。
+    password: openadmin
   h2:
     console:
       settings:
         web-allow-others: false
       path: /h2-console
       enabled: false
+```
+
+- MySQL 配置如下：
+
+```yml
+server:
+  port: 8090
+spring:
+  datasource:
+    # MySQL 配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: openroot
 ```
 
 1. 如果需要自定义端口，修改 `server` 节点下的 `port` 即可。
@@ -148,26 +156,26 @@ spring:
 ### 拉取最新 Halo 镜像
 
 ```bash
-$ sudo docker pull ruibaby/halo:latest-dev
+sudo docker pull ruibaby/halo:latest-dev
 ```
 
 ### 创建容器并运行
 
 ```bash
-$ docker run --rm -it -d --name halo-dev -p 8090:8090  -v ~/.halo:/root/.halo ruibaby/halo:latest-dev
+docker run --rm -it -d --name halo-dev -p 8090:8090  -v ~/.halo:/root/.halo ruibaby/halo:latest-dev
 ```
 
 ### 更新 Halo 版本
 
 ```bash
 # 停止容器
-$ sudo docker stop halo
+sudo docker stop halo
 
 # 拉取最新的 Halo 镜像
-$ sudo docker pull ruibaby/halo:latest-dev
+sudo docker pull ruibaby/halo:latest-dev
 
 # 创建容器
-$ docker run --rm -it -d --name halo-dev -p 8090:8090  -v ~/.halo:/root/.halo ruibaby/halo:latest-dev
+docker run --rm -it -d --name halo-dev -p 8090:8090  -v ~/.halo:/root/.halo ruibaby/halo:latest-dev
 ```
 
 完成以上操作即可通过 `ip:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看 [配置域名访问](/docs/reverse-proxy.html)。

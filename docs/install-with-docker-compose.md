@@ -50,32 +50,40 @@ vim ~/.halo/application.yaml
 
 打开之后我们可以看到
 
-```yaml
+- H2 配置如下：
+
+```yml
 server:
   port: 8090
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
 
-    # H2 Database 配置，如果你需要使用 MySQL，请注释掉该配置并取消注释 MySQL 的配置。
+    # H2 Database 配置
     driver-class-name: org.h2.Driver
     url: jdbc:h2:file:~/halo/db/halo
     username: admin
-    password: 123456
-
-    # MySQL 配置，如果你需要使用 H2Database，请注释掉该配置并取消注释上方 H2Database 的配置。
-  #    driver-class-name: com.mysql.cj.jdbc.Driver
-  #    url: jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
-  #    username: root
-  #    password: 123456
-
-  # H2 Database 的控制台相关配置，如果你使用的是 MySQL ，请注释掉下方内容。
+    password: openadmin
   h2:
     console:
       settings:
         web-allow-others: false
       path: /h2-console
       enabled: false
+```
+
+- MySQL 配置如下：
+
+```yml
+server:
+  port: 8090
+spring:
+  datasource:
+    # MySQL 配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: openroot
 ```
 
 1. 如果需要自定义端口，修改 `server` 节点下的 `port` 即可。
