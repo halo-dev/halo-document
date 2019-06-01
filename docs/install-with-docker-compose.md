@@ -1,6 +1,6 @@
 # 使用 Docker-compose 部署 Halo
 
-使用 Docker Compose 部署 Halo 的指南，假设你了解并使用过 Docker 和 Docker Compose。本篇教程以 CentOS 7.x 为例，其他系统大同小异。
+使用 [`Docker Compose`](https://docs.docker.com/compose/) 部署 `Halo` 的指南，假设你了解并使用过 [`Docker`](https://docs.docker.com/) 和 [`Docker Compose`](https://docs.docker.com/compose/)。本篇教程以 `CentOS 7.x` 为例，其他系统大同小异。
 
 ## 环境要求
 
@@ -17,12 +17,12 @@
 请确保服务器的软件包已经是最新的。
 
 ```bash
-$ sudo yum update -y
+sudo yum update -y
 ```
 
 ### 配置 Docker 运行环境
 
-请参考 [使用 Docker 部署 Halo](/docs/install-with-docker.html#服务器配置)
+请参考[使用 Docker 部署 Halo](/docs/install-with-docker.html#服务器配置)
 
 ### 配置 Docker Compose
 
@@ -36,7 +36,7 @@ $ sudo yum update -y
 
 ```bash
 # 下载配置文件到 ~/.halo 目录
-$ curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
+curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
 ```
 
 ### 修改配置文件
@@ -45,7 +45,7 @@ $ curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.c
 
 ```bash
 # 使用 Vim 工具修改配置文件
-$ vim ~/.halo/application.yaml
+vim ~/.halo/application.yaml
 ```
 
 打开之后我们可以看到
@@ -93,38 +93,38 @@ yum install -y wget && wget -O docker-compose.yaml https://git.io/fpS8N
 
 假设你现在已经下载好了 docker-compose.yaml 文件，那么在部署之前需要做的就是简单修改以下这个文件。因为我们需要绑定域名以申请 SSL 证书，所以你需要在 docker-compose.yaml 文件中修改以下配置：
 
-```docker
-  halo:
-    restart: always
-    image: ruibaby/halo:latest-dev
-    container_name: halo
-    ports:
-      - 8090:8090
-    environment:
-      - VIRTUAL_PORT=8090
-      - VIRTUAL_HOST=localhost  # 监听的地址（务必修改）
-      - LETSENCRYPT_HOST=localhost # 证书的域名 （务必修改）
-      - LETSENCRYPT_EMAIL=i@example.com # 证书所有者的邮箱，快过期时会提醒（务必修改）
-    volumes:
-      - ~/.halo:/root/.halo
+```yml
+halo:
+  restart: always
+  image: ruibaby/halo:latest-dev
+  container_name: halo
+  ports:
+    - 8090:8090
+  environment:
+    - VIRTUAL_PORT=8090
+    - VIRTUAL_HOST=localhost  # 监听的地址（务必修改）
+    - LETSENCRYPT_HOST=localhost # 证书的域名 （务必修改）
+    - LETSENCRYPT_EMAIL=i@example.com # 证书所有者的邮箱，快过期时会提醒（务必修改）
+  volumes:
+    - ~/.halo:/root/.halo
 ```
 
 参考配置：
 
-```docker
-  halo:
-    restart: always
-    image: ruibaby/halo:latest-dev
-    container_name: halo
-    ports:
-      - 8090:8090
-    environment:
-      - VIRTUAL_PORT=8090
-      - VIRTUAL_HOST=blog.ryanc.cc  # 监听的地址（务必修改）
-      - LETSENCRYPT_HOST=blog.ryanc.cc # 证书的域名 （务必修改）
-      - LETSENCRYPT_EMAIL=i@ryanc.cc # 证书所有者的邮箱，快过期时会提醒（务必修改）
-    volumes:
-      - ~/.halo:/root/.halo
+```yml
+halo:
+  restart: always
+  image: ruibaby/halo:latest-dev
+  container_name: halo
+  ports:
+    - 8090:8090
+  environment:
+    - VIRTUAL_PORT=8090
+    - VIRTUAL_HOST=blog.ryanc.cc  # 监听的地址（务必修改）
+    - LETSENCRYPT_HOST=blog.ryanc.cc # 证书的域名 （务必修改）
+    - LETSENCRYPT_EMAIL=i@ryanc.cc # 证书所有者的邮箱，快过期时会提醒（务必修改）
+  volumes:
+    - ~/.halo:/root/.halo
 ```
 
 如上配置，我们需要修改 `VIRTUAL_HOST` , `LETSENCRYPT_HOST` 为自己的域名，**注意注意注意！**，在部署之前最好先将外网 IP 解析到域名，因为申请 SSL 证书需要域名可以正常访问。另外，`LETSENCRYPT_EMAIL` 这个节点是证书申请者的邮箱，当证书要过期的时候，会提醒你续签。
@@ -151,13 +151,10 @@ docker-compose up -d
 
 ```bash
 # 拉取最新的 Halo 镜像
-docker pull ruibaby/halo:latest-dev
-
-# 暂停 Docker 容器运行
-docker-compose stop
+docker-compose pull
 
 # 重新构建容器
-docker-compose up -d --build
+docker-compose up -d
 ```
 
 ### 常用命令
