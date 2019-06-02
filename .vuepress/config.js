@@ -7,6 +7,9 @@ module.exports = {
   ga: 'UA-110780416-2',
   head: [
     ['link', { rel: 'icon', href: '/halo.png' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
   siteConfig: {
     links: {
@@ -15,9 +18,11 @@ module.exports = {
   },
   themeConfig: {
     repo: 'halo-dev/halo',
+    editLinks: false,
     nav: [
       { text: '首 页', link: '/' },
-      { text: '文 档', link: '/docs/' },
+      { text: '用户文档', link: '/docs/' },
+      { text: '开发文档', link: '/develop/' },
       { text: '主题仓库', link: '/theme/' },
       { text: '社 区', link: 'https://bbs.halo.run' },
     ],
@@ -33,20 +38,6 @@ module.exports = {
           '/docs/install-with-docker-compose',
         ],
       },
-      // {
-      //   title: '使用指南',
-      //   collapsable: false,
-      //   children: [
-      //     '/docs/guidance'
-      //   ],
-      // },
-      // {
-      //   title: '主题制作',
-      //   collapsable: false,
-      //   children: [
-      //     '/docs/theme'
-      //   ],
-      // },
       {
         title: 'FAQ',
         collapsable: false,
