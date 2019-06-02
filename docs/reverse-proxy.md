@@ -46,13 +46,12 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
-        proxy_pass http://localhost:8090/;
+        proxy_pass http://127.0.0.1:8090/;
     }
 }
 ```
 
-1. 请把 `example.com` 改为自己的域名。
-2. `http://localhost:8090` 请修改为你服务器的 `ip` 以及 `Halo` 的运行端口。
+> 注意：请把 `example.com` 改为自己的域名。
 
 修改完成之后
 
