@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Halo',
-  description: 'Halo | ✍️ 可能是最好的 Java 博客系统',
+  description: 'Halo | ✍️ 一款现代化的个人独立博客系统',
   host: 'localhost',
   port: '4000',
   docsDir: 'docs',

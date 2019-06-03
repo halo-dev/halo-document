@@ -1,7 +1,7 @@
 {
   "name": "halo",
   "version": "1.0.0",
-  "description": "Halo 可能是最好的 Java 博客系统。",
+  "description": "Halo 一款现代化的个人独立博客系统。",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev .",

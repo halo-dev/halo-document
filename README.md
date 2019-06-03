@@ -1,6 +1,6 @@
 ---
 home: true
-tagline: ✍️ 可能是最好的 Java 博客系统
+tagline: ✍️ 一款现代化的个人独立博客系统
 actionText: 快速上手 →
 actionLink: /docs/
 features:
