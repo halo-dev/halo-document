@@ -19,7 +19,7 @@
     "less-loader": "^4.1.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "element-ui": "^2.8.3",
     "vue-github-buttons": "^3.1.0"
   }
