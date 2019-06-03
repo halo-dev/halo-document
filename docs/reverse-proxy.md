@@ -71,6 +71,9 @@ sudo nginx -s reload
 # 安装 certbot
 yum install certbot -y
 
+# 安装 certbot nginx插件
+yum install python-certbot-nginx
+
 # 执行配置，中途会询问你的邮箱，如实填写即可
 certbot --nginx
 
