@@ -94,7 +94,7 @@ spring:
 ### 下载 Docker Compose 配置文件
 
 ```bash
-yum install -y wget && wget -O docker-compose.yaml https://git.io/fpS8N
+yum install -y wget && wget -O docker-compose.yaml https://raw.githubusercontent.com/halo-dev/halo-common/master/docker-compose.yaml
 ```
 
 ### 修改 Docker Compose 文件
@@ -128,9 +128,9 @@ halo:
     - 8090:8090
   environment:
     - VIRTUAL_PORT=8090
-    - VIRTUAL_HOST=blog.ryanc.cc  # 监听的地址（务必修改）
-    - LETSENCRYPT_HOST=blog.ryanc.cc # 证书的域名 （务必修改）
-    - LETSENCRYPT_EMAIL=i@ryanc.cc # 证书所有者的邮箱，快过期时会提醒（务必修改）
+    - VIRTUAL_HOST=blog.ryanc.cc
+    - LETSENCRYPT_HOST=blog.ryanc.cc
+    - LETSENCRYPT_EMAIL=i@ryanc.cc
   volumes:
     - ~/.halo:/root/.halo
 ```
