@@ -68,17 +68,14 @@ sudo nginx -s reload
 在这里我只演示如果自动申请证书，如果你自己准备了证书，请查阅相关教程。
 
 ```bash
-# 安装 certbot
-yum install certbot -y
-
-# 安装 certbot nginx 插件
-yum install python-certbot-nginx -y
+# 安装 certbot 以及 certbot nginx 插件
+sudo yum install certbot python2-certbot-nginx -y
 
 # 执行配置，中途会询问你的邮箱，如实填写即可
-certbot --nginx
+sudo certbot --nginx
 
 # 自动续约
-certbot renew --dry-run
+sudo certbot renew --dry-run
 ```
 
 到这里，关于 Nginx 的配置也就完成了，现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
