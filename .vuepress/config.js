@@ -17,8 +17,8 @@ module.exports = {
     },
   },
   themeConfig: {
-    repo: 'halo-dev/halo',
-    editLinks: false,
+    repo: 'halo-dev/halo-document',
+    editLinks: true,
     nav: [
       { text: '首 页', link: '/' },
       { text: '用户文档', link: '/docs/' },

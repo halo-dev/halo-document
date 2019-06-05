@@ -31,7 +31,51 @@ Halo 的整个系统分为三个部分：
 :::
 
 ## 系统开发
-待完善
+### 所需要的环境：
+
+1. IDE：IDEA，MyEclipse 或者 STS（Spring Tools Suite）
+2. 工具：Gradle，Lombok插件
+3. JDK：1.8+
+
+> 该项目使用了Lombok，请检查开发工具是否已经安装好了Lombok插件，如果是用的是 IDEA，请在设置中 `Build, Execution, Deployment/Annotation Processors` 的 `Enable annotation processing` 打开。
+
+### 导入项目
+
+```bash
+git clone https://github.com/halo-dev/halo
+```
+
+如果你电脑的环境已经满足上面的要求，那么几乎不需要做任何配置就可以运行起来了。
+
+> 需要注意的是，Halo同时支持`H2Database`以及MySQL，如果你使用默认的H2的话则不需要做任何配置，如果需要使用MySQL，请把`resources`下的`application.yaml`中H2相关的配置注释掉，再把MySQL相关的配置取消注释进行配置即可，顺便提一下，该项目不需要你导入数据库，只需要创建好数据库就行。
+
+### 运行方式
+
+1. 直接运行Application类。
+2. 在根目录执行`./gradlew buildJar`打包，之后进入`build/libs`执行`java -jar halo-xxx.jar`。
+
+> 最后：访问[http://localhost:8090](http://localhost:8090)即可进入安装页面。
+
+---
+
+### Development Requirements
+
+#### 调整启动参数（VMoptions）
+
+运行命令中添加如下的 VMoptions:
+
+```bash
+-Dspring.profiles.active=dev
+```
+
+#### 启用自动构建（Build project automatically）
+
+1. 进入 **Settings** (**Preferences** on macOS)。
+2. 打开 **Build, Execution, Deployment > Compiler**. 启用 **Build project automatically**。
+3. 点击 **确定**。
+4. 按 Ctrl+Shift+A (Cmd+Shift+A on macOS)快捷键，然后搜索 **Registry**. 打开之后知道 **compiler.automake.allow.when.app.running**，并启用它 (IntelliJ IDEA 15 and newer)。
+
+> 来源于 <https://zeroturnaround.com/software/jrebel/quickstart/intellij/enable-automatic-compilation-in-intellij-idea/>
 
 ## 主题开发
 > Halo 的模板引擎为 Freemarker，建议在开发 Halo 的主题之前，先看一遍 Freemarker 的相关文档：<http://freemarker.foofun.cn>。
@@ -152,7 +196,85 @@ items:
 
 settings.yaml 实例：参考 <https://github.com/halo-dev/halo-theme-material/blob/master/settings.yaml>。
 
+### 全局变量
+> 这些变量可以在页面的任意地方调用。
+
+- 博客地址：${context!}
+- 主题根路径：${static!}
+- 博客标题：${options.blog_title!}
+- 博客关键字：${options.seo_keywords!}
+- 博客描述：${options.seo_description!}
+
 ### 自定义标签
-待完善
-### 页面模型
+> 自定义标签可以在页面的任意地方调用。
+
+#### postTag
+
+##### 获取最新文章：
+
+```html
+<@postTag method="latest" top="条数">
+// 返回参数：posts
+</@postTag>
+```
+
+<details>
+<summary>实例</summary>
+
+```html
+<@postTag method="latest" top="3">
+    <#list posts as post>
+        <a href="${context}/archives/${post.url!}">${post.title!}</a>
+    </#list>
+</@postTag>
+
+// 输出
+<a href="${context}/archives/url1">title1</a>
+<a href="${context}/archives/url1">title2</a>
+<a href="${context}/archives/url1">title3</a>
+```
+</details>
+
+##### 获取所有文章条数
+
+```html
+<@postTag method="count">
+// 返回参数：count
+</@postTag>
+```
+
+<details>
+<summary>实例</summary>
+
+```html
+<@postTag method="count">
+文章数量：${count!0}
+</@postTag>
+
+// 输出
+文章数量：20
+```
+</details>
+
+##### 根据年份归档
+
+```html
+<@postTag method="archiveYear">
+// 返回参数：archives
+</@postTag>
+```
+
+#### commentTag
+
+#### menuTag
+
+#### categoryTag
+
+#### tagTag
+
+#### photoTag
+
+#### linkTag
+
+### 页面变量
 待完善
