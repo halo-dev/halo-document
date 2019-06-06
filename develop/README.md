@@ -103,7 +103,7 @@ git clone git@github.com:halo-dev/halo.git
 
 #### 直接运行 `Application` 主类（配合 IDE 运行）
 
-如果需要指定配置，请在 `Run/Debug Configuration` 内进行设置 `VM options`，例如：
+如果需要指定配置，请在 `Run/Debug Configuration` 内进行设置 `VM options`（这里推荐采用上文的[自定义配置](#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE)），例如：
 
 ```ini
 -Dspring.profiles.active=dev
@@ -123,7 +123,7 @@ git clone git@github.com:halo-dev/halo.git
 ./gradlew.bat bootRun
 ```
 
-如果需要手动指定配置，可添加 `--args` 参数，例如：
+如果需要手动指定配置，可添加 `--args` 参数（这里推荐采用上文的[自定义配置](#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE)），例如：
 
 ```bash
 # 类 Unix 用户
