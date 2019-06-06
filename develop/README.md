@@ -35,7 +35,7 @@ sidebar: auto
 
 ### 自定义配置
 
-> 为什么要提前将自定义配置呢？是因为在这里让大家了解到 `Halo` 的`配置方式`，以及`配置优先级`，不至于未来运行项目的时候不知道如何优雅地修改配置。
+> 为什么要提前讲自定义配置呢？是因为在这里让大家了解到 `Halo` 的`配置方式`，以及`配置优先级`，不至于未来运行项目的时候不知道如何优雅地修改配置。
 
 `Halo` 配置目录优先级如下（从上到下优先级越来越小，上层的配置将会覆盖下层）:
 
@@ -58,7 +58,7 @@ sidebar: auto
 
 ## 系统开发
 
-### 所需要的环境：
+### 所需要的环境
 
 1. IDE：[IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 或者 [STS](https://spring.io/tools)（Spring Tools Suite）
 2. 工具：[Gradle](https://gradle.org/)，[Lombok](https://projectlombok.org/) 插件
@@ -224,6 +224,7 @@ Halo 的运行可参考上述 [系统开发](#系统开发)，或者直接下载
 
 - 主题目录下必须存在 `theme.yaml（主题描述文件）`，`settings.yaml（主题配置文件）`，相关格式在后面会详细讲解。
 - 如果要开源到 Github 我们建议将仓库名设置为 `halo-theme-主题名`，并设置仓库的 `topic` 为 `halo` 和 `halo-theme`，这样可以方便使用者搜索。
+- 所有模板文件的后缀为 `.ftl`。
 
 ### 配置文件
 
@@ -244,7 +245,8 @@ repo: 主题开源地址
 version: 版本号
 ```
 
-theme.yaml 实例：
+<details>
+<summary>theme.yaml 实例</summary>
 
 ```yaml
 id: caicai_anatole
@@ -258,6 +260,7 @@ website: https://github.com/halo-dev/halo-theme-anatole
 repo: https://github.com/halo-dev/halo-theme-anatole
 version: 1.0
 ```
+</details>
 
 #### settings.yaml
 
@@ -397,6 +400,52 @@ settings.yaml 实例：参考 <https://github.com/halo-dev/halo-theme-material/b
 // 返回参数：archives
 </@postTag>
 ```
+
+<details>
+<summary>实例</summary>
+
+```html
+<@postTag method="archiveYear">
+  <#list archives as archive>
+      <h1>年份： ${archive.year?c}</h1>
+      <ul>
+          <#list archive.posts?sort_by("createTime")?reverse as post>
+            <li>
+              <a href="${context!}/archives/${post.url!}">${post.title!}</a>
+            </li>
+          </#list>
+      </ul>
+  </#list>
+</@postTag>
+
+// 输出
+<h1>年份：2019</h1>
+<ul>
+  <li>
+    <a href="http://localhost:8090/archives/url1">title1</a>
+  </li>
+  <li>
+    <a href="http://localhost:8090/archives/url2">title2</a>
+  </li>
+  <li>
+    <a href="http://localhost:8090/archives/url3">title3</a>
+  </li>
+</ul>
+<h1>年份：2018</h1>
+<ul>
+  <li>
+    <a href="http://localhost:8090/archives/url4">title4</a>
+  </li>
+  <li>
+    <a href="http://localhost:8090/archives/url5">title5</a>
+  </li>
+  <li>
+    <a href="http://localhost:8090/archives/url6">title6</a>
+  </li>
+</ul>
+```
+
+</details>
 
 #### commentTag
 
