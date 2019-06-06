@@ -1,8 +1,8 @@
-<h1 align="center"><a href="https://github.com/halo-dev" target="_blank">Halo</a></h1>
+<h1><a href="https://github.com/halo-dev" target="_blank">Halo</a></h1>
 
 > Halo 是一款现代化的个人独立博客系统，给习惯写博客的同学一个更好的选择。
 
-<p align="center">
+<p>
 <a href="#"><img alt="JDK" src="https://img.shields.io/badge/JDK-1.8-yellow.svg?style=flat-square"/></a>
 <a href="https://github.com/halo-dev/halo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/halo-dev/halo.svg?style=flat-square"/></a>
 <a href="https://github.com/halo-dev/halo/releases"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/halo-dev/halo/total.svg?style=flat-square"></a>
