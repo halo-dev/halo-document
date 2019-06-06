@@ -229,9 +229,9 @@ settings.yaml 实例：参考 <https://github.com/halo-dev/halo-theme-material/b
 </@postTag>
 
 // 输出
-<a href="${context}/archives/url1">title1</a>
-<a href="${context}/archives/url1">title2</a>
-<a href="${context}/archives/url1">title3</a>
+<a href="http://localhost:8090/archives/url1">title1</a>
+<a href="http://localhost:8090/archives/url2">title2</a>
+<a href="http://localhost:8090/archives/url3">title3</a>
 ```
 </details>
 
