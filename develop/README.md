@@ -225,11 +225,44 @@ Halo 的运行可参考上述 [系统开发](#系统开发)，或者直接下载
 - 主题目录下必须存在 `theme.yaml（主题描述文件）`，`settings.yaml（主题配置文件）`，相关格式在后面会详细讲解。
 - 如果要开源到 Github 我们建议将仓库名设置为 `halo-theme-主题名`，并设置仓库的 `topic` 为 `halo` 和 `halo-theme`，这样可以方便使用者搜索。
 - 所有模板文件的后缀为 `.ftl`。
+- 主题目录需要以 `screenshot` 命名的预览图片，以供后台展示。
 
 ### 开发样板
 > 为了让开发者更快速的上手主题的开发，我们提供了一个简单的开发样板以供参考。
 
 仓库地址：<https://github.com/halo-dev/halo-theme-quick-starter>
+
+### 目录结构
+> 为了让开发更加规范，我们推荐使用以下的目录构建。
+
+```bash
+├── module                      // 公共模板目录
+│   ├── comment.ftl             // 比如：评论模板
+│   ├── layout.ftl              // 比如：布局模板
+├── source                      // 静态资源目录
+│   ├── css                     // 样式目录
+│   ├── images                  // 图片目录
+│   ├── js                      // JS 脚本目录
+│   └── plugins                 // 前端库目录
+├── index.ftl                   // 首页
+├── post.ftl                    // 文章页
+├── sheet.ftl                   // 自定义页面
+├── archives.ftl                // 归档页
+├── categories.ftl              // 分类目录页
+├── category.ftl                // 单个分类的所属文章页
+├── tags.ftl                    // 标签页面
+├── tag.ftl                     // 单个标签的所属文章页
+├── search.ftl                  // 搜索结果页
+├── links.ftl                   // 内置页面：友情链接
+├── photos.ftl                  // 内置页面：图库
+├── journals.ftl                // 内置页面：日志
+├── 404.ftl                     // 404 页
+├── 500.ftl                     // 500 页 
+├── README.md                   // README，一般用于主题介绍或说明
+├── screenshot.png              // 主题预览图
+├── settings.yaml               // 主题选项配置文件
+└── theme.yaml                  // 主题描述文件
+```
 
 ### 配置文件
 
@@ -343,11 +376,33 @@ settings.yaml 实例：参考 <https://github.com/halo-dev/halo-theme-material/b
 - 博客标题：\${options.blog_title!}
 - 博客关键字：\${options.seo_keywords!}
 - 博客描述：\${options.seo_description!}
-- 主题设置项：\${settings.选项字段}
+- 主题设置项：\${settings.[settings.yaml](#settings-yaml-items) 中各项的 name 值}
 
 ### 页面变量
 
->待完善
+#### index.ftl
+
+#### post.ftl
+
+#### archives.ftl
+
+#### sheet.ftl
+
+#### photos.ftl
+
+#### links.ftl
+
+#### journals.ftl
+
+#### categories.ftl
+
+#### category.ftl
+
+#### tags.ftl
+
+#### tag.ftl
+
+#### search.ftl
 
 ### 自定义标签
 
