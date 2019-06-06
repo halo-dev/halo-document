@@ -12,7 +12,7 @@ sidebar: auto
 | :-------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- |
 | [halo](https://github.com/halo-dev/halo)                  | 提供整个系统的服务，采用 [Spring Boot](https://spring.io/) 开发                                                        |
 | [halo-admin](https://github.com/halo-dev/halo-admin)      | 负责后台管理的渲染，采用 [Vue](https://vuejs.org/) 开发，理论上可以部署在任何地方                                      |
-| [halo-comment](https://github.com/halo-dev/halo-document) | 评论插件，采用 [Vue](https://vuejs.org/) 开发，在主题中运行方式引入构建好的 `Javascript` 文件即可                      |
+| [halo-comment](https://github.com/halo-dev/halo-comment) | 评论插件，采用 [Vue](https://vuejs.org/) 开发，在主题中运行方式引入构建好的 `Javascript` 文件即可                      |
 | [halo-theme-\*](https://github.com/halo-dev)              | 主题项目集，采用 [Freemarker](https://freemarker.apache.org/) 模板引擎编写，需要包含一些特殊的配置才能够被 halo 所使用 |
 
 ### 工作目录
@@ -225,6 +225,11 @@ Halo 的运行可参考上述 [系统开发](#系统开发)，或者直接下载
 - 主题目录下必须存在 `theme.yaml（主题描述文件）`，`settings.yaml（主题配置文件）`，相关格式在后面会详细讲解。
 - 如果要开源到 Github 我们建议将仓库名设置为 `halo-theme-主题名`，并设置仓库的 `topic` 为 `halo` 和 `halo-theme`，这样可以方便使用者搜索。
 - 所有模板文件的后缀为 `.ftl`。
+
+### 开发样板
+> 为了让开发者更快速的上手主题的开发，我们提供了一个简单的开发样板以供参考。
+
+仓库地址：<https://github.com/halo-dev/halo-theme-quick-starter>
 
 ### 配置文件
 
@@ -979,3 +984,38 @@ Author3：继续加油
 ```
 
 </details>
+
+### 接入评论
+> 关于文章和页面的评论，我们提供了一个评论插件，也就是 [halo-comment](https://github.com/halo-dev/halo-comment)。只需要非常简单的步骤就可以让其接入到文章或页面。当然，你也可以使用 comment 相关的 api，自己开发评论模块。
+
+我们推荐在主题目录新建一个 `comment.ftl`，然后只需要在文章或页面中引用即可，减少重复代码。
+
+```html
+<#macro comment post,type>
+    <#if !post.disallowComment!false>
+      <div class="comment-container">
+        <script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+        <script src="//cdn.jsdelivr.net/gh/halo-dev/halo-comment@1.0.0/dist/halo-comment.min.js"></script>
+        <halo-comment id="${post.id}" type="${type}"/>
+      </div>
+    </#if>
+</#macro>
+```
+
+::: tip 提示
+可以对 `comment-container` 设置相应的样式，让其和主题样式融合的更好。
+:::
+
+引入方式，在 `post.ftl` 中：
+
+```html
+<#include "comment.ftl">
+<@comment post=post type="post" />
+```
+
+在 `sheet.ftl` 中：
+
+```html
+<#include "comment.ftl">
+<@comment post=sheet type="sheet" />
+```
