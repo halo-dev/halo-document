@@ -17,8 +17,8 @@ module.exports = {
     },
   },
   themeConfig: {
-    repo: 'halo-dev/halo-document',
-    editLinks: true,
+    repo: 'halo-dev/halo',
+    editLinks: false,
     nav: [
       { text: '首 页', link: '/' },
       { text: '用户文档', link: '/docs/' },
@@ -26,33 +26,51 @@ module.exports = {
       { text: '主题仓库', link: '/theme/' },
       { text: '社 区', link: 'https://bbs.halo.run' },
     ],
-    sidebar: [
-      {
-        title: '安装指南',
-        collapsable: false,
-        children: [
-          '/docs/migrate-from-0.4.4',
-          '/docs/install-with-centos',
-          '/docs/install-with-docker',
-          '/docs/reverse-proxy',
-          '/docs/install-with-docker-compose',
-        ],
-      },
-      {
-        title: 'FAQ',
-        collapsable: false,
-        children: [
-          '/docs/faq',
-        ],
-      },
-      {
-        title: '捐赠',
-        collapsable: false,
-        children: [
-          '/docs/donate',
-        ],
-      },
-    ],
+    sidebar: {
+      '/docs/':[
+        {
+          title: '安装指南',
+          collapsable: false,
+          children: [
+            'migrate-from-0.4.4',
+            'install-with-centos',
+            'install-with-docker',
+            'reverse-proxy',
+            'install-with-docker-compose',
+          ],
+        },
+        {
+          title: 'FAQ',
+          collapsable: false,
+          children: [
+            '/docs/faq',
+          ],
+        },
+        {
+          title: '捐赠',
+          collapsable: false,
+          children: [
+            '/docs/donate',
+          ],
+        }
+      ],
+      '/develop/':[
+        {
+          title: '系统开发',
+          collapsable: false,
+          children: [
+            ''
+          ],
+        },
+        {
+          title: '主题开发',
+          collapsable: false,
+          children: [
+            'theme'
+          ],
+        }
+      ]
+    },
     lastUpdated: '最后更新于',
   },
 }
