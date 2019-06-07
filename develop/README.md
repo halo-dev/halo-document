@@ -8,12 +8,12 @@ sidebar: auto
 
 [Halo](https://github.com/halo-dev/halo) 博客系统分为以下四个部分：
 
-| 项目名称                                                  | 简介                                                                                                                   |
-| :-------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- |
-| [halo](https://github.com/halo-dev/halo)                  | 提供整个系统的服务，采用 [Spring Boot](https://spring.io/) 开发                                                        |
-| [halo-admin](https://github.com/halo-dev/halo-admin)      | 负责后台管理的渲染，采用 [Vue](https://vuejs.org/) 开发，理论上可以部署在任何地方                                      |
+| 项目名称                                                 | 简介                                                                                                                   |
+| :------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- |
+| [halo](https://github.com/halo-dev/halo)                 | 提供整个系统的服务，采用 [Spring Boot](https://spring.io/) 开发                                                        |
+| [halo-admin](https://github.com/halo-dev/halo-admin)     | 负责后台管理的渲染，采用 [Vue](https://vuejs.org/) 开发，理论上可以部署在任何地方                                      |
 | [halo-comment](https://github.com/halo-dev/halo-comment) | 评论插件，采用 [Vue](https://vuejs.org/) 开发，在主题中运行方式引入构建好的 `Javascript` 文件即可                      |
-| [halo-theme-\*](https://github.com/halo-dev)              | 主题项目集，采用 [Freemarker](https://freemarker.apache.org/) 模板引擎编写，需要包含一些特殊的配置才能够被 halo 所使用 |
+| [halo-theme-\*](https://github.com/halo-dev)             | 主题项目集，采用 [Freemarker](https://freemarker.apache.org/) 模板引擎编写，需要包含一些特殊的配置才能够被 halo 所使用 |
 
 ### 工作目录
 
@@ -187,9 +187,11 @@ git clone git@github.com:halo-dev/halo.git
 
 于是 `Halo` 最后采用了 `Spring Boot` 官方推荐的 [Developer Tools](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html)。
 
-每次保存代码的时候，`IDE` 会自动为我们编译代码，`Developer Tools` 检测到代码的 `class 文件`（只能检测 classpath 下的 class 文件）的变更，会自动重启项目。注意，这里的重启速度会有质的提升，具体原因是因为 `Spring Boot` 提供的 `restart 技术`提供了两个 `classloaders`：`base classloader` 和 `restart classloader`。当项目重启的时候 `restart classloader` 将会被抛弃，并重启创建一个，这比 `code starts`（冷启动）快很多。当然，肯定是比不上 `JRebel` 采用的 `Reload 技术`。
+::: tip Developer Tools 原理
+在保存代码的时候，`IDE` 会自动为我们编译代码，`Developer Tools` 检测到代码的 `class 文件`（只能检测 `classpath` 下的 `class 文件`）的变更，会自动重启项目。注意，这里的重启速度会有质的提升，具体原因是 `Spring Boot` 提供的 `restart 技术`提供了两个 `classloaders`：`base classloader` 和 `restart classloader`。当项目重启的时候 `restart classloader` 将会被抛弃，并重启创建一个，这比 `code starts`（冷启动）快很多。当然，肯定是比不上 `JRebel` 采用的 `Reload 技术`。
 
-> 具体细节请查阅: [Automatic Restart](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html#using-boot-devtools-restart)
+更多细节请查阅: [Automatic Restart](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html#using-boot-devtools-restart)
+:::
 
 这里以 `IntelliJ IDEA` 为例。
 
@@ -202,18 +204,22 @@ git clone git@github.com:halo-dev/halo.git
 
 ## 主题开发
 
-> Halo 的模板引擎为 Freemarker，建议在开发 Halo 的主题之前，先看一遍 Freemarker 的相关文档：<http://freemarker.foofun.cn>。
+> `Halo` 的模板引擎为 [Freemarker](https://freemarker.apache.org/)。在开发 `Halo` 的主题之前，建议先看一遍 `Freemarker` 的相关文档：<http://freemarker.foofun.cn> 或 <https://freemarker.apache.org/>。
 
 ### 搭建开发环境
 
-> 假设你已经在本地电脑配置好了 Java 运行环境。
+> 假设你已经在本地电脑配置好了 `Java` 运行环境（`JRE`）。
 
-Halo 的运行可参考上述 [系统开发](#系统开发)，或者直接下载打包好的程序启动，如下步骤：
+`Halo` 的运行可参考上述 [系统开发](#系统开发)，或者直接下载打包好的程序启动，如下步骤：
 
-- 从 [Github release]() 下载最新的 Jar 包。
-- 在终端中执行 `java -jar halo-版本号.jar --spring.profiles.active=dev`
+1. 从 [Github release](https://github.com/halo-dev/halo/releases) 下载最新的 `jar` 包
+2. 在终端中执行：
 
-启动完成之后，在电脑的用户目录即可看到 `halo-dev` 文件夹。
+```bash
+java -jar halo-版本号.jar --spring.profiles.active=dev
+```
+
+启动完成之后，在电脑的用户目录下即可看到 `halo-dev` 文件夹。
 
 ### 准备工作
 
@@ -228,14 +234,14 @@ Halo 的运行可参考上述 [系统开发](#系统开发)，或者直接下载
 - 主题目录需要以 `screenshot` 命名的预览图片，以供后台展示。
 
 ### 开发样板
-> 为了让开发者更快速的上手主题的开发，我们提供了一个简单的开发样板以供参考。
 
-仓库地址：<https://github.com/halo-dev/halo-theme-quick-starter>
+为了让开发者更快速的上手主题的开发，我们提供了一个简单的[开发样板](https://github.com/halo-dev/halo-theme-quick-starter)以供参考。
 
 ### 目录结构
-> 为了让开发更加规范，我们推荐使用以下的目录构建。
 
-```bash
+为了让开发更加规范，我们推荐使用以下的目录结构：
+
+```txt
 ├── module                      // 公共模板目录
 │   ├── comment.ftl             // 比如：评论模板
 │   ├── layout.ftl              // 比如：布局模板
@@ -257,7 +263,7 @@ Halo 的运行可参考上述 [系统开发](#系统开发)，或者直接下载
 ├── photos.ftl                  // 内置页面：图库
 ├── journals.ftl                // 内置页面：日志
 ├── 404.ftl                     // 404 页
-├── 500.ftl                     // 500 页 
+├── 500.ftl                     // 500 页
 ├── README.md                   // README，一般用于主题介绍或说明
 ├── screenshot.png              // 主题预览图
 ├── settings.yaml               // 主题选项配置文件
@@ -266,7 +272,11 @@ Halo 的运行可参考上述 [系统开发](#系统开发)，或者直接下载
 
 ### 配置文件
 
-> Halo 的主题模块使用 yaml 来对主题进行配置，`theme.yaml` 里面主要描述主题的名称，开发者的信息，开源地址等等。`settings.yaml` 包含了主题所有的配置选项，需要注意的是，这些选项仅仅是用于构建配置表单，并不起到对主题的配置作用。
+`Halo` 的主题模块使用 [yaml](https://yaml.org/) 文件来对主题进行配置。
+
+`theme.yaml`（或 `theme.yml`）里面主要描述主题的名称，开发者的信息，开源地址等等。
+
+`settings.yaml`（或 `settings.yml`）包含了主题所有的配置选项。值得注意的是，这些选项仅仅是用于构建配置表单，并不会对主题的配置起作用。
 
 #### theme.yaml
 
@@ -278,8 +288,8 @@ author:
   website: 作者网址
 description: 主题描述
 logo: 主题 Logo 地址
-website: 主题地址
-repo: 主题开源地址
+website: 主题预览地址
+repo: 主题仓库地址，如项目的 Github 地址
 version: 版本号
 ```
 
@@ -298,6 +308,7 @@ website: https://github.com/halo-dev/halo-theme-anatole
 repo: https://github.com/halo-dev/halo-theme-anatole
 version: 1.0
 ```
+
 </details>
 
 #### settings.yaml
@@ -318,29 +329,26 @@ group2:
 
 #### settings.yaml#items
 
-> settings.yaml 的 items 下即为所有表单元素，所支持的表单元素如下
+`settings.yaml` 的 `items` 下即为所有表单元素，所支持的表单元素如下
 
 ```yaml
 items:
     # 普通文本框
-    item1:                      // 表单项的根节点，一般和 name 同名
-      name: item1               // 表单项的 name 属性，将存于数据库中，对应该表单元素的值。
+    - name: item1               // 表单项的 name 属性，将存于数据库中，对应该表单元素的值。
       label: item1              // 表单项的 label
       type: text                // 表单项类型：普通文本框
       default: ''               // 默认值
       placeholder: ''           // 表单项的 placeholder，一般给用户提示
 
     # 多行文本框
-    item2:                      // 同上
-      name: item2               // 同上
+    - name: item2               // 同上
       label: item2              // 同上
       type: textarea            // 表单项类型：多行文本框
       default: ''               // 同上
       placeholder: ''           // 同上
 
     # 单选框
-    item3:                      // 同上
-      name: item3               // 同上
+    - name: item3               // 同上
       label: item3              // 同上
       type: radio               // 表单项类型：单选框
       data-type: bool           // 数据类型：bool，string，long，double
@@ -352,8 +360,7 @@ items:
           label: label2
 
     # 下拉框
-    item4:                      // 同上
-      name: item4               // 同上
+    - name: item4               // 同上
       label: item4              // 同上
       type: select              // 表单项类型：下拉框
       data-type: bool           // 数据类型：bool，string，long，double
@@ -367,96 +374,96 @@ items:
 
 settings.yaml 实例：参考 <https://github.com/halo-dev/halo-theme-material/blob/master/settings.yaml>。
 
+<details>
+  <summary>
+    settings.yaml 实例
+  </summary>
+
+<https://github.com/halo-dev/halo-theme-material/blob/master/settings.yaml>
+
+</details>
+
 ### 全局变量
 
-> 这些变量可以在页面的任意地方调用。
+这些变量可以在页面的任意地方调用。
 
-- 博客地址：\${context!}
-- 主题根路径：\${static!}
-- 博客标题：\${options.blog_title!}
-- 博客关键字：\${options.seo_keywords!}
-- 博客描述：\${options.seo_description!}
-- 统计代码：${options.blog_statistics_code!}
-- 页脚信息：${options.blog_footer_info!}
-- Favicon：${options.blog_favicon!}
-- Logo：${options.blog_logo!}
-- 主题设置项：\${settings.[settings.yaml](#settings-yaml-items) 中各项的 name 值}
+1. 博客地址：`${context!}`
+2. 主题根路径：`${static!}`
+3. 博客标题：`${options.blog_title!}`
+4. 博客关键字：`${options.seo_keywords!}`
+5. 博客描述：`${options.seo_description!}`
+6. 统计代码：`${options.blog_statistics_code!}`
+7. 页脚信息：`${options.blog_footer_info!}`
+8. Favicon：`${options.blog_favicon!}`
+9. Logo：`${options.blog_logo!}`
+10. 主题设置项：`${settings.[name]}` // `name` 为 [settings.yaml](#settings-yaml-items) 设置中的 `name` 值
 
 ### 公共模板
 
 > 为了减少重复代码，我们将某些常见的全局变量封装成了一个公共模板，我们只需要引入该模板，然后调用其中的宏模板即可。
 
 ```html
-// 在模板中引入公共模板，需要注意的是，这个路径是固定的，不需要修改。
-<#import "/common/macro/common_macro.ftl" as common>
+// 在模板中引入公共模板，需要注意的是，这个路径是固定的，不需要修改。 <#import
+"/common/macro/common_macro.ftl" as common>
 ```
 
 #### 统计代码
 
 ```html
-<@common.statistics />
-
-// 等同于
-${options.blog_statistics_code!}
+<@common.statistics /> // 等同于 ${options.blog_statistics_code!}
 ```
 
 #### 页脚信息
 
 ```html
-<@common.footer_info />
-
-// 等同于
-${options.blog_footer_info!}
+<@common.footer_info /> // 等同于 ${options.blog_footer_info!}
 ```
 
 #### Favicon
 
 ```html
-<@common.favicon />
-
-// 等同于
-<link rel="shortcut icon" type="images/x-icon" href="${options.blog_favicon!}">
+<@common.favicon /> // 等同于
+<link
+  rel="shortcut icon"
+  type="images/x-icon"
+  href="${options.blog_favicon!}"
+/>
 ```
 
 #### 站点验证代码
 
 ```html
-<@common.verification />
-
-// 等同于
-<meta name="google-site-verification" content="${options.seo_verification_google}" />
+<@common.verification /> // 等同于
+<meta
+  name="google-site-verification"
+  content="${options.seo_verification_google}"
+/>
 <meta name="msvalidate.01" content="${options.seo_verification_bing}" />
-<meta name="baidu-site-verification" content="${options.seo_verification_baidu}" />
+<meta
+  name="baidu-site-verification"
+  content="${options.seo_verification_baidu}"
+/>
 <meta name="360-site-verification" content="${options.seo_verification_qihu}" />
 ```
 
 #### 相对时间
 
 ```html
-<@common.timeline datetime="时间" />
-
-// 输出
-x 年前/x 个月前/x 天前/昨天/x 小时前/x 分钟前/x 秒前/刚刚
+<@common.timeline datetime="时间" /> // 输出 x 年前/x 个月前/x 天前/昨天/x
+小时前/x 分钟前/x 秒前/刚刚
 ```
 
 #### 公共 head 标签
 
 ```html
-<@common.globalHeader />
-
-// 等同于
-<@common.favicon />
-<@common.verification />
+<@common.globalHeader /> // 等同于 <@common.favicon /> <@common.verification />
 ```
 
 #### 公共底部
 
 ```html
-<@common.globalFooter />
-
-// 等同于
-<@common.statistics />
-<@common.footer_info />
+<@common.globalFooter /> // 等同于 <@common.statistics /> <@common.footer_info
+/>
 ```
 
 ### 页面变量
@@ -584,6 +591,7 @@ x 年前/x 个月前/x 天前/昨天/x 小时前/x 分钟前/x 秒前/刚刚
   </li>
 </ul>
 ```
+
 </details>
 
 ##### 根据年月归档
@@ -631,6 +639,7 @@ x 年前/x 个月前/x 天前/昨天/x 小时前/x 分钟前/x 秒前/刚刚
   </li>
 </ul>
 ```
+
 </details>
 
 ##### 根据分类 id 查询文章
@@ -787,7 +796,6 @@ Author3：继续加油
 ```
 
 </details>
-
 
 #### categoryTag（分类）
 
@@ -965,6 +973,7 @@ Author3：继续加油
 </details>
 
 ##### 获取图片组
+
 ```html
 <@photoTag method="listTeams">
 // 返回参数：teams
@@ -996,6 +1005,7 @@ Author3：继续加油
 </details>
 
 ##### 根据分组获取图片
+
 ```html
 <@photoTag method="listByTeam" team="分组名称">
 // 返回参数：photos
@@ -1069,6 +1079,7 @@ Author3：继续加油
 </details>
 
 ##### 获取友情链接组
+
 ```html
 <@linkTag method="listTeams">
 // 返回参数：teams
@@ -1122,6 +1133,7 @@ Author3：继续加油
 </details>
 
 ### 接入评论
+
 > 关于文章和页面的评论，我们提供了一个评论插件，也就是 [halo-comment](https://github.com/halo-dev/halo-comment)。只需要非常简单的步骤就可以让其接入到文章或页面。当然，你也可以使用 comment 相关的 api，自己开发评论模块。
 
 我们推荐在主题目录新建一个 `comment.ftl`，然后只需要在文章或页面中引用即可，减少重复代码。
@@ -1145,13 +1157,11 @@ Author3：继续加油
 引入方式，在 `post.ftl` 中：
 
 ```html
-<#include "comment.ftl">
-<@comment post=post type="post" />
+<#include "comment.ftl"> <@comment post=post type="post" />
 ```
 
 在 `sheet.ftl` 中：
 
 ```html
-<#include "comment.ftl">
-<@comment post=sheet type="sheet" />
+<#include "comment.ftl"> <@comment post=sheet type="sheet" />
 ```
