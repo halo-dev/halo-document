@@ -22,7 +22,7 @@ module.exports = {
     nav: [
       { text: '首 页', link: '/' },
       { text: '用户文档', link: '/docs/' },
-      { text: '开发文档', link: '/develop/' },
+      { text: '开发文档', link: '/develop/application/structure' },
       { text: '主题仓库', link: '/theme/' },
       { text: '社 区', link: 'https://bbs.halo.run' },
     ],
@@ -59,14 +59,22 @@ module.exports = {
           title: '系统开发',
           collapsable: false,
           children: [
-            ''
+            'application/structure',
+            'application/start',
           ],
         },
         {
           title: '主题开发',
           collapsable: false,
           children: [
-            'theme'
+            'theme/ready',
+            'theme/config',
+            'theme/global-variable',
+            'theme/public-template',
+            'theme/page-variable',
+            'theme/custom-tag',
+            'theme/model-variable',
+            'theme/access-comment'
           ],
         }
       ]
