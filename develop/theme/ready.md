@@ -6,7 +6,7 @@
 
 > 假设你已经在本地电脑配置好了 Java 运行环境。
 
-Halo 的运行可参考上述 [系统开发](#系统开发)，或者直接下载打包好的程序启动，如下步骤：
+Halo 的运行可参考上述 [系统开发](/develop/application/start.html)，或者直接下载打包好的程序启动，如下步骤：
 
 - 从 [Github release]() 下载最新的 Jar 包。
 - 在终端中执行 `java -jar halo-版本号.jar --spring.profiles.active=dev`
