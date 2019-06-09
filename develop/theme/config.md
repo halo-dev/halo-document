@@ -59,21 +59,21 @@ group2:
 items:
     # 普通文本框
     - name: item1               // （形式一）表单项的 name 属性，将存于数据库中，对应该表单元素的键。
-      label: item1              // 表单项的 label
+      label: item1_label        // 表单项的 label
       type: text                // 表单项类型：普通文本框
       default: ''               // 默认值
       placeholder: ''           // 表单项的 placeholder，一般给用户提示
 
     # 多行文本框
     item2:                      // （形式二）表单的 name 属性，将存储于数据库中，对应该表单元素的键。
-      label: item2              // 同上
+      label: item2_label        // 同上
       type: textarea            // 表单项类型：多行文本框
       default: ''               // 同上
       placeholder: ''           // 同上
 
     # 单选框
     - name: item3               // 同上
-      label: item3              // 同上
+      label: item3_label        // 同上
       type: radio               // 表单项类型：单选框
       data-type: bool           // 数据类型：bool，string，long，double
       default: value1           // 同上
@@ -85,7 +85,7 @@ items:
 
     # 下拉框
     - name: item4               // 同上
-      label: item4              // 同上
+      label: item4_label        // 同上
       type: select              // 表单项类型：下拉框
       data-type: bool           // 数据类型：bool，string，long，double
       default: value1           // 同上
