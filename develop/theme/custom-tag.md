@@ -223,7 +223,7 @@
 #### 语法格式
 
 ```html
-<@postTag method="listByCategoryId" categoryId="分类 id">
+<@postTag method="listByCategoryId" tagId="分类 id">
 // 返回参数：posts
 </@postTag>
 ```
