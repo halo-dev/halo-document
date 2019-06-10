@@ -109,7 +109,7 @@ Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配�
 wget https://github.com/halo-dev/halo/releases/download/v1.0.1/halo-1.0.1.jar -O halo-latest.jar
 
 # 启动 Halo
-nohup java -jar halo-latest.jar &
+nohup java -jar halo-latest.jar >/dev/null 2>&1&
 ```
 
 ### 更新 Halo
@@ -125,7 +125,7 @@ kill -9 pid
 wget https://github.com/halo-dev/halo/releases/download/v1.0.1/halo-1.0.1.jar -O halo-latest.jar
 
 # 运行 Halo
-nohup java -jar halo-latest.jar &
+nohup java -jar halo-latest.jar >/dev/null 2>&1&
 ```
 
 ### 进阶配置
