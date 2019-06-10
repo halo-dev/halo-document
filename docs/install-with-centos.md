@@ -98,6 +98,7 @@ spring:
 ```sql
 create database halodb character set utf8mb4 collate utf8mb4_bin;
 ```
+
 :::
 
 ### 运行 Halo
@@ -115,14 +116,14 @@ nohup java -jar halo-latest.jar >/dev/null 2>&1&
 ### 更新 Halo
 
 ```bash
+# 下载最新的 Halo 安装包
+wget https://github.com/halo-dev/halo/releases/download/v1.0.1/halo-1.0.1.jar -O halo-latest.jar
+
 # 查询 Halo 占用的pid
 ps -ef | grep halo
 
 # 停止 Halo 进程
 kill -9 pid
-
-# 下载最新的 Halo 安装包
-wget https://github.com/halo-dev/halo/releases/download/v1.0.1/halo-1.0.1.jar -O halo-latest.jar
 
 # 运行 Halo
 nohup java -jar halo-latest.jar >/dev/null 2>&1&
