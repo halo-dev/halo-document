@@ -22,14 +22,14 @@
 
 **可用变量：**
 
-| 变量       | 类型             | 说明           |
-| ---------- | ---------------- | -------------- |
-| is_post    | Boolean          | 是否为文章页面 |
-| post       | Post             | 无             |
-| categories | List\<Category\> | 文章的分类     |
-| tags       | List\<Tag\>      | 文章的标签     |
-| nextPost   | Post             | 下一篇文章     |
-| prePost    | Post             | 上一篇文章     |
+| 变量       | 类型             | 说明                                                                     |
+| ---------- | ---------------- | ------------------------------------------------------------------------ |
+| is_post    | Boolean          | 是否为文章页面                                                           |
+| post       | Post             | 文章详情，详细字段参考 [Post](/develop/theme/model-variable.html#post)   |
+| categories | List\<Category\> | 文章的分类                                                               |
+| tags       | List\<Tag\>      | 文章的标签                                                               |
+| nextPost   | Post             | 下一篇文章，详细字段参考 [Post](/develop/theme/model-variable.html#post) |
+| prePost    | Post             | 上一篇文章，详细字段参考 [Post](/develop/theme/model-variable.html#post) |
 
 ## archives.ftl
 
