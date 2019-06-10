@@ -29,7 +29,7 @@ sudo yum update -y
 
 ```bash
 # 安装 OpenJDK 软件包
-yum install java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-devel.x86_64 java-1.8.0-openjdk-headless.x86_64
+yum install java-1.8.0-openjdk
 
 # 检测是否安装成功
 java -version
