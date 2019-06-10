@@ -29,7 +29,7 @@ sudo yum update -y
 
 ```bash
 # 安装 OpenJDK 软件包
-yum install java-1.8.0-openjdk
+sudo yum install java-1.8.0-openjdk
 
 # 检测是否安装成功
 java -version
@@ -137,14 +137,14 @@ nohup java -jar halo-latest.jar >/dev/null 2>&1&
 
 ```bash
 # 下载 Halo 官方的 halo.service 模板
-curl -o /etc/systemd/system/halo.service --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/halo.service
+sudo curl -o /etc/systemd/system/halo.service --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/halo.service
 ```
 
 下载完成之后，我们还需要对其进行修改。
 
 ```bash
 # 修改 halo.service
-vim /etc/systemd/system/halo.service
+sudo vim /etc/systemd/system/halo.service
 ```
 
 打开之后我们可以看到
@@ -173,22 +173,22 @@ WantedBy=multi-user.target
 
 ```bash
 # 修改 service 文件之后需要刷新 Systemd
-systemctl daemon-reload
+sudo systemctl daemon-reload
 
 # 使 Halo 开机自启
-systemctl enable halo
+sudo systemctl enable halo
 
 # 启动 Halo
-systemctl start halo 或者 service halo start
+sudo systemctl start halo 或者 sudo service halo start
 
 # 重启 Halo
-systemctl restart halo 或者 service halo restart
+sudo systemctl restart halo 或者 sudo service halo restart
 
 # 停止 Halo
-systemctl stop halo 或者 service halo stop
+sudo systemctl stop halo 或者 sudo service halo stop
 
 # 查看 Halo 的运行状态
-systemctl status halo 或者 service halo status
+sudo systemctl status halo 或者 sudo service halo status
 ```
 
 完成以上操作即可通过 `IP:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看[配置域名访问](/docs/reverse-proxy.html)。
