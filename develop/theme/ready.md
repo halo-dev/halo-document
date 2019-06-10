@@ -24,6 +24,7 @@ Halo 的运行可参考上述 [系统开发](/develop/application/start.html)，
 - 如果要开源到 Github 我们建议将仓库名设置为 `halo-theme-主题名`，并设置仓库的 `topic` 为 `halo` 和 `halo-theme`，这样可以方便使用者搜索。
 - 所有模板文件的后缀为 `.ftl`。
 - 主题目录需要以 `screenshot` 命名的预览图片，以供后台展示。
+- 如果是移植的其它主题，请在说明文档（如README）中注明原主题地址以及作者，以保证对原作者的尊重。
 
 ## 开发样板
 
