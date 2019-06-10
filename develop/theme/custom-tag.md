@@ -4,7 +4,7 @@
 
 ## postTag（文章）
 
-### 获取最新文章：
+### 获取最新文章
 
 #### 入参
 
@@ -106,6 +106,7 @@
   </li>
 </ul>
 ```
+
 </details>
 
 ### 根据年月归档
@@ -153,6 +154,7 @@
   </li>
 </ul>
 ```
+
 </details>
 
 ### 根据分类 id 查询文章
@@ -173,7 +175,7 @@
 
 ## commentTag（评论）
 
-### 获取最新评论：
+### 获取最新评论
 
 ```html
 <@commentTag method="latest" top="条数">
@@ -309,7 +311,6 @@ Author3：继续加油
 ```
 
 </details>
-
 
 ## categoryTag（分类）
 
@@ -487,6 +488,7 @@ Author3：继续加油
 </details>
 
 ### 获取图片组
+
 ```html
 <@photoTag method="listTeams">
 // 返回参数：teams
@@ -518,6 +520,7 @@ Author3：继续加油
 </details>
 
 ### 根据分组获取图片
+
 ```html
 <@photoTag method="listByTeam" team="分组名称">
 // 返回参数：photos
@@ -591,6 +594,7 @@ Author3：继续加油
 </details>
 
 ### 获取友情链接组
+
 ```html
 <@linkTag method="listTeams">
 // 返回参数：teams

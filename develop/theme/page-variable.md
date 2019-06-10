@@ -8,11 +8,11 @@
 
 **可用变量：**
 
-| 变量     | 类型             | 说明               |
-| -------- | ---------------- | ------------------ |
-| is_index | Boolean          | 是否为博客首页     |
+| 变量     | 类型               | 说明               |
+| -------- | ------------------ | ------------------ |
+| is_index | Boolean            | 是否为博客首页     |
 | posts    | Page\<PostListVO\> | 文章列表及分页信息 |
-| rainbow  | int[]            | 彩虹分页页码       |
+| rainbow  | int[]              | 彩虹分页页码       |
 
 ## post.ftl
 
@@ -22,14 +22,14 @@
 
 **可用变量：**
 
-| 变量       | 类型           | 说明           |
-| ---------- | -------------- | -------------- |
-| is_post    | Boolean        | 是否为文章页面 |
-| post       | Post           | 无             |
-| categories | List\<Category\> | 文章的分类 |
-| tags | List\<Tag\> | 文章的标签 |
-| nextPost | Post | 下一篇文章 |
-| prePost | Post | 上一篇文章 |
+| 变量       | 类型             | 说明           |
+| ---------- | ---------------- | -------------- |
+| is_post    | Boolean          | 是否为文章页面 |
+| post       | Post             | 无             |
+| categories | List\<Category\> | 文章的分类     |
+| tags       | List\<Tag\>      | 文章的标签     |
+| nextPost   | Post             | 下一篇文章     |
+| prePost    | Post             | 上一篇文章     |
 
 ## archives.ftl
 
@@ -108,9 +108,9 @@
 
 **页面变量：**
 
-| 变量     | 类型             | 说明               |
-| -------- | ---------------- | ------------------ |
-| is_category | Boolean          | 是否为分类页面     |
+| 变量        | 类型    | 说明           |
+| ----------- | ------- | -------------- |
+| is_category | Boolean | 是否为分类页面 |
 
 ::: tip 注意
 和分类相关的其他数据，可以直接使用 [categoryTag](/develop/theme/custom-tag.html#categorytag（分类）)。
@@ -126,12 +126,12 @@
 
 **可用变量：**
 
-| 变量        | 类型         | 说明               |
-| ----------- | ------------ | ------------------ |
-| is_category | Boolean      | 是否为单个分类页面 |
-| posts       | Page\<Post\> | 分类下的文章列表   |
-| rainbow     | int []       | 彩虹分页页码       |
-| category    | Category     | 分类信息           |
+| 变量        | 类型               | 说明               |
+| ----------- | ------------------ | ------------------ |
+| is_category | Boolean            | 是否为单个分类页面 |
+| posts       | Page\<PostListVO\> | 分类下的文章列表   |
+| rainbow     | int []             | 彩虹分页页码       |
+| category    | Category           | 分类信息           |
 
 ## tags.ftl
 
@@ -141,9 +141,9 @@
 
 **可用变量：**
 
-| 变量     | 类型             | 说明               |
-| -------- | ---------------- | ------------------ |
-| is_tags | Boolean          | 是否为标签页面     |
+| 变量    | 类型    | 说明           |
+| ------- | ------- | -------------- |
+| is_tags | Boolean | 是否为标签页面 |
 
 ::: tip 注意
 和标签相关的其他数据，可以直接使用 [tagTag](/develop/theme/custom-tag.html#tagtag（标签）)。
@@ -182,4 +182,3 @@
 | keyword   | String             | 搜索关键词         |
 | posts     | Page\<PostListVO\> | 文章列表及分页信息 |
 | rainbow   | int []             | 彩虹分页页码       |
-

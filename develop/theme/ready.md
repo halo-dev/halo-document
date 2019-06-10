@@ -8,7 +8,7 @@
 
 Halo 的运行可参考上述 [系统开发](/develop/application/start.html)，或者直接下载打包好的程序启动，如下步骤：
 
-- 从 [Github release]() 下载最新的 Jar 包。
+- 从 [Github release](https://github.com/halo-dev/halo/releases) 下载最新的 Jar 包。
 - 在终端中执行 `java -jar halo-版本号.jar --spring.profiles.active=dev`
 
 启动完成之后，在电脑的用户目录即可看到 `halo-dev` 文件夹。
@@ -26,11 +26,13 @@ Halo 的运行可参考上述 [系统开发](/develop/application/start.html)，
 - 主题目录需要以 `screenshot` 命名的预览图片，以供后台展示。
 
 ## 开发样板
+
 > 为了让开发者更快速的上手主题的开发，我们提供了一个简单的开发样板以供参考。
 
 仓库地址：<https://github.com/halo-dev/halo-theme-quick-starter>
 
 ## 目录结构
+
 > 为了让开发更加规范，我们推荐使用以下的目录构建。
 
 ```bash
@@ -55,7 +57,7 @@ Halo 的运行可参考上述 [系统开发](/develop/application/start.html)，
 ├── photos.ftl                  // 内置页面：图库
 ├── journals.ftl                // 内置页面：日志
 ├── 404.ftl                     // 404 页
-├── 500.ftl                     // 500 页 
+├── 500.ftl                     // 500 页
 ├── README.md                   // README，一般用于主题介绍或说明
 ├── screenshot.png              // 主题预览图
 ├── settings.yaml               // 主题选项配置文件
