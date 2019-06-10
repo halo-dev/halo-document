@@ -47,6 +47,7 @@ Halo 的运行可参考上述 [系统开发](/develop/application/start.html)，
 ├── index.ftl                   // 首页
 ├── post.ftl                    // 文章页
 ├── sheet.ftl                   // 自定义页面
+├── sheet_xxx.ftl               // 自定义模板，如：sheet_search.ftl、sheet_author.ftl。在后台新建自定义页面可选择。
 ├── archives.ftl                // 归档页
 ├── categories.ftl              // 分类目录页
 ├── category.ftl                // 单个分类的所属文章页
