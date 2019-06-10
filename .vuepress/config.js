@@ -9,7 +9,8 @@ module.exports = {
     ['link', { rel: 'icon', href: '/halo.png' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['meta', { name: 'google-site-verification', content: 'gRZYnaYWUQXWLvov-54i4W4-SdWlhwJt46uHU2q0eIs' }]
   ],
   siteConfig: {
     links: {
