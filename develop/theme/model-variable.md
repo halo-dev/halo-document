@@ -26,3 +26,43 @@
 | topPriority     | Integer | 排序              |
 | likes           | Long    | 点赞量            |
 | editTime        | Date    | 最后编辑时间      |
+
+## PostListVo
+
+| 字段            | 类型    | 说明              |
+| --------------- | ------- | ----------------- |
+| id              | Integer | id                |
+| title           | String  | 文章标题          |
+| status           | PostStatus  | 文章状态          |
+| url             | String  | 文章路径          |
+| originalContent | String  | markdown 格式内容 |
+| formatContent   | String  | html 格式内容     |
+| summary         | String  | 摘要              |
+| thumbnail       | String  | 缩略图            |
+| visits          | Long    | 浏览量            |
+| disallowComment | Boolean | 是否禁用评论      |
+| template        | String  | 自定义模板        |
+| topPriority     | Integer | 排序              |
+| likes           | Long    | 点赞量            |
+| editTime        | Date    | 最后编辑时间      |
+| commentCount        | Long    | 评论数量      |
+| tags        | List\<TagDTO\>    | 标签      |
+| categories        | List\<CategoryDTO\>    | 分类      |
+
+## Category
+
+| 字段            | 类型    | 说明              |
+| --------------- | ------- | ----------------- |
+| id              | Integer | id                |
+| name           | String  | 名称          |
+| slugName           | String  | 别名          |
+| description           | String  | 描述          |
+| parentId           | Integer  | 父分类 id          |
+
+## Tag
+
+| 字段            | 类型    | 说明              |
+| --------------- | ------- | ----------------- |
+| id              | Integer | id                |
+| name           | String  | 名称          |
+| slugName           | String  | 别名          |
