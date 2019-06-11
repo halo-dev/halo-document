@@ -67,20 +67,20 @@
 | name     | String  | 名称 |
 | slugName | String  | 别名 |
 
-## Links
+## Link
 
 > 友情链接
 
-| 字段        | 类型    | 说明                         |
-| ----------- | ------- | ---------------------------- |
-| id          | Integer | id                           |
-| name        | String  | 名称                         |
-| url         | String  | 网站地址（需要加上 http://） |
-| logo        | String  | 友情链接网站 logo            |
-| description | String  | 网站描述                     |
-| team        | String  | 分组名称（非必填）           |
+| 字段        | 类型    | 说明               |
+| ----------- | ------- | ------------------ |
+| id          | Integer | id                 |
+| name        | String  | 名称               |
+| url         | String  | 网站地址           |
+| logo        | String  | 友情链接网站 logo  |
+| description | String  | 网站描述           |
+| team        | String  | 分组名称（非必填） |
 
-## photos
+## Photo
 
 > 图库/画廊
 

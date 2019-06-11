@@ -94,11 +94,11 @@
 
 **页面变量：**
 
-| 变量       | 类型            | 说明               |
-| ---------- | --------------- | ------------------ |
-| is_journal | Boolean         | 是否为日志页面     |
-| journals   | Page\<Journal\> | 日志列表及分页数据 |
-| rainbow    | int []          | 彩虹分页页码       |
+| 变量       | 类型            | 说明                                                                                   |
+| ---------- | --------------- | -------------------------------------------------------------------------------------- |
+| is_journal | Boolean         | 是否为日志页面                                                                         |
+| journals   | Page\<Journal\> | 日志列表及分页数据，详细字段参考 [Journal](/develop/theme/model-variable.html#journal) |
+| rainbow    | int []          | 彩虹分页页码                                                                           |
 
 ## categories.ftl
 
