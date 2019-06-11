@@ -22,14 +22,14 @@
 
 **可用变量：**
 
-| 变量       | 类型             | 说明                                                                     |
-| ---------- | ---------------- | ------------------------------------------------------------------------ |
-| is_post    | Boolean          | 是否为文章页面                                                           |
-| post       | Post             | 文章详情，详细字段参考 [Post](/develop/theme/model-variable.html#post)   |
-| categories | List\<Category\> | 文章的分类，详细字段参考 [Category](/develop/theme/model-variable.html#category)  |
-| tags       | List\<Tag\>      | 文章的标签，详细字段参考 [Tag](/develop/theme/model-variable.html#tag)|
-| nextPost   | Post             | 下一篇文章，详细字段参考 [Post](/develop/theme/model-variable.html#post) |
-| prePost    | Post             | 上一篇文章，详细字段参考 [Post](/develop/theme/model-variable.html#post) |
+| 变量       | 类型             | 说明                                                                             |
+| ---------- | ---------------- | -------------------------------------------------------------------------------- |
+| is_post    | Boolean          | 是否为文章页面                                                                   |
+| post       | Post             | 文章详情，详细字段参考 [Post](/develop/theme/model-variable.html#post)           |
+| categories | List\<Category\> | 文章的分类，详细字段参考 [Category](/develop/theme/model-variable.html#category) |
+| tags       | List\<Tag\>      | 文章的标签，详细字段参考 [Tag](/develop/theme/model-variable.html#tag)           |
+| nextPost   | Post             | 下一篇文章，详细字段参考 [Post](/develop/theme/model-variable.html#post)         |
+| prePost    | Post             | 上一篇文章，详细字段参考 [Post](/develop/theme/model-variable.html#post)         |
 
 ## archives.ftl
 
@@ -41,11 +41,11 @@
 
 **可用变量：**
 
-| 变量        | 类型               | 说明               |
-| ----------- | ------------------ | ------------------ |
-| is_archives | Boolean            | 是否为归档页面     |
+| 变量        | 类型               | 说明                                                                                         |
+| ----------- | ------------------ | -------------------------------------------------------------------------------------------- |
+| is_archives | Boolean            | 是否为归档页面                                                                               |
 | posts       | Page\<PostListVO\> | 文章列表及分页信息，详细字段参考 [PostListVo](/develop/theme/model-variable.html#postlistvo) |
-| pageRainbow | int[]              | 彩虹分页页码       |
+| pageRainbow | int[]              | 彩虹分页页码                                                                                 |
 
 ## sheet.ftl
 
@@ -94,11 +94,11 @@
 
 **页面变量：**
 
-| 变量       | 类型            | 说明                                                         |
-| ---------- | --------------- | ------------------------------------------------------------ |
-| is_journal | Boolean         | 是否为日志页面                                               |
-| journals   | Page\<Journal\> | 日志列表及分页数据，详细字段参考[Journal](/develop/theme/model-variable.html#Journal) |
-| rainbow    | int []          | 彩虹分页页码                                                 |
+| 变量       | 类型            | 说明                                                                                   |
+| ---------- | --------------- | -------------------------------------------------------------------------------------- |
+| is_journal | Boolean         | 是否为日志页面                                                                         |
+| journals   | Page\<Journal\> | 日志列表及分页数据，详细字段参考 [Journal](/develop/theme/model-variable.html#journal) |
+| rainbow    | int []          | 彩虹分页页码                                                                           |
 
 ## categories.ftl
 
@@ -126,12 +126,12 @@
 
 **可用变量：**
 
-| 变量        | 类型               | 说明               |
-| ----------- | ------------------ | ------------------ |
-| is_category | Boolean            | 是否为单个分类页面 |
-| posts       | Page\<PostListVO\> | 分类下的文章列表，详细字段参考 [PostListVo](/develop/theme/model-variable.html#postlistvo)   |
-| rainbow     | int []             | 彩虹分页页码       |
-| category    | Category           | 分类信息，详细字段参考 [Category](/develop/theme/model-variable.html#category)           |
+| 变量        | 类型               | 说明                                                                                       |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------ |
+| is_category | Boolean            | 是否为单个分类页面                                                                         |
+| posts       | Page\<PostListVO\> | 分类下的文章列表，详细字段参考 [PostListVo](/develop/theme/model-variable.html#postlistvo) |
+| rainbow     | int []             | 彩虹分页页码                                                                               |
+| category    | Category           | 分类信息，详细字段参考 [Category](/develop/theme/model-variable.html#category)             |
 
 ## tags.ftl
 
@@ -159,12 +159,12 @@
 
 **页面变量：**
 
-| 变量    | 类型               | 说明               |
-| ------- | ------------------ | ------------------ |
-| is_tag  | Boolean            | 是否为单个标签页面 |
+| 变量    | 类型               | 说明                                                                                         |
+| ------- | ------------------ | -------------------------------------------------------------------------------------------- |
+| is_tag  | Boolean            | 是否为单个标签页面                                                                           |
 | posts   | Page\<PostListVO\> | 文章列表及分页信息，详细字段参考 [PostListVo](/develop/theme/model-variable.html#postlistvo) |
-| rainbow | int []             | 彩虹分页页码       |
-| tag     | Tag                | 标签信息，详细字段参考 [Tag](/develop/theme/model-variable.html#tag)|
+| rainbow | int []             | 彩虹分页页码                                                                                 |
+| tag     | Tag                | 标签信息，详细字段参考 [Tag](/develop/theme/model-variable.html#tag)                         |
 
 ## search.ftl
 
@@ -176,9 +176,9 @@
 
 **页面变量：**
 
-| 变量      | 类型               | 说明               |
-| --------- | ------------------ | ------------------ |
-| is_search | Boolean            | 是否为搜索页面     |
-| keyword   | String             | 搜索关键词         |
+| 变量      | 类型               | 说明                                                                                         |
+| --------- | ------------------ | -------------------------------------------------------------------------------------------- |
+| is_search | Boolean            | 是否为搜索页面                                                                               |
+| keyword   | String             | 搜索关键词                                                                                   |
 | posts     | Page\<PostListVO\> | 文章列表及分页信息，详细字段参考 [PostListVo](/develop/theme/model-variable.html#postlistvo) |
-| rainbow   | int []             | 彩虹分页页码       |
+| rainbow   | int []             | 彩虹分页页码                                                                                 |
