@@ -33,17 +33,6 @@
 
 - `GET`
 
-**参数：**
-
-无
-
-
-| 参数名 | 必选 | 类型 | 说明 |
-| ------ | ---- | ---- | ---- |
-|        |      |      |      |
-|        |      |      |      |
-|        |      |      |      |
-
 <details>
     <summary>返回示例</summary>
 
@@ -82,12 +71,6 @@
 **请求方式：**
 
 - `GET`
-
-**参数：**
-
-无
-
-
 
 <details>
     <summary>返回示例</summary>
@@ -1076,3 +1059,454 @@
 
 ## 自定义页面
 
+### 获取自定义页面评论
+
+**简要描述：**
+
+- 根据自定义页面`id`,及评论`id`获取回复列表
+
+**请求URL:**
+
+- `/api/content/sheets/{sheetId}/comments/{commentParentId}/children`
+
+**请求方式：**
+
+- `GET`
+
+**参数：**
+
+| 参数名              | 必选 | 类型          | 说明                                   |
+| ------------------- | ---- | ------------- | -------------------------------------- |
+| **commentParentId** | 是   | integer       | 评论id                                 |
+| **sheetId**         | 是   | integer       | 自定义页面id                           |
+| sort                | 否   | array[string] | 排序条件，默认按照评论`createTime`排序 |
+<details>
+    <summary>返回示例</summary>
+
+```json
+[
+  {
+    "author": "string",
+    "authorUrl": "string",
+    "content": "string",
+    "createTime": "2019-06-11T09:12:51.031Z",
+    "email": "string",
+    "gavatarMd5": "string",
+    "id": 0,
+    "ipAddress": "string",
+    "isAdmin": true,
+    "parentId": 0,
+    "status": "PUBLISHED",
+    "userAgent": "string"
+  }
+]
+```
+
+</details> 
+
+### 获取评论列表
+
+**简要描述：**
+
+- 根据自定义页面`id`获取评论列表
+
+**请求URL:**
+
+- `/api/content/sheets/{sheetId}/comments/list_view`
+
+**请求方式：**
+
+- `GET`
+
+**参数：**
+
+| 参数名      | 必选 | 类型          | 说明                                   |
+| ----------- | ---- | ------------- | -------------------------------------- |
+| **sheetId** | 是   | integer       | 自定义页面id                           |
+| page        | 否   | integer       | 分页条件                               |
+| sort        | 否   | array[string] | 排序条件，默认按照评论`createTime`排序 |
+<details>
+    <summary>返回示例</summary>
+
+```json
+{
+  "content": [
+    {
+      "author": "string",
+      "authorUrl": "string",
+      "content": "string",
+      "createTime": "2019-06-11T09:16:28.369Z",
+      "email": "string",
+      "gavatarMd5": "string",
+      "id": 0,
+      "ipAddress": "string",
+      "isAdmin": true,
+      "parentId": 0,
+      "status": "PUBLISHED",
+      "userAgent": "string"
+    }
+  ],
+  "empty": true,
+  "first": true,
+  "last": true,
+  "number": 0,
+  "numberOfElements": 0,
+  "pageable": {
+    "page": 0,
+    "size": 0,
+    "sort": [
+      "string"
+    ]
+  },
+  "size": 0,
+  "sort": {
+    "sort": [
+      "string"
+    ]
+  },
+  "totalElements": 0,
+  "totalPages": 0
+}
+```
+
+</details> 
+
+### 获取一级评论
+
+**简要描述：**
+
+- 根据自定义页面`id`获取评论（不包含回复）
+
+**请求URL:**
+
+- `/api/content/sheets/{sheetId}/comments/top_view`
+
+**请求方式：**
+
+- `GET`
+
+**参数：**
+
+| 参数名      | 必选 | 类型          | 说明                                   |
+| ----------- | ---- | ------------- | -------------------------------------- |
+| **sheetId** | 是   | integer       | 自定义页面id                           |
+| page        | 否   | integer       | 分页条件，默认值为0                    |
+| sort        | 否   | array[string] | 排序条件，默认按照评论`createTime`排序 |
+<details>
+    <summary>返回示例</summary>
+
+```json
+{
+  "content": [
+    {
+      "author": "string",
+      "authorUrl": "string",
+      "content": "string",
+      "createTime": "2019-06-11T09:18:42.496Z",
+      "email": "string",
+      "gavatarMd5": "string",
+      "hasChildren": true,
+      "id": 0,
+      "ipAddress": "string",
+      "isAdmin": true,
+      "parentId": 0,
+      "status": "PUBLISHED",
+      "userAgent": "string"
+    }
+  ],
+  "empty": true,
+  "first": true,
+  "last": true,
+  "number": 0,
+  "numberOfElements": 0,
+  "pageable": {
+    "page": 0,
+    "size": 0,
+    "sort": [
+      "string"
+    ]
+  },
+  "size": 0,
+  "sort": {
+    "sort": [
+      "string"
+    ]
+  },
+  "totalElements": 0,
+  "totalPages": 0
+}
+```
+
+</details> 
+
+### 获取评论树
+
+**简要描述：**
+
+- 根据自定义页面`id`获取评论树状数据视图
+
+**请求URL:**
+
+- `/api/content/sheets/{sheetId}/comments/tree_view`
+
+**请求方式：**
+
+- `GET`
+
+**参数：**
+
+| 参数名      | 必选 | 类型          | 说明                                   |
+| ----------- | ---- | ------------- | -------------------------------------- |
+| **sheetId** | 是   | integer       | 自定义页面id                           |
+| page        | 否   | integer       | 分页条件，默认值为0                    |
+| sort        | 否   | array[string] | 排序条件，默认按照评论`createTime`排序 |
+<details>
+    <summary>返回示例</summary>
+
+```json
+{
+  "content": [
+    {
+      "author": "string",
+      "authorUrl": "string",
+      "children": [
+        null
+      ],
+      "content": "string",
+      "createTime": "2019-06-11T09:20:46.307Z",
+      "email": "string",
+      "gavatarMd5": "string",
+      "id": 0,
+      "ipAddress": "string",
+      "isAdmin": true,
+      "parentId": 0,
+      "status": "PUBLISHED",
+      "userAgent": "string"
+    }
+  ],
+  "empty": true,
+  "first": true,
+  "last": true,
+  "number": 0,
+  "numberOfElements": 0,
+  "pageable": {
+    "page": 0,
+    "size": 0,
+    "sort": [
+      "string"
+    ]
+  },
+  "size": 0,
+  "sort": {
+    "sort": [
+      "string"
+    ]
+  },
+  "totalElements": 0,
+  "totalPages": 0
+}
+```
+
+</details> 
+
+### 发起评论
+
+**简要描述：**
+
+- 评论自定义页面
+
+**请求URL:**
+
+- `/api/content/sheets/comments`
+
+**请求方式：**
+
+- `POST`
+
+**参数：**
+
+| 参数名                | 必选 | 类型               | 说明         |
+| --------------------- | ---- | ------------------ | ------------ |
+| **sheetCommentParam** | 是   | SSheetCommentParam | 评论参数模型 |
+**参数属性：**
+
+```json
+{
+  "author": "string",
+  "authorUrl": "string",
+  "content": "string",
+  "email": "string",
+  "parentId": 0,
+  "postId": 0
+}
+```
+
+**参数请求类型：**
+
+- `application/json`
+
+<details>
+    <summary>返回示例</summary>
+
+```json
+{
+  "author": "string",
+  "authorUrl": "string",
+  "content": "string",
+  "createTime": "2019-06-11T09:25:50.004Z",
+  "email": "string",
+  "gavatarMd5": "string",
+  "id": 0,
+  "ipAddress": "string",
+  "isAdmin": true,
+  "parentId": 0,
+  "status": "PUBLISHED",
+  "userAgent": "string"
+}
+```
+
+</details> 
+
+## 标签
+
+### 获取所有标签
+
+**简要描述：**
+
+- 获取所有标签
+
+**请求URL:**
+
+- `/api/content/tags`
+
+**请求方式：**
+
+- `GET`
+
+**参数：**
+
+| 参数名 | 必选 | 类型          | 说明                                                    |
+| ------ | ---- | ------------- | ------------------------------------------------------- |
+| more   | 否   | boolean       | 默认值为`false`,如果为`true`,则返回引用该标签的文章数量 |
+| sort   | 否   | array[string] | 排序条件，默认标签的`createTime`排序                    |
+<details>
+    <summary>返回示例</summary>
+
+```json
+[
+  {
+    "createTime": "2019-06-11T09:27:16.617Z",
+    "id": 0,
+    "name": "string",
+    "slugName": "string"
+  }
+]
+```
+
+</details> 
+
+### 根据标签获取文章
+
+**简要描述：**
+
+- 根据标签的别名获取文章列表
+
+**请求URL:**
+
+- `/api/content/tags/{slugName}/posts`
+
+**请求方式：**
+
+- `GET`
+
+**参数：**
+
+| 参数名       | 必选 | 类型          | 说明                                 |
+| ------------ | ---- | ------------- | ------------------------------------ |
+| **slugName** | 是   | string        | 标签别名                             |
+| page         | 否   | integer       | 分页条件。默认值为0                  |
+| size         | 否   | integer       | 查询数量                             |
+| sort         | 否   | array[string] | 排序条件，默认文章的`createTime`排序 |
+<details>
+    <summary>返回示例</summary>
+
+```json
+{
+  "content": [
+    {
+      "createFrom": "ADMIN",
+      "createTime": "2019-06-11T09:30:54.456Z",
+      "disallowComment": true,
+      "editTime": "2019-06-11T09:30:54.456Z",
+      "id": 0,
+      "likes": 0,
+      "status": "PUBLISHED",
+      "summary": "string",
+      "template": "string",
+      "thumbnail": "string",
+      "title": "string",
+      "topPriority": 0,
+      "type": "POST",
+      "updateTime": "2019-06-11T09:30:54.456Z",
+      "url": "string",
+      "visits": 0
+    }
+  ],
+  "empty": true,
+  "first": true,
+  "last": true,
+  "number": 0,
+  "numberOfElements": 0,
+  "pageable": {
+    "page": 0,
+    "size": 0,
+    "sort": [
+      "string"
+    ]
+  },
+  "size": 0,
+  "sort": {
+    "sort": [
+      "string"
+    ]
+  },
+  "totalElements": 0,
+  "totalPages": 0
+}
+```
+
+</details> 
+
+## 用户
+
+### 获取个人信息
+
+**简要描述：**
+
+- 获取用户博客个人主页所显示的个人信息
+
+**请求URL:**
+
+- `/api/content/users/profile`
+
+**请求方式：**
+
+- `GET`
+
+<details>
+    <summary>返回示例</summary>
+
+```json
+{
+  "avatar": "string",
+  "createTime": "2019-06-11T09:36:11.127Z",
+  "description": "string",
+  "email": "string",
+  "id": 0,
+  "nickname": "string",
+  "updateTime": "2019-06-11T09:36:11.127Z",
+  "username": "string"
+}
+```
+
+</details> 
