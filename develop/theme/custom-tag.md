@@ -296,6 +296,20 @@ Author3：继续加油
 
 ### 获取所有评论条数
 
+#### 入参
+
+| 参数   | 值    | 说明 |
+| ------ | ----- | ---- |
+| method | count | 无   |
+
+#### 返回参数
+
+| 参数  | 类型 | 说明 |
+| ----- | ---- | ---- |
+| count | long | 无   |
+
+#### 语法格式
+
 ```html
 <@commentTag method="count">
 // 返回参数：count
@@ -319,6 +333,20 @@ Author3：继续加油
 ## menuTag（菜单）
 
 ### 获取所有菜单
+
+#### 入参
+
+| 参数   | 值   | 说明 |
+| ------ | ---- | ---- |
+| method | list | 无   |
+
+#### 返回参数
+
+| 参数  | 类型         | 说明                                                         |
+| ----- | ------------ | ------------------------------------------------------------ |
+| menus | List\<Menu\> | 详细字段参考 [Menu](/develop/theme/model-variable.html#menu) |
+
+#### 语法格式
 
 ```html
 <@menuTag method="list">
@@ -354,6 +382,20 @@ Author3：继续加油
 </details>
 
 ### 获取多级菜单列表
+
+#### 入参
+
+| 参数   | 值   | 说明 |
+| ------ | ---- | ---- |
+| method | tree | 无   |
+
+#### 返回参数
+
+| 参数  | 类型           | 说明 |
+| ----- | -------------- | ---- |
+| menus | List\<MenuVO\> | 无   |
+
+#### 语法格式
 
 ```html
 <@menuTag method="tree">
@@ -409,6 +451,20 @@ Author3：继续加油
 
 ### 获取所有分类
 
+#### 入参
+
+| 参数   | 值   | 说明 |
+| ------ | ---- | ---- |
+| method | list | 无   |
+
+#### 返回参数
+
+| 参数       | 类型                             | 说明 |
+| ---------- | -------------------------------- | ---- |
+| categories | List\<CategoryWithPostCountDTO\> | 无   |
+
+#### 语法格式
+
 ```html
 <@categoryTag method="list">
 // 返回参数：categories
@@ -434,6 +490,21 @@ Author3：继续加油
 
 ### 根据文章 id 获取分类
 
+#### 入参
+
+| 参数   | 值              | 说明    |
+| ------ | --------------- | ------- |
+| method | list            | 无      |
+| postId | 文章 id，如：10 | 文章 id |
+
+#### 返回参数
+
+| 参数       | 类型             | 说明                                                                 |
+| ---------- | ---------------- | -------------------------------------------------------------------- |
+| categories | List\<Category\> | 详细字段参考 [Category](/develop/theme/model-variable.html#category) |
+
+#### 语法格式
+
 ```html
 <@categoryTag method="listByPostId" postId="文章 id">
 // 返回参数：categories
@@ -458,6 +529,20 @@ Author3：继续加油
 </details>
 
 ### 获取所有分类条数
+
+#### 入参
+
+| 参数   | 值    | 说明 |
+| ------ | ----- | ---- |
+| method | count | 无   |
+
+#### 返回参数
+
+| 参数  | 类型 | 说明 |
+| ----- | ---- | ---- |
+| count | long | 无   |
+
+#### 语法格式
 
 ```html
 <@categoryTag method="count">
