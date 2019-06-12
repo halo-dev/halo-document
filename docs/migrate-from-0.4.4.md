@@ -25,3 +25,12 @@
 ### 导入博客数据
 
 安装 Halo v1.0 版本，在安装过程中会提示上传 `halo_data.json`，选择之前备份的文件即可。
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

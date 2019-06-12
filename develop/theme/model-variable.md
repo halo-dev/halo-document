@@ -142,3 +142,12 @@
 | avatar      | String  | 用户头像（地址)          |
 | description | String  | 个性签名                 |
 | expireTime  | Date    | 用户登录 token 过期时间  |
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

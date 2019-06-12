@@ -28,6 +28,15 @@ sudo yum update -y
 
 请参考 [Docker Compose | Docker Documentation](http://docs.docker.com/compose/)
 
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>
+
 ## 安装 Halo
 
 ### 下载配置文件
@@ -183,3 +192,12 @@ docker-compose restart
 1. 最好提前解析好 IP，绑定域名。
 2. 运行完成之后可能得等几分钟，HTTPS 才会配置好，如果不能访问属正常现象，等待几分钟就可以看到 Halo 安装的界面了。
 3. Docker 镜像使用的是 H2 数据库，所以不需要你自己安装，服务启动就可以自动创建了。
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

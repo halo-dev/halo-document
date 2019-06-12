@@ -37,6 +37,15 @@ java -version
 
 当然，这只是其中一种比较简单的安装方式，你也可以用其他方式，并不是强制要求使用这种方式安装。
 
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>
+
 ## 安装 Halo
 
 ### 下载配置文件
@@ -192,3 +201,12 @@ sudo systemctl status halo 或者 sudo service halo status
 ```
 
 完成以上操作即可通过 `IP:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看[配置域名访问](/docs/reverse-proxy.html)。
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

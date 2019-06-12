@@ -49,3 +49,12 @@
 ::: tip 注意
 开发的时候，我们不建议直接更改`项目源码`中的所包含的`配置文件`，包括 `application.yml`、`application-dev.yml`、`application-test.yml` 和 `application-user.yml`。
 :::
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

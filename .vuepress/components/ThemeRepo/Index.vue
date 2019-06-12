@@ -70,6 +70,22 @@
           </div>
         </el-card>
       </el-col>
+      <el-col
+        :xs="24"
+        :sm="12"
+        :md="6"
+        :lg="4"
+        :xl="4"
+      >
+        <div>
+          <AdSense-Theme
+            ad-client="ca-pub-5271828906478846"
+            ad-slot="6526407062"
+            ad-style="display:block"
+            ad-format="auto"
+          ></AdSense-Theme>
+        </div>
+      </el-col>
     </el-row>
   </div>
 </template>

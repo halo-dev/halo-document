@@ -90,6 +90,15 @@ sudo vim /etc/docker/daemon.json
 
 > 注意：修改完配置文件之后需要执行 `service docker restart` 才可生效。
 
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>
+
 ## 安装 Halo
 
 ### 自定义配置文件
@@ -179,3 +188,12 @@ docker run --rm -it -d --name halo-dev -p 8090:8090  -v ~/.halo:/root/.halo ruib
 ```
 
 完成以上操作即可通过 `ip:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看 [配置域名访问](/docs/reverse-proxy.html)。
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

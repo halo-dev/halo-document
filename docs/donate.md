@@ -42,3 +42,12 @@
 |                              支付宝/微信/QQ                              |
 | :----------------------------------------------------------------------: |
 | <img src="https://i.loli.net/2018/12/23/5c1f68ce9b884.png" width="200"/> |
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

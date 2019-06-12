@@ -47,3 +47,12 @@ server {
 请前往后台的博客设置，检查博客地址设置项是否正确，注意 `http` 和 `https` 的区分。
 
 未完待续...
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

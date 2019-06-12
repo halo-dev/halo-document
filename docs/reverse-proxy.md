@@ -80,6 +80,15 @@ sudo certbot renew --dry-run
 
 到这里，关于 Nginx 的配置也就完成了，现在你可以访问一下自己的域名，并进行 Halo 的初始化了。
 
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>
+
 ## 或者使用 Caddy 进行反向代理
 
 `Caddy` 是一款使用 `Go` 语言开发的 `Web` 服务器。其配置更为简洁，并可以自动申请及配置 SSL 证书（推荐）。
@@ -173,3 +182,12 @@ https://www.ryanc.cc {
 最后我们重启 `Caddy` 即可。
 
 到这里，关于 `Caddy` 反向代理的配置也就完成了，现在你可以访问一下自己的域名，并进行 `Halo` 的初始化了。
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

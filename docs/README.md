@@ -99,3 +99,12 @@ nohup java -jar halo-latest.jar >/dev/null 2>&1&
 ![admin-profile.png](https://i.loli.net/2019/05/08/5cd2fccee89f5.png)
 
 ![admin-options.png](https://i.loli.net/2019/05/08/5cd2fccedc309.png)
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

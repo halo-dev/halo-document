@@ -74,3 +74,12 @@ x 年前/x 个月前/x 天前/昨天/x 小时前/x 分钟前/x 秒前/刚刚
 <@common.statistics />
 <@common.footer_info />
 ```
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>

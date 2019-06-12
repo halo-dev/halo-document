@@ -12,3 +12,12 @@
 - Favicon：\${options.blog_favicon!}
 - Logo：\${options.blog_logo!}
 - 主题设置项：\${settings.[settings.yaml](/develop/theme/config.html#settings-yaml-items) 中各项的 name 值}
+
+<div>
+  <AdSense-Doc
+  ad-client="ca-pub-5271828906478846"
+  ad-slot="2656935500"
+  ad-style="display:block; text-align:center;"
+  ad-format="fluid"
+  ></AdSense-Doc>
+</div>
