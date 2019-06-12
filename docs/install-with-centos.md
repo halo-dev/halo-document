@@ -122,6 +122,10 @@ wget https://github.com/halo-dev/halo/releases/download/v1.0.1/halo-1.0.1.jar -O
 nohup java -jar halo-latest.jar >/dev/null 2>&1&
 ```
 
+::: tip 注意
+如果下载速度非常缓慢的话，可尝试关闭之后重新下载。
+:::
+
 ### 更新 Halo
 
 ```bash
