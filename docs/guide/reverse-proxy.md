@@ -89,6 +89,10 @@ sudo certbot renew --dry-run
   ></AdSense-Doc>
 </div>
 
+::: tip 注意
+在设置了反向代理之后，请一定记得去 halo 的管理端设置一下正确的博客地址，否则会造成资源获取不成功。
+:::
+
 ## 或者使用 Caddy 进行反向代理
 
 `Caddy` 是一款使用 `Go` 语言开发的 `Web` 服务器。其配置更为简洁，并可以自动申请及配置 SSL 证书（推荐）。
@@ -191,3 +195,7 @@ https://www.ryanc.cc {
   ad-format="fluid"
   ></AdSense-Doc>
 </div>
+
+::: tip 注意
+在设置了反向代理之后，请一定记得去 halo 的管理端设置一下正确的博客地址，否则会造成资源获取不成功。
+:::
