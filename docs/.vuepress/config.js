@@ -13,7 +13,6 @@ module.exports = {
   description: description,
   host: 'localhost',
   port: '8080',
-  ga: 'UA-110780416-2',
   /**
    * Extra tags to be injected to the page HTML `<head>`
    *
@@ -80,8 +79,7 @@ module.exports = {
       },
     ],
     sidebar: {
-      '/guide/':[
-        {
+      '/guide/': [{
           title: '安装指南',
           collapsable: false,
           children: [
@@ -107,8 +105,7 @@ module.exports = {
           ],
         }
       ],
-      '/develop/':[
-        {
+      '/develop/': [{
           title: '系统开发',
           collapsable: false,
           children: [
@@ -140,6 +137,12 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-    '@vuepress/nprogress'
+    '@vuepress/nprogress',
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-110780416-2'
+      }
+    ]
   ]
 }
