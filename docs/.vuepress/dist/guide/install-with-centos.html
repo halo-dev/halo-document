@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用 CentOS 部署 Halo | Halo</title>
+    <meta name="description" content="Halo | ✍️ 一款现代化的个人独立博客系统">
+    <link rel="icon" href="/halo.png">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="gRZYnaYWUQXWLvov-54i4W4-SdWlhwJt46uHU2q0eIs">
+    
+    <link rel="preload" href="/assets/css/0.styles.a7ea7e8a.css" as="style"><link rel="preload" href="/assets/js/app.84607544.js" as="script"><link rel="preload" href="/assets/js/2.9f0d8ef4.js" as="script"><link rel="preload" href="/assets/js/25.d1dbcaec.js" as="script"><link rel="preload" href="/assets/js/6.00a0d661.js" as="script"><link rel="prefetch" href="/assets/js/10.3a05575b.js"><link rel="prefetch" href="/assets/js/11.11b31e3a.js"><link rel="prefetch" href="/assets/js/12.0fef56b6.js"><link rel="prefetch" href="/assets/js/13.6dbc057b.js"><link rel="prefetch" href="/assets/js/14.4e86515a.js"><link rel="prefetch" href="/assets/js/15.b02174f7.js"><link rel="prefetch" href="/assets/js/16.0a47cf5d.js"><link rel="prefetch" href="/assets/js/17.f778b11a.js"><link rel="prefetch" href="/assets/js/18.6a7fa121.js"><link rel="prefetch" href="/assets/js/19.ea025cc7.js"><link rel="prefetch" href="/assets/js/20.75f865ae.js"><link rel="prefetch" href="/assets/js/21.3f1de4d5.js"><link rel="prefetch" href="/assets/js/22.1947ba12.js"><link rel="prefetch" href="/assets/js/23.d4357614.js"><link rel="prefetch" href="/assets/js/24.303ef428.js"><link rel="prefetch" href="/assets/js/26.30b2e524.js"><link rel="prefetch" href="/assets/js/27.526e4907.js"><link rel="prefetch" href="/assets/js/28.c79c9083.js"><link rel="prefetch" href="/assets/js/29.2b709d32.js"><link rel="prefetch" href="/assets/js/3.bde2e93a.js"><link rel="prefetch" href="/assets/js/30.10371f6a.js"><link rel="prefetch" href="/assets/js/31.d1bf17e2.js"><link rel="prefetch" href="/assets/js/32.5cce4439.js"><link rel="prefetch" href="/assets/js/4.70ad8bf7.js"><link rel="prefetch" href="/assets/js/5.8f7a0ffc.js"><link rel="prefetch" href="/assets/js/7.c8c26743.js"><link rel="prefetch" href="/assets/js/8.36e08a8b.js"><link rel="prefetch" href="/assets/js/9.a4da83dd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a7ea7e8a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Halo</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首 页</a></div><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">用户文档</a></div><div class="nav-item"><a href="/develop/application/structure.html" class="nav-link">开发文档</a></div><div class="nav-item"><a href="/theme/" class="nav-link">主题仓库</a></div><div class="nav-item"><a href="https://bbs.halo.run" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  社 区
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/halo-dev/halo" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首 页</a></div><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">用户文档</a></div><div class="nav-item"><a href="/develop/application/structure.html" class="nav-link">开发文档</a></div><div class="nav-item"><a href="/theme/" class="nav-link">主题仓库</a></div><div class="nav-item"><a href="https://bbs.halo.run" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  社 区
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/halo-dev/halo" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>安装指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/migrate-from-0.4.4.html" class="sidebar-link">从 0.4.4 迁移</a></li><li><a href="/guide/install-with-centos.html" class="active sidebar-link">使用 CentOS 部署 Halo</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/install-with-centos.html#环境要求" class="sidebar-link">环境要求</a></li><li class="sidebar-sub-header"><a href="/guide/install-with-centos.html#服务器配置" class="sidebar-link">服务器配置</a></li><li class="sidebar-sub-header"><a href="/guide/install-with-centos.html#安装-halo" class="sidebar-link">安装 Halo</a></li></ul></li><li><a href="/guide/install-with-docker.html" class="sidebar-link">使用 Docker 部署 Halo</a></li><li><a href="/guide/reverse-proxy.html" class="sidebar-link">配置域名访问</a></li><li><a href="/guide/install-with-docker-compose.html" class="sidebar-link">使用 Docker-compose 部署 Halo</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>FAQ</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/faq.html" class="sidebar-link">常见问题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>捐赠</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/donate.html" class="sidebar-link">捐赠记录</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="使用-centos-部署-halo"><a href="#使用-centos-部署-halo" aria-hidden="true" class="header-anchor">#</a> 使用 CentOS 部署 Halo</h1> <p>在 <code>CentOS 7.x</code> 上安装，配置并运行 <code>Halo</code> 的指南。</p> <h2 id="环境要求"><a href="#环境要求" aria-hidden="true" class="header-anchor">#</a> 环境要求</h2> <p>为了在使用过程中不出现意外的事故，给出下列推荐的配置</p> <ul><li>CentOS 7.x</li> <li>1G RAM 的服务器</li> <li>Oracle JRE 1.8 / Open JRE 1.8</li> <li>Nginx/Caddy</li></ul> <p>在开始之前，最好先到域名服务商解析域名，设置 A 记录并指向服务器的 IP 地址，并确保已经正确解析以及没有被工信部拦截（国内服务器需备案），你可以在本地使用 Ping 命令检查域名是否已经正确解析到了服务器的 IP 地址。以方便在安装过程中为域名配置 SSL 证书。</p> <h2 id="服务器配置"><a href="#服务器配置" aria-hidden="true" class="header-anchor">#</a> 服务器配置</h2> <h3 id="更新软件包"><a href="#更新软件包" aria-hidden="true" class="header-anchor">#</a> 更新软件包</h3> <p>请确保服务器的软件包已经是最新的。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sudo</span> yum update -y
+</code></pre></div><h3 id="安装-java-运行环境"><a href="#安装-java-运行环境" aria-hidden="true" class="header-anchor">#</a> 安装 Java 运行环境</h3> <blockquote><p>若已经存在 Java 运行环境的可略过这一步。</p></blockquote> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 安装 OpenJDK 软件包</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> java-1.8.0-openjdk
+
+<span class="token comment"># 检测是否安装成功</span>
+java -version
+</code></pre></div><p>当然，这只是其中一种比较简单的安装方式，你也可以用其他方式，并不是强制要求使用这种方式安装。</p> <div><ins data-ad-layout="in-article" data-ad-client="ca-pub-5271828906478846" data-ad-slot="2656935500" data-ad-format="fluid" class="adsbygoogle" style="display:block;text-align:center;"></ins></div> <h2 id="安装-halo"><a href="#安装-halo" aria-hidden="true" class="header-anchor">#</a> 安装 Halo</h2> <h3 id="下载配置文件"><a href="#下载配置文件" aria-hidden="true" class="header-anchor">#</a> 下载配置文件</h3> <p>考虑到部分用户的需要，可能需要自定义比如端口等设置项，我们提供了公共的配置文件，并且该配置文件是完全独立于安装包的。当然，你也可以使用安装包内的默认配置文件，但是安装包内的配置文件是不可修改的。请注意：配置文件的路径为 <code>~/.halo/application.yaml</code>。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 下载配置文件到 ~/.halo 目录</span>
+<span class="token function">curl</span> -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
+</code></pre></div><h3 id="修改配置文件"><a href="#修改配置文件" aria-hidden="true" class="header-anchor">#</a> 修改配置文件</h3> <p>完成上一步操作，我们就可以自己配置 <code>Halo</code> 的运行端口，以及数据库相关的配置了。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 使用 Vim 工具修改配置文件</span>
+<span class="token function">vim</span> ~/.halo/application.yaml
+</code></pre></div><p>打开之后我们可以看到</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8090</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> com.zaxxer.hikari.HikariDataSource
+
+    <span class="token comment"># H2 Database 配置，如果你需要使用 MySQL，请注释掉该配置并取消注释 MySQL 的配置。</span>
+    <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> org.h2.Driver
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>h2<span class="token punctuation">:</span>file<span class="token punctuation">:</span>~/halo/db/halo
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> admin
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token number">123456</span>
+
+    <span class="token comment"># MySQL 配置，如果你需要使用 H2Database，请注释掉该配置并取消注释上方 H2Database 的配置。</span>
+  <span class="token comment">#    driver-class-name: com.mysql.cj.jdbc.Driver</span>
+  <span class="token comment">#    url: jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</span>
+  <span class="token comment">#    username: root</span>
+  <span class="token comment">#    password: 123456</span>
+
+  <span class="token comment"># H2 Database 的控制台相关配置，如果你使用的是 MySQL ，请注释掉下方内容。</span>
+  <span class="token key atrule">h2</span><span class="token punctuation">:</span>
+    <span class="token key atrule">console</span><span class="token punctuation">:</span>
+      <span class="token key atrule">settings</span><span class="token punctuation">:</span>
+        <span class="token key atrule">web-allow-others</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">path</span><span class="token punctuation">:</span> /h2<span class="token punctuation">-</span>console
+      <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+</code></pre></div><ol><li>如果需要自定义端口，修改 <code>server</code> 节点下的 <code>port</code> 即可。</li> <li>默认使用的是 <code>H2 Database</code> 数据库，这是一种嵌入式的数据库，使用起来非常方便。需要注意的是，默认的用户名和密码为 <code>admin</code> 和 <code>123456</code>，这个是自定义的，最好将其修改，并妥善保存。</li> <li>如果需要使用 <code>MySQL</code> 数据库，需要将 <code>H2 Database</code> 的所有相关配置都注释掉，并取消 <code>MySQL</code> 的相关配置。另外，<code>MySQL</code> 的默认数据库名为 <code>halodb</code>，请自行配置 <code>MySQL</code> 并创建数据库，以及修改配置文件中的用户名和密码。</li> <li><code>h2</code> 节点为 <code>H2 Database</code> 的控制台配置，默认是关闭的，如需使用请将 <code>h2.console.settings.web-allow-others</code> 和 <code>h2.console.enabled</code> 设置为 <code>true</code>。控制台地址即为 <code>域名/h2-console</code>。注意：非紧急情况，不建议开启该配置。</li></ol> <div class="tip custom-block"><p class="custom-block-title">注意</p> <p>使用 MySQL 之前，必须要先新建一个 <code>halodb</code> 数据库。</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">create</span> <span class="token keyword">database</span> halodb <span class="token keyword">character</span> <span class="token keyword">set</span> utf8mb4 <span class="token keyword">collate</span> utf8mb4_bin<span class="token punctuation">;</span>
+</code></pre></div></div> <h3 id="运行-halo"><a href="#运行-halo" aria-hidden="true" class="header-anchor">#</a> 运行 Halo</h3> <p>Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配置，它放在任何目录都是可行的。需要注意的是，Halo 的整个额外文件全部存放在 <code>~/.halo</code> 目录下，包括 <code>application.yaml（用户配置文件）</code>，<code>template/themes（主题目录）</code>，<code>upload（附件上传目录）</code>，<code>halo.db.mv（数据库文件）</code>。一定要保证 <code>~/.halo</code> 的存在，你博客的所有资料可都存在里面。所以你完全不需要担心安装包的安危，它仅仅是个服务而已。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 下载最新的 Halo 安装包</span>
+<span class="token function">wget</span> https://github.com/halo-dev/halo/releases/download/v1.0.2/halo-1.0.2.jar -O halo-latest.jar
+
+<span class="token comment"># 启动 Halo</span>
+<span class="token function">nohup</span> java -jar halo-latest.jar <span class="token operator">&gt;</span>/dev/null 2<span class="token operator">&gt;</span><span class="token operator">&amp;</span>1<span class="token operator">&amp;</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">注意</p> <p>如果下载速度非常缓慢的话，可尝试关闭之后重新下载。</p></div> <h3 id="更新-halo"><a href="#更新-halo" aria-hidden="true" class="header-anchor">#</a> 更新 Halo</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 下载最新的 Halo 安装包</span>
+<span class="token function">wget</span> https://github.com/halo-dev/halo/releases/download/v1.0.2/halo-1.0.2.jar -O halo-latest.jar
+
+<span class="token comment"># 查询 Halo 占用的pid</span>
+<span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> halo
+
+<span class="token comment"># 停止 Halo 进程</span>
+<span class="token function">kill</span> -9 pid
+
+<span class="token comment"># 运行 Halo</span>
+<span class="token function">nohup</span> java -jar halo-latest.jar <span class="token operator">&gt;</span>/dev/null 2<span class="token operator">&gt;</span><span class="token operator">&amp;</span>1<span class="token operator">&amp;</span>
+</code></pre></div><h3 id="进阶配置"><a href="#进阶配置" aria-hidden="true" class="header-anchor">#</a> 进阶配置</h3> <p>上面我们已经完成了 Halo 的整个配置和安装过程，接下来我们对其进行更完善的配置，比如：<code>需要开机自启？</code>，<code>更简单的启动方式？</code></p> <p>实现以上功能我们只需要新增一个配置文件即可，也就是使用 <code>Systemd</code> 来完成这些工作。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 下载 Halo 官方的 halo.service 模板</span>
+<span class="token function">sudo</span> <span class="token function">curl</span> -o /etc/systemd/system/halo.service --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/halo.service
+</code></pre></div><p>下载完成之后，我们还需要对其进行修改。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 修改 halo.service</span>
+<span class="token function">sudo</span> <span class="token function">vim</span> /etc/systemd/system/halo.service
+</code></pre></div><p>打开之后我们可以看到</p> <div class="language-conf extra-class"><pre class="language-text"><code>[Unit]
+Description=Halo Service
+Documentation=https://halo.run
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -server -jar jar-path
+ExecStop=/bin/kill -s QUIT $MAINPID
+Restart=always
+StandOutput=syslog
+
+StandError=inherit
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></div><p>我们只需要将 <code>ExecStart</code> 中的 <code>jar-path</code> 改为自己服务器上安装包的路径即可，例如 <code>/www/wwwroot/halo-1.0.2.jar</code>，之后保存即可。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 修改 service 文件之后需要刷新 Systemd</span>
+<span class="token function">sudo</span> systemctl daemon-reload
+
+<span class="token comment"># 使 Halo 开机自启</span>
+<span class="token function">sudo</span> systemctl <span class="token function">enable</span> halo
+
+<span class="token comment"># 启动 Halo</span>
+<span class="token function">sudo</span> systemctl start halo 或者 <span class="token function">sudo</span> <span class="token function">service</span> halo start
+
+<span class="token comment"># 重启 Halo</span>
+<span class="token function">sudo</span> systemctl restart halo 或者 <span class="token function">sudo</span> <span class="token function">service</span> halo restart
+
+<span class="token comment"># 停止 Halo</span>
+<span class="token function">sudo</span> systemctl stop halo 或者 <span class="token function">sudo</span> <span class="token function">service</span> halo stop
+
+<span class="token comment"># 查看 Halo 的运行状态</span>
+<span class="token function">sudo</span> systemctl status halo 或者 <span class="token function">sudo</span> <span class="token function">service</span> halo status
+</code></pre></div><p>完成以上操作即可通过 <code>IP:端口</code> 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看 <a href="/guide/reverse-proxy.html">配置域名访问</a>。</p> <div><ins data-ad-layout="in-article" data-ad-client="ca-pub-5271828906478846" data-ad-slot="2656935500" data-ad-format="fluid" class="adsbygoogle" style="display:block;text-align:center;"></ins></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/halo-dev/halo-document/edit/master/guide/install-with-centos.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/guide/migrate-from-0.4.4.html" class="prev">
+          从 0.4.4 迁移
+        </a></span> <span class="next"><a href="/guide/install-with-docker.html">
+          使用 Docker 部署 Halo
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.84607544.js" defer></script><script src="/assets/js/2.9f0d8ef4.js" defer></script><script src="/assets/js/25.d1dbcaec.js" defer></script><script src="/assets/js/6.00a0d661.js" defer></script>
+  </body>
+</html>

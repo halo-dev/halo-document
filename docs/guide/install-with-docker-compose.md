@@ -22,7 +22,7 @@ sudo yum update -y
 
 ### 配置 Docker 运行环境
 
-请参考[使用 Docker 部署 Halo](/docs/install-with-docker.html#服务器配置)
+请参考 [使用 Docker 部署 Halo](install-with-docker.md#服务器配置)
 
 ### 配置 Docker Compose
 
