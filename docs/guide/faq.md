@@ -10,7 +10,7 @@
 
 > 如果使用 `IDEA`，请于 `File | Settings | Build, Execution, Deployment | Compiler | Annotation Processors` 开启 `Enable annotation processing`
 
-> 如果仍然不可行，请将 `IDEA` 更新至最新版再试。
+> 如果仍然不可行，请将 `IDEA` 更新至最新版（2019.x）再试。
 
 ## Q3. 为什么默认的数据库是使用的 H2，而不是 MySQL？
 
