@@ -1,5 +1,5 @@
 <template>
-  <div class="theme-market-layout">
+  <div class="theme-repo-layout">
     <theme-repo></theme-repo>
   </div>
 </template>
