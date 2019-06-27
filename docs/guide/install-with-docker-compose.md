@@ -2,6 +2,10 @@
 
 使用 [`Docker Compose`](https://docs.docker.com/compose/) 部署 `Halo` 的指南，假设你了解并使用过 [`Docker`](https://docs.docker.com/) 和 [`Docker Compose`](https://docs.docker.com/compose/)。本篇教程以 `CentOS 7.x` 为例，其他系统大同小异。
 
+::: tip 注意
+不能使用旧版本的 `docker-compose.yaml` 文件，请按照下列教程下载新的 `docker-compose.yaml` 文件进行安装。
+:::
+
 ## 环境要求
 
 为了在使用过程中不出现意外的事故，给出下列推荐的配置
