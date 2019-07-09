@@ -17,7 +17,7 @@
 
 | 参数  | 类型         | 说明                                                         |
 | ----- | ------------ | ------------------------------------------------------------ |
-| posts | List\<post\> | 详细字段参考 [Post](/develop/theme/model-variable.html#post) |
+| posts | List\<Post\> | 详细字段参考 [Post](/develop/theme/model-variable.html#post) |
 
 #### 语法格式
 
