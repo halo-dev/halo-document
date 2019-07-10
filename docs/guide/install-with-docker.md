@@ -132,7 +132,7 @@ spring:
 
     # H2 Database 配置
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:file:~/halo/db/halo
+    url: jdbc:h2:file:~/.halo/db/halo
     username: admin
     password: openadmin
   h2:
