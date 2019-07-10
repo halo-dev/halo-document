@@ -135,6 +135,19 @@ x 年前/x 个月前/x 天前/昨天/x 小时前/x 分钟前/x 秒前/刚刚
 <@global.footer_info />
 ```
 
+## 评论模块（version>=1.0.3）
+
+```html
+<@global.comment post= type="" />
+
+// 等同于
+<#if !post.disallowComment!false>
+    <script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/halo-dev/halo-comment@1.0.4/dist/halo-comment.min.js"></script>
+    <halo-comment id="${post.id}" type="${type}"/>
+</#if>
+```
+
 <div>
   <AdSense-Doc
   ad-client="ca-pub-5271828906478846"

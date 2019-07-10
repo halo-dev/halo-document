@@ -33,6 +33,16 @@
 <@comment post=sheet type="sheet" />
 ```
 
+另外，如果没有特殊的要求，也可以直接使用全局标签，如下示例：
+
+```html
+// 在 post.ftl 中
+<@global.comment post=post type="post" />
+
+// 在 sheet.ftl 中
+<@global.comment post=sheet type="sheet" />
+```
+
 <div>
   <AdSense-Doc
   ad-client="ca-pub-5271828906478846"
