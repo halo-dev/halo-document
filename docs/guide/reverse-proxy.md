@@ -148,7 +148,14 @@ service caddy stop
 
 # 重启 Caddy
 service caddy restart
+
+# 查看 Caddy 运行状态
+service caddy status
 ```
+
+::: tip 注意
+如果 Caddy 启动出现诸如 `[/usr/lib/systemd/system/caddy.service:23] Unknown lvalue 'AmbientCapabilities' in section 'Service'` 这样的问题，请使用 `yum update -y` 更新系统。然后再使用 `service caddy restart` 重启，已知 `CentOS 7.3` 会出现该问题。
+:::
 
 ### 进阶设置
 
