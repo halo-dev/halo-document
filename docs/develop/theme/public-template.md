@@ -4,10 +4,10 @@
 
 ```html
 // 在模板中引入公共模板，需要注意的是，这个路径是固定的，不需要修改。
-<#import "/common/macro/common_macro.ftl" as common>
+<#import "/common/macro/common_macro.ftl" as common>（已过时，version>=1.0.3 则不需要引入）
 ```
 
-## 统计代码
+## 统计代码（已过时）
 
 ```html
 <@common.statistics />
@@ -16,7 +16,16 @@
 ${options.blog_statistics_code!}
 ```
 
-## 页脚信息
+## 统计代码（version>=1.0.3）
+
+```html
+<@global.statistics />
+
+// 等同于
+${options.blog_statistics_code!}
+```
+
+## 页脚信息（已过时）
 
 ```html
 <@common.footer_info />
@@ -25,7 +34,16 @@ ${options.blog_statistics_code!}
 ${options.blog_footer_info!}
 ```
 
-## Favicon
+## 页脚信息（version>=1.0.3）
+
+```html
+<@global.footer_info />
+
+// 等同于
+${options.blog_footer_info!}
+```
+
+## Favicon（已过时）
 
 ```html
 <@common.favicon />
@@ -34,7 +52,16 @@ ${options.blog_footer_info!}
 <link rel="shortcut icon" type="images/x-icon" href="${options.blog_favicon!}">
 ```
 
-## 站点验证代码
+## Favicon（version>=1.0.3）
+
+```html
+<@global.favicon />
+
+// 等同于
+<link rel="shortcut icon" type="images/x-icon" href="${options.blog_favicon!}">
+```
+
+## 站点验证代码（已废弃）
 
 ```html
 <@common.verification />
@@ -46,7 +73,7 @@ ${options.blog_footer_info!}
 <meta name="360-site-verification" content="${options.seo_verification_qihu}" />
 ```
 
-## 相对时间
+## 相对时间（已过时）
 
 ```html
 <@common.timeline datetime="时间" />
@@ -55,7 +82,16 @@ ${options.blog_footer_info!}
 x 年前/x 个月前/x 天前/昨天/x 小时前/x 分钟前/x 秒前/刚刚
 ```
 
-## 公共 head 标签
+## 相对时间（version>=1.0.3）
+
+```html
+<@global.timeline datetime="时间" />
+
+// 输出
+x 年前/x 个月前/x 天前/昨天/x 小时前/x 分钟前/x 秒前/刚刚
+```
+
+## 公共 head 标签（已过时）
 
 ```html
 <@common.globalHeader />
@@ -65,7 +101,21 @@ x 年前/x 个月前/x 天前/昨天/x 小时前/x 分钟前/x 秒前/刚刚
 <@common.verification />
 ```
 
-## 公共底部
+## 公共 head 标签（version>=1.0.3）
+
+```html
+<@global.head />
+
+// 等同于
+<#if options.seo_spider_disabled!false>
+    <meta name="robots" content="none">
+</#if>
+<meta name="generator" content="Halo ${version!}"/>
+<@global.custom_head />
+<@global.favicon />
+```
+
+## 公共底部（已过时）
 
 ```html
 <@common.globalFooter />
@@ -73,6 +123,29 @@ x 年前/x 个月前/x 天前/昨天/x 小时前/x 分钟前/x 秒前/刚刚
 // 等同于
 <@common.statistics />
 <@common.footer_info />
+```
+
+## 公共底部（version>=1.0.3）
+
+```html
+<@global.footer />
+
+// 等同于
+<@global.statistics />
+<@global.footer_info />
+```
+
+## 评论模块（version>=1.0.3）
+
+```html
+<@global.comment post= type="" />
+
+// 等同于
+<#if !post.disallowComment!false>
+    <script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/halo-dev/halo-comment@1.0.4/dist/halo-comment.min.js"></script>
+    <halo-comment id="${post.id}" type="${type}"/>
+</#if>
 ```
 
 <div>
