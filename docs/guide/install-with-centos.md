@@ -116,6 +116,9 @@ Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配�
 
 ```bash
 # 下载最新的 Halo 安装包
+wget http://halo.ryanc.cc/get/halo-1.0.3.jar -O halo-latest.jar
+
+# 备用地址
 wget https://github.com/halo-dev/halo/releases/download/v1.0.3/halo-1.0.3.jar -O halo-latest.jar
 
 # 启动 Halo
@@ -130,6 +133,9 @@ nohup java -jar halo-latest.jar >/dev/null 2>&1&
 
 ```bash
 # 下载最新的 Halo 安装包
+wget http://halo.ryanc.cc/get/halo-1.0.3.jar -O halo-latest.jar
+
+# 备用地址
 wget https://github.com/halo-dev/halo/releases/download/v1.0.3/halo-1.0.3.jar -O halo-latest.jar
 
 # 查询 Halo 占用的pid
@@ -182,7 +188,7 @@ StandError=inherit
 WantedBy=multi-user.target
 ```
 
-我们只需要将 `ExecStart` 中的 `jar-path` 改为自己服务器上安装包的路径即可，例如 `/www/wwwroot/halo-1.0.3.jar`，之后保存即可。
+我们只需要将 `ExecStart` 中的 `jar-path` 改为自己服务器上安装包的路径即可，例如 `/www/wwwroot/halo-latest.jar`，之后保存即可。
 
 ```bash
 # 修改 service 文件之后需要刷新 Systemd
