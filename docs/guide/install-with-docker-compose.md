@@ -126,6 +126,9 @@ halo:
     - VIRTUAL_HOST=localhost  # 监听的地址（务必修改）
     - LETSENCRYPT_HOST=localhost # 证书的域名 （务必修改）
     - LETSENCRYPT_EMAIL=i@example.com # 证书所有者的邮箱，快过期时会提醒（务必修改）
+    - MAX_UPLOAD_SIZE=10m
+    - JVM_XMS=256m
+    - JVM_XMX=256m
   volumes:
     - ~/.halo:/root/.halo
 ```
@@ -144,6 +147,9 @@ halo:
     - VIRTUAL_HOST=blog.ryanc.cc
     - LETSENCRYPT_HOST=blog.ryanc.cc
     - LETSENCRYPT_EMAIL=i@ryanc.cc
+    - MAX_UPLOAD_SIZE=10m
+    - JVM_XMS=256m
+    - JVM_XMX=256m
   volumes:
     - ~/.halo:/root/.halo
 ```
