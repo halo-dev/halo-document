@@ -266,7 +266,7 @@
 
 | 参数     | 类型            | 说明 |
 | -------- | --------------- | ---- |
-| comments | List\<Comment\> | 无   |
+| comments | Page\<Comment\> | 无   |
 
 #### 语法格式
 
@@ -281,7 +281,7 @@
 
 ```html
 <@commentTag method="latest" top="3">
-    <#list comments as comment>
+    <#list comments.content as comment>
         ${comment.author!}：${comment.content!}
     </#list>
 </@commentTag>
