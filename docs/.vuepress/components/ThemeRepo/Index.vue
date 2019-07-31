@@ -157,6 +157,20 @@ export default {
           website: "https://github.com/halo-dev/halo-theme-zozo",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce1812f6a98b29069.png"
+        },
+        {
+          id: "mrdeng_destiny",
+          name: "Destiny",
+          website: "https://mianbaoduo.com/product/show/mbd-aJqW",
+          version: "1.0",
+          screenshot: "https://i.loli.net/2019/07/31/5d4150401ca7449840.png"
+        },
+        {
+          id: "eryouhao_walker",
+          name: "Walker",
+          website: "https://mianbaoduo.com/product/show/mbd-Ypealw==",
+          version: "1.0",
+          screenshot: "https://i.loli.net/2019/07/31/5d4150ba70e3022353.png"
         }
       ]
     };
