@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "https://www.halo.run/*"
+  to = "https://halo.run"
+  status = 200
