@@ -64,7 +64,7 @@
                   class="button"
                   style="float: right"
                   @click="download(item.website)"
-                >下载</el-button>
+                >{{item.isPremium?'购买':'下载'}}</el-button>
               </div>
             </div>
           </div>
@@ -98,6 +98,7 @@ export default {
         {
           id: "caicai_anatole",
           name: "Anatole",
+          isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-anatole",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce17e355e03e99715.png"
@@ -105,6 +106,7 @@ export default {
         {
           id: "ghost_casper",
           name: "Casper",
+          isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-casper",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce17ebc6e61238122.png"
@@ -112,6 +114,7 @@ export default {
         {
           id: "xuanhuang_hux",
           name: "Hux",
+          isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-hux",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce17f422c95d16424.png"
@@ -119,6 +122,7 @@ export default {
         {
           id: "viosey_material",
           name: "Material",
+          isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-material",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce1800051b7999355.png"
@@ -126,6 +130,7 @@ export default {
         {
           id: "iissnan_next",
           name: "NexT",
+          isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-next",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce1803dc40de33413.png"
@@ -133,6 +138,7 @@ export default {
         {
           id: "chakhsu_pinghsu",
           name: "Pinghsu",
+          isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-pinghsu",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce180737879276885.png"
@@ -140,6 +146,7 @@ export default {
         {
           id: "txperl_story",
           name: "Story",
+          isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-story",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce180c428fb310963.png"
@@ -147,6 +154,7 @@ export default {
         {
           id: "onevcat_vno",
           name: "Vno",
+          isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-vno",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce180f57ca9755802.png"
@@ -154,6 +162,7 @@ export default {
         {
           id: "imzeuk_zozo",
           name: "Zozo",
+          isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-zozo",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/05/20/5ce1812f6a98b29069.png"
@@ -161,6 +170,7 @@ export default {
         {
           id: "mrdeng_destiny",
           name: "Destiny",
+          isPremium: true,
           website: "https://mianbaoduo.com/product/show/mbd-aJqW",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/07/31/5d4150401ca7449840.png"
@@ -168,6 +178,7 @@ export default {
         {
           id: "eryouhao_walker",
           name: "Walker",
+          isPremium: true,
           website: "https://mianbaoduo.com/product/show/mbd-Ypealw==",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/07/31/5d4150ba70e3022353.png"
