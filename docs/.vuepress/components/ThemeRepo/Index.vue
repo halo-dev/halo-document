@@ -182,6 +182,14 @@ export default {
           website: "https://mianbaoduo.com/product/show/mbd-Ypealw==",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/07/31/5d4150ba70e3022353.png"
+        },
+        {
+          id: "fastbyte01_keepit",
+          name: "KeepIt",
+          isPremium: false,
+          website: "https://github.com/halo-dev/halo-theme-KeepIt",
+          version: "1.0",
+          screenshot: "https://i.loli.net/2019/08/15/3hrG4RwJKse7mXQ.png"
         }
       ]
     };
