@@ -190,6 +190,14 @@ export default {
           website: "https://github.com/halo-dev/halo-theme-KeepIt",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/08/15/3hrG4RwJKse7mXQ.png"
+        },
+        {
+          id: "ppoffice_icarus",
+          name: "Icarus",
+          isPremium: false,
+          website: "https://github.com/halo-dev/halo-theme-icarus",
+          version: "2.6.0",
+          screenshot: "https://i.loli.net/2019/08/24/7K6m3VZApyfhUqF.png"
         }
       ]
     };
