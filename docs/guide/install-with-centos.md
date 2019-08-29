@@ -142,11 +142,15 @@ wget https://github.com/halo-dev/halo/releases/download/v1.0.3/halo-1.0.3.jar -O
 ps -ef | grep halo
 
 # 停止 Halo 进程
-kill -9 pid
+kill -9 {pid}
 
 # 运行 Halo
 nohup java -jar halo-latest.jar >/dev/null 2>&1&
 ```
+
+::: tip 注意
+{pid} 为 Halo 占用的 pid，这是具体的值。
+:::
 
 ### 进阶配置
 
@@ -177,7 +181,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -jar jar-path
+ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -jar {jar-path}
 ExecStop=/bin/kill -s QUIT $MAINPID
 Restart=always
 StandOutput=syslog
@@ -188,7 +192,7 @@ StandError=inherit
 WantedBy=multi-user.target
 ```
 
-我们只需要将 `ExecStart` 中的 `jar-path` 改为自己服务器上安装包的路径即可，例如 `/www/wwwroot/halo-latest.jar`，之后保存即可。
+我们只需要将 `ExecStart` 中的 `{jar-path}` 改为自己服务器上安装包的绝对路径即可，例如 `/www/wwwroot/halo-latest.jar`，之后保存即可。
 
 ```bash
 # 修改 service 文件之后需要刷新 Systemd
