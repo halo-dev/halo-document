@@ -121,35 +121,12 @@ wget http://halo.ryanc.cc/get/halo-1.0.3.jar -O halo-latest.jar
 # 备用地址
 wget https://github.com/halo-dev/halo/releases/download/v1.0.3/halo-1.0.3.jar -O halo-latest.jar
 
-# 启动 Halo
-nohup java -jar halo-latest.jar >/dev/null 2>&1&
+# 启动测试
+java -jar halo-latest.jar
 ```
 
-::: tip 注意
-如果下载速度非常缓慢的话，可尝试关闭之后重新下载。
-:::
-
-### 更新 Halo
-
-```bash
-# 下载最新的 Halo 安装包
-wget http://halo.ryanc.cc/get/halo-1.0.3.jar -O halo-latest.jar
-
-# 备用地址
-wget https://github.com/halo-dev/halo/releases/download/v1.0.3/halo-1.0.3.jar -O halo-latest.jar
-
-# 查询 Halo 占用的pid
-ps -ef | grep halo
-
-# 停止 Halo 进程
-kill -9 {pid}
-
-# 运行 Halo
-nohup java -jar halo-latest.jar >/dev/null 2>&1&
-```
-
-::: tip 注意
-{pid} 为 Halo 占用的 pid，这是具体的值。
+::: tip 提示
+以上的启动仅仅为测试 Halo 是否可以正常运行，如果我们关闭 ssh 连接，Halo 也将被关闭。要想一直处于运行状态，请继续看下面的教程。
 :::
 
 ### 进阶配置
@@ -202,16 +179,32 @@ sudo systemctl daemon-reload
 sudo systemctl enable halo
 
 # 启动 Halo
-sudo systemctl start halo 或者 sudo service halo start
+sudo service halo start
 
 # 重启 Halo
-sudo systemctl restart halo 或者 sudo service halo restart
+sudo service halo restart
 
 # 停止 Halo
-sudo systemctl stop halo 或者 sudo service halo stop
+sudo service halo stop
 
 # 查看 Halo 的运行状态
-sudo systemctl status halo 或者 sudo service halo status
+sudo service halo status
+```
+
+### 更新 Halo
+
+```bash
+# 停止运行
+sudo service halo stop
+
+# 下载最新的 Halo 安装包替换旧的包
+wget http://halo.ryanc.cc/get/halo-1.0.3.jar -O halo-latest.jar
+
+# 备用地址
+wget https://github.com/halo-dev/halo/releases/download/v1.0.3/halo-1.0.3.jar -O halo-latest.jar
+
+# 启动
+service halo start
 ```
 
 完成以上操作即可通过 `IP:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看 [配置域名访问](reverse-proxy.md)。
