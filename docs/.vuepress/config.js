@@ -83,11 +83,17 @@ module.exports = {
           title: '安装指南',
           collapsable: false,
           children: [
-            'migrate-from-0.4.4',
-            'install-with-centos',
-            'install-with-docker',
-            'reverse-proxy',
-            'install-with-docker-compose',
+            'install/migrate-from-0.4.4',
+            'install/install-with-centos',
+            'install/install-with-docker',
+            'install/reverse-proxy',
+            'install/install-with-docker-compose',
+          ],
+        }, {
+          title: '使用指南',
+          collapsable: false,
+          children: [
+            'use/markdown',
           ],
         },
         {
