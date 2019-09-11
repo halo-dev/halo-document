@@ -114,12 +114,17 @@ create database halodb character set utf8mb4 collate utf8mb4_bin;
 
 Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配置，它放在任何目录都是可行的。需要注意的是，Halo 的整个额外文件全部存放在 `~/.halo` 目录下，包括 `application.yaml（用户配置文件）`，`template/themes（主题目录）`，`upload（附件上传目录）`，`halo.db.mv（数据库文件）`。一定要保证 `~/.halo` 的存在，你博客的所有资料可都存在里面。所以你完全不需要担心安装包的安危，它仅仅是个服务而已。
 
+最新版本：<a href="https://github.com/halo-dev/halo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/halo-dev/halo.svg?style=flat-square"/></a>
+
 ```bash
-# 下载最新的 Halo 安装包
-wget http://halo.ryanc.cc/get/halo-1.0.3.jar -O halo-latest.jar
+# 下载最新的 Halo 安装包，{{version}} 为版本号，不带 v
+wget http://halo.ryanc.cc/release/halo-{{version}}.jar -O halo-latest.jar
+
+# 或者
+wget http://halo.ryanc.cc/release/halo-latest.jar -O halo-latest.jar
 
 # 备用地址
-wget https://github.com/halo-dev/halo/releases/download/v1.0.3/halo-1.0.3.jar -O halo-latest.jar
+wget https://github.com/halo-dev/halo/releases/download/v1.1.0/halo-1.1.0.jar -O halo-latest.jar
 
 # 启动测试
 java -jar halo-latest.jar
@@ -193,15 +198,20 @@ sudo service halo status
 
 ### 更新 Halo
 
+最新版本：<a href="https://github.com/halo-dev/halo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/halo-dev/halo.svg?style=flat-square"/></a>
+
 ```bash
 # 停止运行
 sudo service halo stop
 
-# 下载最新的 Halo 安装包替换旧的包
-wget http://halo.ryanc.cc/get/halo-1.0.3.jar -O halo-latest.jar
+# 下载最新的 Halo 安装包替换旧的包，{{version}} 为版本号，不带 v
+wget http://halo.ryanc.cc/release/halo-{{version}}.jar -O halo-latest.jar
+
+# 或者
+wget http://halo.ryanc.cc/release/halo-latest.jar -O halo-latest.jar
 
 # 备用地址
-wget https://github.com/halo-dev/halo/releases/download/v1.0.3/halo-1.0.3.jar -O halo-latest.jar
+wget https://github.com/halo-dev/halo/releases/download/v1.1.0/halo-1.1.0.jar -O halo-latest.jar
 
 # 启动
 service halo start
