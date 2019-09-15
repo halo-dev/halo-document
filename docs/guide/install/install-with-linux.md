@@ -1,15 +1,13 @@
-# 使用 CentOS 部署 Halo
+# 在 Linux 服务器部署 Halo
 
-在 `CentOS 7.x` 上安装，配置并运行 `Halo` 的指南。
+本教程以 `CentOS 7.x` 为例，配置并运行 `Halo`，其他 Linux 发行版大同小异。
 
 ## 环境要求
 
 为了在使用过程中不出现意外的事故，给出下列推荐的配置
 
 - CentOS 7.x
-- 1G RAM 的服务器
-- Oracle JRE 1.8 / Open JRE 1.8
-- Nginx/Caddy
+- 512 MB 以上内存的服务器
 
 在开始之前，最好先到域名服务商解析域名，设置 A 记录并指向服务器的 IP 地址，并确保已经正确解析以及没有被工信部拦截（国内服务器需备案），你可以在本地使用 Ping 命令检查域名是否已经正确解析到了服务器的 IP 地址。以方便在安装过程中为域名配置 SSL 证书。
 
@@ -130,6 +128,13 @@ wget https://github.com/halo-dev/halo/releases/download/v1.1.0/halo-1.1.0.jar -O
 java -jar halo-latest.jar
 ```
 
+如看到以下日志输出，则代表启动成功.
+
+```bash
+2019-06-06 16:20:52.285  INFO 1330 --- [  restartedMain] run.halo.app.listener.StartedListener    : Halo started at         http://127.0.0.1:8090
+2019-06-06 16:20:52.285  INFO 1330 --- [  restartedMain] run.halo.app.listener.StartedListener    : Halo admin started at   http://127.0.0.1:8090/admin
+```
+
 ::: tip 提示
 以上的启动仅仅为测试 Halo 是否可以正常运行，如果我们关闭 ssh 连接，Halo 也将被关闭。要想一直处于运行状态，请继续看下面的教程。
 :::
@@ -163,7 +168,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -jar {jar-path}
+ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -jar JAR_PATH
 ExecStop=/bin/kill -s QUIT $MAINPID
 Restart=always
 StandOutput=syslog
@@ -174,7 +179,15 @@ StandError=inherit
 WantedBy=multi-user.target
 ```
 
-我们只需要将 `ExecStart` 中的 `{jar-path}` 改为自己服务器上安装包的绝对路径即可，例如 `/www/wwwroot/halo-latest.jar`，之后保存即可。
+参数：
+
+- -Xms256m：为 JVM 启动时分配的内存，请按照服务器的内存做适当调整，512 M 内存的服务器推荐设置为 128，1G 内存的服务器推荐设置为 256，默认为 256。
+- -Xmx256m：为 JVM 运行过程中分配的最大内存，配置同上。
+- JAR_PATH：Halo 安装包的绝对路径，例如 `/www/wwwroot/halo-latest.jar`。
+
+::: tip 注意
+如果你不是按照上面的方法安装的 JDK，请确保 `/usr/bin/java` 是正确无误的。
+:::
 
 ```bash
 # 修改 service 文件之后需要刷新 Systemd

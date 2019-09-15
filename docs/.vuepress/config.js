@@ -84,7 +84,7 @@ module.exports = {
           collapsable: false,
           children: [
             'install/migrate-from-0.4.4',
-            'install/install-with-centos',
+            'install/install-with-linux',
             'install/install-with-docker',
             'install/reverse-proxy',
             'install/install-with-docker-compose',
