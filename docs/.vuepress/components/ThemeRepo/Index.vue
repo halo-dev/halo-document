@@ -198,6 +198,14 @@ export default {
           website: "https://github.com/halo-dev/halo-theme-icarus",
           version: "2.6.0",
           screenshot: "https://i.loli.net/2019/08/24/7K6m3VZApyfhUqF.png"
+        },
+        {
+          id: "SumiMakito_Journal",
+          name: "Journal",
+          isPremium: false,
+          website: "https://github.com/halo-dev/halo-theme-Journal",
+          version: "2.0.3",
+          screenshot: "https://i.loli.net/2019/09/19/ILcRlGC5oVsEkeO.png"
         }
       ]
     };
