@@ -165,7 +165,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-zozo",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/05/20/5ce1812f6a98b29069.png"
+          screenshot: "https://i.loli.net/2019/09/19/6TQ3ehzraHUmGwn.png"
         },
         {
           id: "mrdeng_destiny",
@@ -173,7 +173,7 @@ export default {
           isPremium: true,
           website: "https://mianbaoduo.com/product/show/mbd-aJqW",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/07/31/5d4150401ca7449840.png"
+          screenshot: "https://i.loli.net/2019/09/19/OUKw1YMEz2uCSgD.png"
         },
         {
           id: "eryouhao_walker",
@@ -181,7 +181,7 @@ export default {
           isPremium: true,
           website: "https://mianbaoduo.com/product/show/mbd-Ypealw==",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/07/31/5d4150ba70e3022353.png"
+          screenshot: "https://i.loli.net/2019/09/19/IECcNrytqDQvJwM.png"
         },
         {
           id: "fastbyte01_keepit",
@@ -189,7 +189,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-KeepIt",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/08/15/3hrG4RwJKse7mXQ.png"
+          screenshot: "https://i.loli.net/2019/09/19/zwf4qTYFn9M2Ugj.png"
         },
         {
           id: "ppoffice_icarus",
