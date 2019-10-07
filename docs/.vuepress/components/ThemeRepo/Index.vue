@@ -206,6 +206,14 @@ export default {
           website: "https://github.com/halo-dev/halo-theme-Journal",
           version: "2.0.3",
           screenshot: "https://i.loli.net/2019/09/19/ILcRlGC5oVsEkeO.png"
+        },
+        {
+          id: "imkun_fantastic",
+          name: "Fantastic",
+          isPremium: false,
+          website: "https://github.com/imkundev/halo-theme-fantastic",
+          version: "1.0",
+          screenshot: "https://i.loli.net/2019/10/07/RzbfGZaJMTxmEiK.png"
         }
       ]
     };
