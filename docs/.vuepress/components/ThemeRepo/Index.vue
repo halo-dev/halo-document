@@ -214,6 +214,14 @@ export default {
           website: "https://github.com/imkundev/halo-theme-fantastic",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/10/07/RzbfGZaJMTxmEiK.png"
+        },
+        {
+          id: "codelunatic_simple",
+          name: "Simple BootStrap",
+          isPremium: false,
+          website: "https://github.com/CodeLunatic/halo-theme-simple-bootstrap",
+          version: "1.0",
+          screenshot: "https://i.loli.net/2019/10/23/VargFE9tjRlPD4p.png"
         }
       ]
     };
