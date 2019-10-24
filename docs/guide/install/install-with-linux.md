@@ -7,7 +7,7 @@
 为了在使用过程中不出现意外的事故，给出下列推荐的配置
 
 - CentOS 7.x
-- 512 MB 以上内存的服务器
+- 512 MB 以上内存
 
 在开始之前，最好先到域名服务商解析域名，设置 A 记录并指向服务器的 IP 地址，并确保已经正确解析以及没有被工信部拦截（国内服务器需备案），你可以在本地使用 Ping 命令检查域名是否已经正确解析到了服务器的 IP 地址。以方便在安装过程中为域名配置 SSL 证书。
 
@@ -100,7 +100,7 @@ spring:
 4. `h2` 节点为 `H2 Database` 的控制台配置，默认是关闭的，如需使用请将 `h2.console.settings.web-allow-others` 和 `h2.console.enabled` 设置为 `true`。控制台地址即为 `域名/h2-console`。注意：非紧急情况，不建议开启该配置。
 
 ::: tip 注意
-使用 MySQL 之前，必须要先新建一个 `halodb` 数据库。
+使用 MySQL 之前，必须要先新建一个 `halodb` 数据库，MySQL 版本需 5.7 以上。
 
 ```sql
 create database halodb character set utf8mb4 collate utf8mb4_bin;
@@ -131,8 +131,8 @@ java -jar halo-latest.jar
 如看到以下日志输出，则代表启动成功.
 
 ```bash
-2019-06-06 16:20:52.285  INFO 1330 --- [  restartedMain] run.halo.app.listener.StartedListener    : Halo started at         http://127.0.0.1:8090
-2019-06-06 16:20:52.285  INFO 1330 --- [  restartedMain] run.halo.app.listener.StartedListener    : Halo admin started at   http://127.0.0.1:8090/admin
+run.halo.app.listener.StartedListener    : Halo started at         http://127.0.0.1:8090
+run.halo.app.listener.StartedListener    : Halo admin started at   http://127.0.0.1:8090/admin
 ```
 
 ::: tip 提示
