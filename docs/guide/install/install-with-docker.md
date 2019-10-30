@@ -107,7 +107,7 @@ sudo vim /etc/docker/daemon.json
 
 ```bash
 # 下载配置文件到 ~/.halo 目录
-curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
+curl -o ~/.halo/application.yaml --create-dirs http://halo.ryanc.cc/config/application-template.yaml
 ```
 
 ### 修改配置文件

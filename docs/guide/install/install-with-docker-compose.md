@@ -49,7 +49,7 @@ sudo yum update -y
 
 ```bash
 # 下载配置文件到 ~/.halo 目录
-curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
+curl -o ~/.halo/application.yaml --create-dirs http://halo.ryanc.cc/config/application-template.yaml
 ```
 
 ### 修改配置文件
@@ -107,7 +107,7 @@ spring:
 ### 下载 Docker Compose 配置文件
 
 ```bash
-yum install -y wget && wget -O docker-compose.yaml https://raw.githubusercontent.com/halo-dev/halo-common/master/docker-compose.yaml
+yum install -y wget && wget -O docker-compose.yaml http://halo.ryanc.cc/config/docker-compose.yaml
 ```
 
 ### 修改 Docker Compose 文件

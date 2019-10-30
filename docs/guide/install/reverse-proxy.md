@@ -22,7 +22,7 @@ sudo systemctl enable nginx.service
 
 ```bash
 # 下载 Halo 官方的 Nginx 配置模板
-curl -o /etc/nginx/conf.d/halo.conf --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/nginx.conf
+curl -o /etc/nginx/conf.d/halo.conf --create-dirs http://halo.ryanc.cc/config/nginx.conf
 ```
 
 下载完成之后，我们还需要对其进行修改
@@ -108,7 +108,7 @@ yum install caddy -y
 
 ```bash
 # 下载 Halo 官方的 Caddy 配置模板
-curl -o /etc/caddy/conf.d/Caddyfile.conf --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/Caddyfile
+curl -o /etc/caddy/conf.d/Caddyfile.conf --create-dirs http://halo.ryanc.cc/config/Caddyfile
 ```
 
 下载完成之后，我们还需要对其进行修改。

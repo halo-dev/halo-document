@@ -52,7 +52,7 @@ java -version
 
 ```bash
 # 下载配置文件到 ~/.halo 目录
-curl -o ~/.halo/application.yaml --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/application-template.yaml
+curl -o ~/.halo/application.yaml --create-dirs http://halo.ryanc.cc/config/application-template.yaml
 ```
 
 ### 修改配置文件
@@ -147,7 +147,7 @@ run.halo.app.listener.StartedListener    : Halo admin started at   http://127.0.
 
 ```bash
 # 下载 Halo 官方的 halo.service 模板
-sudo curl -o /etc/systemd/system/halo.service --create-dirs https://raw.githubusercontent.com/halo-dev/halo-common/master/halo.service
+sudo curl -o /etc/systemd/system/halo.service --create-dirs http://halo.ryanc.cc/config/halo.service
 ```
 
 下载完成之后，我们还需要对其进行修改。
