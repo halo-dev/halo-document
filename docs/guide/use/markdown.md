@@ -3,6 +3,30 @@
 ## 基础语法
 Halo 是用的 `Markdown` 解析器为 [flexmark-java](https://github.com/vsch/flexmark-java)，基于 [CommonMark (spec 0.28)](https://spec.commonmark.org/0.28/) 标准开发，语法参考：[https://spec.commonmark.org/0.28/](https://spec.commonmark.org/0.28/)。
 
+## 代码块
+
+````markdown
+```language
+    代码块
+```
+````
+
+其中，language 为必填，如果不填写，很可能主题的代码高亮插件无法识别代码的语言，导致样式异常。举几个例子：
+
+````markdown
+```java
+public static void main(String[] args){
+    System.out.println("Hello World!");
+}
+```
+````
+
+````markdown
+```javascript
+console.log("Hello World!")
+```
+````
+
 ## 自动链接
 支持自动将一个链接解析为可点击的格式，如下：
 
