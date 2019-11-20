@@ -222,6 +222,14 @@ export default {
           website: "https://github.com/CodeLunatic/halo-theme-simple-bootstrap",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/10/23/VargFE9tjRlPD4p.png"
+        },
+        {
+          id: "louie_senpai_siren",
+          name: "Siren",
+          isPremium: false,
+          website: "https://github.com/halo-dev/halo-theme-siren",
+          version: "1.0",
+          screenshot: "https://i.loli.net/2019/09/22/EyH4FUBAP128rD6.png"
         }
       ]
     };
