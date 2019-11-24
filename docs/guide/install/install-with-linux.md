@@ -2,14 +2,19 @@
 
 本教程以 `CentOS 7.x` 为例，配置并运行 `Halo`，其他 Linux 发行版大同小异。
 
+## 写在前面
+
+1. 具备一定的 Linux 基础。
+2. 如需域名绑定，请先保证已经正确解析 IP，以及确认服务器是否需要备案。
+3. 如需使用 IP 访问，请先确保 Halo 的运行端口已经打开，除非你使用 80 端口运行 Halo。
+4. 不要想当然，请严格按照文档的流程操作。
+
 ## 环境要求
 
 为了在使用过程中不出现意外的事故，给出下列推荐的配置
 
 - CentOS 7.x
 - 512 MB 以上内存
-
-在开始之前，最好先到域名服务商解析域名，设置 A 记录并指向服务器的 IP 地址，并确保已经正确解析以及没有被工信部拦截（国内服务器需备案），你可以在本地使用 Ping 命令检查域名是否已经正确解析到了服务器的 IP 地址。以方便在安装过程中为域名配置 SSL 证书。
 
 ## 服务器配置
 
@@ -168,7 +173,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -jar JAR_PATH
+ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -jar YOUR_JAR_PATH
 ExecStop=/bin/kill -s QUIT $MAINPID
 Restart=always
 StandOutput=syslog
@@ -183,10 +188,12 @@ WantedBy=multi-user.target
 
 - -Xms256m：为 JVM 启动时分配的内存，请按照服务器的内存做适当调整，512 M 内存的服务器推荐设置为 128，1G 内存的服务器推荐设置为 256，默认为 256。
 - -Xmx256m：为 JVM 运行过程中分配的最大内存，配置同上。
-- JAR_PATH：Halo 安装包的绝对路径，例如 `/www/wwwroot/halo-latest.jar`。
+- YOUR_JAR_PATH：Halo 安装包的绝对路径，例如 `/www/wwwroot/halo-latest.jar`。
 
 ::: tip 注意
-如果你不是按照上面的方法安装的 JDK，请确保 `/usr/bin/java` 是正确无误的。
+1. 如果你不是按照上面的方法安装的 JDK，请确保 `/usr/bin/java` 是正确无误的。
+2. systemd 中的所有路径均要写为绝对路径，另外，`~` 在 systemd 中也是无法被识别的，所以你不能写成类似 `~/halo-latest.jar` 这种路径。
+3. 如何检验是否修改正确：把 ExecStart 中的命令拿出来执行一遍。
 :::
 
 ```bash

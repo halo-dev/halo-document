@@ -2,6 +2,14 @@
 
 使用 [`Docker Compose`](https://docs.docker.com/compose/) 部署 `Halo` 的指南，假设你了解并使用过 [`Docker`](https://docs.docker.com/) 和 [`Docker Compose`](https://docs.docker.com/compose/)。本篇教程以 `CentOS 7.x` 为例，其他系统大同小异。
 
+## 写在前面
+
+1. 具备一定的 Linux 基础。
+2. 具备一定的 Docker 使用基础。
+3. 如需域名绑定，请先保证已经正确解析 IP，以及确认服务器是否需要备案。
+4. 如需使用 IP 访问，请先确保 Halo 的运行端口已经打开，除非你使用 80 端口运行 Halo。
+5. 不要想当然，请严格按照文档的流程操作。
+
 ::: tip 注意
 不能使用旧版本的 `docker-compose.yaml` 文件，请按照下列教程下载新的 `docker-compose.yaml` 文件进行安装。
 :::
@@ -10,9 +18,8 @@
 
 为了在使用过程中不出现意外的事故，给出下列推荐的配置
 
-- 1G RAM 的服务器
-
-在开始之前，最好先到域名服务商解析域名，设置 A 记录并指向服务器的 IP 地址，并确保已经正确解析以及没有被工信部拦截（国内服务器需备案），你可以在本地使用 Ping 命令检查域名是否已经正确解析到了服务器的 IP 地址。以方便在安装过程中为域名配置 SSL 证书。
+- CentOS 7.x
+- 1G 以上内存
 
 ## 服务器配置
 
