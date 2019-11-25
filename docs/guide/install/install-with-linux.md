@@ -31,7 +31,7 @@ sudo yum update -y
 > 若已经存在 Java 运行环境的可略过这一步。
 
 ```bash
-# 安装 OpenJDK 软件包
+# 安装 OpenJRE
 sudo yum install java-1.8.0-openjdk -y
 
 # 检测是否安装成功
