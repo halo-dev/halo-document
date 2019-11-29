@@ -168,22 +168,6 @@ export default {
           screenshot: "https://i.loli.net/2019/09/19/6TQ3ehzraHUmGwn.png"
         },
         {
-          id: "mrdeng_destiny",
-          name: "Destiny",
-          isPremium: true,
-          website: "https://mianbaoduo.com/product/show/mbd-aJqW",
-          version: "1.0",
-          screenshot: "https://i.loli.net/2019/09/19/OUKw1YMEz2uCSgD.png"
-        },
-        {
-          id: "eryouhao_walker",
-          name: "Walker",
-          isPremium: true,
-          website: "https://mianbaoduo.com/product/show/mbd-Ypealw==",
-          version: "1.0",
-          screenshot: "https://i.loli.net/2019/09/19/IECcNrytqDQvJwM.png"
-        },
-        {
           id: "fastbyte01_keepit",
           name: "KeepIt",
           isPremium: false,
