@@ -72,6 +72,9 @@ module.exports = {
       {
         text: '主题仓库',
         link: '/theme/'
+      }, {
+        text: '资源下载',
+        link: 'https://dl.halo.run'
       },
       {
         text: '社 区',
