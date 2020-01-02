@@ -186,7 +186,7 @@ https://simple.com {
 将 `https://simple.com` 和 `https://www.simple.com{url}` 修改为自己需要的网址就行了，比如我要求访问 `ryanc.cc` 跳转到 `www.ryanc.cc`，完整的配置如下：
 
 ```nginx
-http://ryanc.cc {
+https://ryanc.cc {
   redir https://www.ryanc.cc{url}
 }
 
