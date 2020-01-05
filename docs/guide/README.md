@@ -81,8 +81,6 @@ java -jar halo-latest.jar
 
 ![theme-icarus.png](https://i.loli.net/2019/09/11/4lO2wNCLiqyIJmR.png)
 
-![theme-destiny.png](https://i.loli.net/2019/09/11/q4t86cCPUEwlGMn.png)
-
 ![install.png](https://i.loli.net/2019/09/11/Iu1eMzZDg6frw97.png)
 
 ![admin-login.png](https://i.loli.net/2019/09/11/3CahVJAvXngwiQu.png)
