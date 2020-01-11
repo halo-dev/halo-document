@@ -127,7 +127,10 @@ wget http://halo.ryanc.cc/release/halo-{{version}}.jar -O halo-latest.jar
 # 或者
 wget http://halo.ryanc.cc/release/halo-latest.jar -O halo-latest.jar
 
-# 备用地址
+# 或者
+wget https://halo.nova.moe/release/halo-1.2.0.jar -O halo-latest.jar
+
+# 备用地址（建议海外服务器使用）
 wget https://github.com/halo-dev/halo/releases/download/v1.2.0/halo-1.2.0.jar -O halo-latest.jar
 
 # 启动测试
@@ -231,7 +234,10 @@ wget http://halo.ryanc.cc/release/halo-{{version}}.jar -O halo-latest.jar
 # 或者
 wget http://halo.ryanc.cc/release/halo-latest.jar -O halo-latest.jar
 
-# 备用地址
+# 或者
+wget https://halo.nova.moe/release/halo-1.2.0.jar -O halo-latest.jar
+
+# 备用地址（建议海外服务器使用）
 wget https://github.com/halo-dev/halo/releases/download/v1.2.0/halo-1.2.0.jar -O halo-latest.jar
 
 # 启动
