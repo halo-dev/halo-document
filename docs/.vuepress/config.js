@@ -97,6 +97,7 @@ module.exports = {
           collapsable: false,
           children: [
             'use/markdown',
+            'use/after-installation',
           ],
         },
         {
