@@ -135,7 +135,7 @@ A：添加插件的方法和上面的一样：
 首先，登陆到后台，进入 系统 -> 博客设置 -> 其他设置。将下面的代码复制到 `自定义内容页面 head`。
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.4/dist/mermaid.min.js">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.4/dist/mermaid.min.js"></script>
 ```
 
 ## 短连接
