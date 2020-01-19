@@ -214,6 +214,14 @@ export default {
           website: "https://github.com/halo-dev/halo-theme-siren",
           version: "1.0",
           screenshot: "https://i.loli.net/2019/09/22/EyH4FUBAP128rD6.png"
+        },
+         {
+          id: "hshan",
+          name: "寒山",
+          isPremium: false,
+          website: "https://github.com/hshanx/halo-theme-hshan",
+          version: "1.0",
+          screenshot: "https://i.loli.net/2020/01/19/9fqL1yrvYiV5mc8.jpg"
         }
       ]
     };
