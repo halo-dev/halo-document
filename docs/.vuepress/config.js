@@ -98,7 +98,8 @@ module.exports = {
           children: [
             'use/markdown',
             'use/after-installation',
-            'use/hidden-features'
+            'use/hidden-features',
+            'use/reset-password'
           ],
         },
         {
