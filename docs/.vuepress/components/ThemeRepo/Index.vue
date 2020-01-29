@@ -222,6 +222,7 @@ export default {
           website: "https://github.com/hshanx/halo-theme-hshan",
           version: "1.0",
           screenshot: "https://i.loli.net/2020/01/29/tQ2uRlEaspmYT58.png"
+
         }
       ]
     };
