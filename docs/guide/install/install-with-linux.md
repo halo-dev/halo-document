@@ -234,6 +234,8 @@ sudo service halo stop
 sudo service halo status
 ```
 
+完成以上操作即可通过 `IP:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看 [配置域名访问](reverse-proxy.md)。
+
 ### 更新 Halo
 
 最新版本：<a href="https://github.com/halo-dev/halo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/halo-dev/halo.svg?style=flat-square"/></a>
@@ -257,8 +259,6 @@ wget https://github.com/halo-dev/halo/releases/download/v1.2.0/halo-1.2.0.jar -O
 # 启动
 service halo start
 ```
-
-完成以上操作即可通过 `IP:端口` 访问了。不过在此之前，最好先完成后续操作，我们还需要让域名也可以访问到 Halo，请继续看 [配置域名访问](reverse-proxy.md)。
 
 <div>
   <AdSense-Doc
