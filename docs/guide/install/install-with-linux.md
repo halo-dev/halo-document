@@ -241,10 +241,10 @@ sudo service halo status
 最新版本：<a href="https://github.com/halo-dev/halo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/halo-dev/halo.svg?style=flat-square"/></a>
 
 ```bash
-# 停止运行
-sudo service halo stop
+# 备份旧的安装包
+mv halo-latest.jar halo-latest.jar.bak
 
-# 下载最新的 Halo 安装包替换旧的包，{{version}} 为版本号，不带 v
+# 下载最新的 Halo 安装包，{{version}} 为版本号，不带 v
 wget http://halo.ryanc.cc/release/halo-{{version}}.jar -O halo-latest.jar
 
 # 或者
@@ -256,8 +256,8 @@ wget https://halo.nova.moe/release/halo-{{version}}.jar -O halo-latest.jar
 # 备用地址（建议海外服务器使用）
 wget https://github.com/halo-dev/halo/releases/download/v1.2.0/halo-1.2.0.jar -O halo-latest.jar
 
-# 启动
-service halo start
+# 重启应用
+service halo restart
 ```
 
 <div>
