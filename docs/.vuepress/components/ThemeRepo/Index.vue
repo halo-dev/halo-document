@@ -221,7 +221,8 @@ export default {
           isPremium: false,
           website: "https://github.com/hshanx/halo-theme-hshan",
           version: "1.0",
-          screenshot: "https://i.loli.net/2020/01/19/9fqL1yrvYiV5mc8.jpg"
+          screenshot: "https://i.loli.net/2020/01/29/tQ2uRlEaspmYT58.png"
+
         }
       ]
     };
