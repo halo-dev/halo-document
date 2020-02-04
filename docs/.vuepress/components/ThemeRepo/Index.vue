@@ -101,7 +101,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-anatole",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/05/20/5ce17e355e03e99715.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-anatole@latest/screenshot.png"
         },
         {
           id: "ghost_casper",
@@ -109,7 +109,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-casper",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/05/20/5ce17ebc6e61238122.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-casper@latest/screenshot.png"
         },
         {
           id: "xuanhuang_hux",
@@ -117,7 +117,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-hux",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/05/20/5ce17f422c95d16424.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-hux@latest/screenshot.png"
         },
         {
           id: "viosey_material",
@@ -125,7 +125,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-material",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/05/20/5ce1800051b7999355.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-material@latest/screenshot.png"
         },
         {
           id: "iissnan_next",
@@ -133,7 +133,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-next",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/05/20/5ce1803dc40de33413.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-next@latest/screenshot.png"
         },
         {
           id: "chakhsu_pinghsu",
@@ -141,7 +141,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-pinghsu",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/05/20/5ce180737879276885.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-pinghsu@latest/screenshot.png"
         },
         {
           id: "txperl_story",
@@ -149,7 +149,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-story",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/05/20/5ce180c428fb310963.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-story@latest/screenshot.png"
         },
         {
           id: "onevcat_vno",
@@ -157,7 +157,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-vno",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/05/20/5ce180f57ca9755802.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-vno@latest/screenshot.png"
         },
         {
           id: "imzeuk_zozo",
@@ -165,7 +165,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-zozo",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/09/19/6TQ3ehzraHUmGwn.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-zozo@latest/screenshot.png"
         },
         {
           id: "fastbyte01_keepit",
@@ -173,7 +173,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-KeepIt",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/09/19/zwf4qTYFn9M2Ugj.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-KeepIt@latest/screenshot.png"
         },
         {
           id: "ppoffice_icarus",
@@ -181,7 +181,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-icarus",
           version: "2.6.0",
-          screenshot: "https://i.loli.net/2019/08/24/7K6m3VZApyfhUqF.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-icarus@latest/screenshot.png"
         },
         {
           id: "SumiMakito_Journal",
@@ -189,7 +189,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-Journal",
           version: "2.0.3",
-          screenshot: "https://i.loli.net/2019/09/19/ILcRlGC5oVsEkeO.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-Journal@latest/screenshot.png"
         },
         {
           id: "imkun_fantastic",
@@ -197,7 +197,7 @@ export default {
           isPremium: false,
           website: "https://github.com/imkundev/halo-theme-fantastic",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/10/07/RzbfGZaJMTxmEiK.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/imkundev/halo-theme-fantastic@latest/screenshot.png"
         },
         {
           id: "codelunatic_simple",
@@ -205,7 +205,7 @@ export default {
           isPremium: false,
           website: "https://github.com/CodeLunatic/halo-theme-simple-bootstrap",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/10/23/VargFE9tjRlPD4p.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/CodeLunatic/halo-theme-simple-bootstrap@latest/screenshot.png"
         },
         {
           id: "louie_senpai_siren",
@@ -213,7 +213,7 @@ export default {
           isPremium: false,
           website: "https://github.com/halo-dev/halo-theme-siren",
           version: "1.0",
-          screenshot: "https://i.loli.net/2019/09/22/EyH4FUBAP128rD6.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/halo-dev/halo-theme-siren@latest/screenshot.png"
         },
          {
           id: "hshan",
@@ -221,7 +221,7 @@ export default {
           isPremium: false,
           website: "https://github.com/hshanx/halo-theme-hshan",
           version: "1.0",
-          screenshot: "https://i.loli.net/2020/01/29/tQ2uRlEaspmYT58.png"
+          screenshot: "https://cdn.jsdelivr.net/gh/hshanx/halo-theme-hshan@latest/screenshot.png"
 
         }
       ]
